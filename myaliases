@@ -1,0 +1,33 @@
+# my aliases
+alias a='alias'
+alias f='find . -iname'
+alias h='history'
+alias lt='ll -t'
+alias ..='pushd ..'
+alias ...='pushd ../..'
+alias ....='pushd ../../..'
+alias mg='make -f GNUmakefile'
+alias git-cdiff='git diff --cached'
+#
+# local aliases
+if [ -f "${HOME}/.bash_aliases" ]; then
+  source "${HOME}/.bash_aliases"
+fi
+#
+# cygwin .bashrc
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias df='df -h'
+alias du='du -h'
+alias less='less -r'                          # raw control characters
+##alias whence='type -a'                        # where, of a sort
+##alias grep='grep --color'                     # show differences in colour
+##alias egrep='egrep --color=auto'              # show differences in colour
+##alias fgrep='fgrep --color=auto'              # show differences in colour
+##alias ls='ls -hF --color=tty'                 # classify files in colour
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
+alias ll='ls -l'                              # long list
+alias la='ls -A'                              # all but . and ..
+alias l='ls -CF'                              #

@@ -1,0 +1,4 @@
+if [ "$*" ] ; then
+        ls -lFG `which $*`
+fi
+
