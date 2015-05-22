@@ -7,12 +7,15 @@ alias ..='pushd ..'
 alias ...='pushd ../..'
 alias ....='pushd ../../..'
 alias mg='make -f GNUmakefile'
-alias git-cdiff='git diff --cached'
 #
 # local aliases
 if [ -f "${HOME}/.bash_aliases" ]; then
   source "${HOME}/.bash_aliases"
 fi
+#
+# git alias
+git config --global alias.st status
+git config --global alias.cdiff 'diff --cached'
 #
 # cygwin .bashrc
 alias rm='rm -i'
