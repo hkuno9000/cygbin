@@ -7,6 +7,10 @@ alias ..='pushd ..'
 alias ...='pushd ../..'
 alias ....='pushd ../../..'
 alias mg='make -f GNUmakefile'
+if [ -d "${USERPROFILE}" ]; then
+  alias winhome='pushd "${USERPROFILE}"'
+  alias windoc='pushd "${USERPROFILE}/Documents"'
+fi
 #
 # local aliases
 if [ -f "${HOME}/.bash_aliases" ]; then
