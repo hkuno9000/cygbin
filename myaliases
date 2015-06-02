@@ -20,6 +20,10 @@ fi
 # git alias
 git config --global alias.st status
 git config --global alias.cdiff 'diff --cached'
+git config --global alias.br branch
+git config --global alias.bl 'branch -av'
+git config --global alias.co checkout
+
 #
 # cygwin .bashrc
 alias rm='rm -i'
