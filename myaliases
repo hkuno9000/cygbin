@@ -19,11 +19,16 @@ fi
 #
 # git alias
 git config --global alias.st status
-git config --global alias.cdiff 'diff --cached'
+git config --global alias.co checkout
+git config --global alias.ci commit
 git config --global alias.br branch
 git config --global alias.bl 'branch -av'
-git config --global alias.co checkout
-
+git config --global alias.tl 'tag -l -n'
+git config --global alias.cdiff 'diff --cached'
+git config --global alias.logff 'log --format=fuller'
+git config --global alias.cdifftool 'difftool --cached'
+git config --global alias.confg 'config --global'
+git config --global alias.confs 'config --system'
 #
 # cygwin .bashrc
 alias rm='rm -i'
