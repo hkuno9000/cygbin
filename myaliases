@@ -29,6 +29,8 @@ git config --global alias.logff 'log --format=fuller'
 git config --global alias.cdifftool 'difftool --cached'
 git config --global alias.confg 'config --global'
 git config --global alias.confs 'config --system'
+git config --global alias.utf8 '!LANG=ja_JP.UTF-8 LESSCHARSET=utf-8 git'
+git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
 #
 # cygwin .bashrc
 alias rm='rm -i'
