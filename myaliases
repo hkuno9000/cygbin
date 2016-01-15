@@ -31,6 +31,8 @@ git config --global alias.difftoolc 'difftool --cached'
 git config --global alias.diffs 'diff --stat'
 git config --global alias.confg 'config --global'
 git config --global alias.logff 'log --format=fuller'
+git config --global alias.logv 'log --graph --decorate --stat'
+git config --global alias.logs 'log --oneline -5'
 #
 # cygwin .bashrc
 alias rm='rm -i'
