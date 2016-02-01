@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -l
 $name = $ARGV[0] eq "" ? 'PATH' : $ARGV[0];
 $,="\n";
 print split(q/:/,$ENV{$name});
