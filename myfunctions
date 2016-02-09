@@ -1,6 +1,10 @@
 cdx()
 {
-  for dir in $* $1* ../$1* ../../$1*; do
+  if [ -z "$1" ]; then
+    cd
+    return
+  fi
+  for dir in $@ $1* ../$1* ../../$1*; do
     if [ -d "$dir" ]; then
       pushd "$dir"
       return
