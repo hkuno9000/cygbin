@@ -35,6 +35,7 @@ git config --global alias.confg 'config --global'
 git config --global alias.logff 'log --format=fuller'
 git config --global alias.logv 'log --graph --decorate --stat'
 git config --global alias.logs 'log --oneline -5'
+git config --global alias.al 'config --get-regexp alias.*'
 #
 # cygwin .bashrc
 alias rm='rm -i'
