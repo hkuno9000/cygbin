@@ -21,25 +21,27 @@ fi
 # git alias
 git config --global alias.utf8 '!LANG=ja_JP.UTF-8 LESSCHARSET=utf-8 git'
 git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.ca 'commit -a --amend'
-git config --global alias.cf 'commit -a --fixup='
-git config --global alias.cs 'commit -a --squash='
-git config --global alias.br branch
+git config --global alias.st 'status'
+git config --global alias.co 'checkout'
+git config --global alias.ci 'commit'
+git config --global alias.cia 'commit -a --amend'
+git config --global alias.cif 'commit -a --fixup'
+git config --global alias.cis 'commit -a --squash'
+git config --global alias.uncommit 'reset --soft'
+git config --global alias.rollback 'reset --hard'
+git config --global alias.br 'branch'
 git config --global alias.bl 'branch -avv'
 git config --global alias.tl 'tag -l -n'
+git config --global alias.al 'config --get-regexp alias.*'
+git config --global alias.confg 'config --global'
 git config --global alias.diffc 'diff --cached'
 git config --global alias.difftoolc 'difftool --cached'
 git config --global alias.diffs 'diff --stat'
 git config --global alias.diffn 'diff --no-index'
-git config --global alias.confg 'config --global'
 git config --global alias.logff 'log --format=fuller'
 git config --global alias.logd 'log --decorate'
 git config --global alias.logs 'log --decorate --oneline -5'
 git config --global alias.logv 'log --decorate --graph --stat'
-git config --global alias.al 'config --get-regexp alias.*'
 git config --global alias.ignore '!vim ~/Documents/gitignore_global.txt'
 #
 # cygwin .bashrc
