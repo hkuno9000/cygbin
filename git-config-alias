@@ -1,2 +1,2 @@
 #!/bin/sh
-git config --get-regexp 'alias.*' | perl -n -e 'print qq/git config --global alias.$1 \x27$2\x27\n/ if /^alias.(\w+) (.+)\n/;'
+git config --get-regexp 'alias.*' | perl -lne "print qq/git config --global \$1 '\$2'/ if /^(alias\.\S+) (.+)/;"
