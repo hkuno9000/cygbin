@@ -6,8 +6,16 @@ alias lt='ll -t'
 alias ..='pushd ..'
 alias ...='pushd ../..'
 alias ....='pushd ../../..'
+if [ -z "$(alias ll)" ]; then alias ll='ls -l'; fi
+if [ -z "$(alias la)" ]; then alias la='ls -A'; fi
+if [ -z "$(alias l)"  ]; then alias l='ls -CF'; fi
+if [ -z "$(alias rm)" ]; then alias rm='rm -i'; fi
+if [ -z "$(alias cp)" ]; then alias cp='cp -i'; fi
+if [ -z "$(alias mv)" ]; then alias mv='mv -i'; fi
+if [ -z "$(alias df)" ]; then alias df='df -h'; fi
+if [ -z "$(alias du)" ]; then alias du='du -h'; fi
 alias mg='make -f GNUmakefile'
-alias wi='alias | /usr/bin/which --read-alias --show-dot'
+alias wi='alias | /usr/bin/which --read-alias --show-dot --show-tilde'
 if [ -d "${USERPROFILE}" ]; then
   alias winhome='pushd "${USERPROFILE}"'
   alias windoc='pushd "${USERPROFILE}/Documents"'
@@ -46,19 +54,15 @@ git config --global alias.logv 'log --decorate --graph --stat'
 git config --global alias.ignore '!vim ~/Documents/gitignore_global.txt'
 #
 # cygwin .bashrc
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias df='df -h'
-alias du='du -h'
-alias less='less -r'                          # raw control characters
+##alias less='less -r'                          # raw control characters
 ##alias whence='type -a'                        # where, of a sort
 ##alias grep='grep --color'                     # show differences in colour
 ##alias egrep='egrep --color=auto'              # show differences in colour
 ##alias fgrep='fgrep --color=auto'              # show differences in colour
 ##alias ls='ls -hF --color=tty'                 # classify files in colour
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-alias l='ls -CF'                              #
+##alias dir='ls --color=auto --format=vertical'
+##alias vdir='ls --color=auto --format=long'
+##alias ll='ls -l'                              # long list
+##alias la='ls -A'                              # all but . and ..
+##alias l='ls -CF'                              #
+#
