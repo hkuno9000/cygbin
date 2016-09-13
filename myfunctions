@@ -33,13 +33,17 @@ setlang()
 
 setll()
 {
-  _ll="$(echo $(alias ll) | perl -lpe 's/^alias ll=.(.+)\s*.$/\1/; s/\s*--time-style=[\w-]+//;')"
-  if [ -z "$_ll" ]; then _ll="ls -l"; fi
+  local ll=$(alias ll)			# get alias command of ll. i.e. "alias ll='ls -l --time-style=iso'"
+  ll=$(echo $ll | perl -lpe "
+	s/alias ll='(.+)\s*'/\1/;	# extract alias value. i.e. 'ls -l --time-style=iso'
+	s/\s*--time-style=[\w-]+//g;	# strip '--time-style=*'
+	")
+  ll=${ll:=ls -l};			# if null, then use "ls -l"
   case $1 in
     iso|long-iso|full-iso)
-      alias ll="$_ll --time-style=$1";;
+      alias ll="$ll --time-style=$1";;
     clear)
-      alias ll="$_ll";;
+      alias ll="$ll";;
     *)
       echo "usage: setll [iso|long-iso|full-iso|clear]";;
   esac
