@@ -20,6 +20,8 @@ set laststatus=2
 set statusline=%<%F%h%m%r\ [%Y][%{&ff}][%{&fenc!=''?&fenc:&enc}:0x\%02.6B]%=%l,%c%V\ %P
 
 "=== syntax
+" check /usr/share/vim/vim74/filetype.vim
+au BufNewFile,BufRead *.ssi setf perl
 syntax on
 filetype on
 autocmd FileType c,cpp,perl,javascript set cindent tabstop=4 shiftwidth=4
@@ -30,8 +32,15 @@ let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
+"set cursorline
 
-"==== color
+"=== color
 "colorscheme elflord
 "set t_Co=256
 
+"=== visible tab,space,eol
+set list
+set listchars=tab:»-,trail:-,nbsp:%,eol:↓
+" NonText:eol, SpecialKey:tab,trail
+highlight NonText    ctermfg=DarkGreen guifg=DarkGreen
+highlight SpecialKey ctermfg=DarkGreen guifg=DarkGreen
