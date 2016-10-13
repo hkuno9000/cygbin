@@ -1,9 +1,20 @@
-if [ -f $1.bak ] ; then
+# diff to fuzzy backup file
+function ls {
+	command ls -lFGt $*
+}
+if [ -f    $1.bak ] ; then	# DIR/BASE.EXT.bak
+	ls $1.bak $1*~ $1
 	diff $1.bak $*
-elif [ -f ${1%.*}.bak ] ; then
+elif [ -f  ${1%.*}.bak ] ; then	# DIR/BASE.bak
+	ls ${1%.*}.bak $1*~ $1
 	diff ${1%.*}.bak $*
-elif [ -f $1~ ] ; then
+elif [ -f  $1~ ] ; then		# DIR/BASE.EXT~
+	ls $1*~ $1
 	diff $1~ $*
-elif [ -f ~/orig/${1##*/} ] ; then
+elif [ -f  $1.~1~ ] ; then	# DIR/BASE.EXT.~1~
+	ls $1*~ $1
+	diff $1.~1~ $*
+elif [ -f  ~/orig/${1##*/} ] ; then # ~/orig/BASE.EXT
+	ls ~/orig/${1##*/}*~ $1
 	diff ~/orig/ $*
 fi
