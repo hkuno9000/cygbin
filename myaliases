@@ -15,7 +15,7 @@ if [ -z "$(alias mv)" ]; then alias mv='mv -i'; fi
 if [ -z "$(alias df)" ]; then alias df='df -h'; fi
 if [ -z "$(alias du)" ]; then alias du='du -h'; fi
 alias mg='make -f GNUmakefile'
-alias wi='alias | /usr/bin/which --read-alias --show-dot --show-tilde'
+alias aw='aliaswhich'
 if [ -d "${USERPROFILE}" ]; then
   alias winhome='pushd "${USERPROFILE}"'
   alias windoc='pushd "${USERPROFILE}/Documents"'
