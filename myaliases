@@ -52,7 +52,7 @@ git config --global alias.logff 'log --format=fuller'
 git config --global alias.logd 'log --decorate'
 git config --global alias.logs 'log --decorate --oneline -5'
 git config --global alias.logv 'log --decorate --graph --stat'
-git config --global alias.ignore '!vim ~/Documents/gitignore_global.txt'
+git config --global alias.ignore '!vim $(git config --get core.excludesfile)'
 #
 # cygwin .bashrc
 ##alias less='less -r'                          # raw control characters
