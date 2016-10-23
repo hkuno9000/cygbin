@@ -20,40 +20,6 @@ if [ -d "${USERPROFILE}" ]; then
   alias winhome='pushd "${USERPROFILE}"'
   alias windoc='pushd "${USERPROFILE}/Documents"'
 fi
-#
-# local aliases
-if [ -f "${HOME}/.bash_aliases" ]; then
-  source "${HOME}/.bash_aliases"
-fi
-#
-# git alias
-git config --global alias.utf8 '!LANG=ja_JP.UTF-8 LESSCHARSET=utf-8 git'
-git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
-git config --global alias.st 'status'
-git config --global alias.co 'checkout'
-git config --global alias.ci 'commit'
-git config --global alias.cia 'commit -a --amend'
-git config --global alias.cif 'commit -a --fixup'
-git config --global alias.cis 'commit -a --squash'
-git config --global alias.uncommit 'reset --soft'
-git config --global alias.rollback 'reset --hard'
-git config --global alias.br 'branch'
-git config --global alias.bl 'branch -avv'
-git config --global alias.tl 'tag -l -n'
-git config --global alias.al 'config --get-regexp alias.*'
-git config --global alias.ul 'config --show-origin --get-regexp user.*'
-git config --global alias.crlf 'config --show-origin --get-all core.autocrlf'
-git config --global alias.confg 'config --global'
-git config --global alias.diffc 'diff --cached'
-git config --global alias.difftoolc 'difftool --cached'
-git config --global alias.diffs 'diff --stat'
-git config --global alias.diffn 'diff --no-index'
-git config --global alias.logff 'log --format=fuller'
-git config --global alias.logd 'log --decorate'
-git config --global alias.logs 'log --decorate --oneline -5'
-git config --global alias.logv 'log --decorate --graph --stat'
-git config --global alias.ignore '!vim $(git config --get core.excludesfile)'
-#
 # cygwin .bashrc
 ##alias less='less -r'                          # raw control characters
 ##alias whence='type -a'                        # where, of a sort
@@ -66,4 +32,12 @@ git config --global alias.ignore '!vim $(git config --get core.excludesfile)'
 ##alias ll='ls -l'                              # long list
 ##alias la='ls -A'                              # all but . and ..
 ##alias l='ls -CF'                              #
-#
+# ubuntu .bashrc
+##alias ls='ls --color=auto'
+##alias grep='grep --color=auto'
+##alias fgrep='fgrep --color=auto'
+##alias egrep='egrep --color=auto'
+##alias ll='ls -alF'
+##alias la='ls -A'
+##alias l='ls -CF'
+##alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
