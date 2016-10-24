@@ -1,8 +1,28 @@
+ifz-git-conf-global()
+{
+  if [ -z "$(git config --global --get $1)" ] ; then
+             git config --global "$@"
+  fi
+}
 # git core
 git config --global core.editor vim
+ifz-git-conf-global core.excludesfile ~/.gitignore_global
 git config --global core.quotepath false
-if [ -z "$(git config --get core.excludesfile)" ] ; then
-        git config --global core.excludesfile ~/.gitignore_global
+# git push
+git config --global push.default simple
+# git credential
+ifz-git-conf-global credential.helper cache
+# git rebase
+ifz-git-conf-global rebase.autosquash true
+# pager
+if [ ! -f /usr/local/bin/diff-highlight ] ; then
+  sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin
+  sudo chmod +x /usr/local/bin/diff-highlight
+fi
+if [ -x /usr/local/bin/diff-highlight ] ; then
+  ifz-git-conf-global pager.log  'diff-highlight | less'
+  ifz-git-conf-global pager.diff 'diff-highlight | less'
+  ifz-git-conf-global pager.show 'diff-highlight | less'
 fi
 # git diff
 git config --global diff.compactionHeuristic true
