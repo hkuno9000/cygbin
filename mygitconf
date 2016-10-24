@@ -23,6 +23,10 @@ git config --global alias.tl 'tag -l -n'
 git config --global alias.al 'config --get-regexp alias.*'
 git config --global alias.ul 'config --show-origin --get-regexp user.*'
 git config --global alias.crlf 'config --show-origin --get-all core.autocrlf'
+if [ -z "$(git config -h | grep show-origin)" ] ; then
+	git config --global alias.ul 'config --get-regexp user.*'
+	git config --global alias.crlf 'config --get-all core.autocrlf'
+fi
 git config --global alias.confg 'config --global'
 git config --global alias.diffc 'diff --cached'
 git config --global alias.difftoolc 'difftool --cached'
