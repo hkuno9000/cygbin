@@ -38,6 +38,9 @@ let &t_te.="\e[0 q"
 "colorscheme elflord
 "set t_Co=256
 
+"=== highlight
+set hlsearch
+
 "=== visible tab,space,eol
 set list
 set listchars=tab:»-,trail:-,nbsp:%,eol:↓
