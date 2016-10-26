@@ -1,0 +1,13 @@
+diff -u /etc/skel/.bashrc /home/hkuno/.bashrc
+--- /etc/skel/.bashrc	2015-09-01 08:26:22.000000000 +0900
++++ /home/hkuno/.bashrc	2016-10-23 17:35:53.284481371 +0900
+@@ -115,3 +115,9 @@
+     . /etc/bash_completion
+   fi
+ fi
++
++# hkuno add 2016-08-26
++HISTIGNORE="?:??:???:exit:h *"
++source ~/bin/myfunctions
++source ~/bin/myaliases 2>/dev/null
++
