@@ -1,6 +1,6 @@
-diff -u orig/.bash_profile ./.bash_profile
---- orig/.bash_profile	2015-09-26 16:45:02.000000000 +0900
-+++ ./.bash_profile	2015-12-26 15:39:35.016727500 +0900
+diff -u -I '^#' /etc/skel/.bash_profile /home/hkuno/.bash_profile
+--- /etc/skel/.bash_profile	2015-11-30 11:26:07.957953200 +0900
++++ /home/hkuno/.bash_profile	2014-04-08 10:42:07.596299600 +0900
 @@ -29,9 +29,9 @@
  fi
  
@@ -14,26 +14,26 @@ diff -u orig/.bash_profile ./.bash_profile
  
  # Set MANPATH so it includes users' private man if it exists
  # if [ -d "${HOME}/man" ]; then
-diff -u orig/.bashrc ./.bashrc
---- orig/.bashrc	2015-09-26 16:45:02.000000000 +0900
-+++ ./.bashrc	2015-12-26 16:31:03.857145000 +0900
-@@ -67,22 +67,23 @@
+diff -u -I '^#' /etc/skel/.bashrc /home/hkuno/.bashrc
+--- /etc/skel/.bashrc	2015-11-30 11:26:07.645450500 +0900
++++ /home/hkuno/.bashrc	2016-10-24 09:27:31.809489600 +0900
+@@ -67,12 +67,15 @@
  #
  # Don't put duplicate lines in the history.
  # export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
--#
 +export HISTCONTROL=ignoreboth
 +export HISTTIMEFORMAT='%y/%m/%d %T '
+ #
  # Ignore some controlling instructions
  # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
  # The '&' is a special pattern which suppresses duplicate entries.
  # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
  # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
--#
-+export HISTIGNORE="?:??:???:f *:h *"
++export HISTIGNORE="?:??:???:exit:h *"
+ #
  # Whenever displaying the prompt, write the previous line to disk
  # export PROMPT_COMMAND="history -a"
- 
+@@ -80,9 +83,9 @@
  # Aliases
  #
  # Some people use a different file for aliases
@@ -46,38 +46,35 @@ diff -u orig/.bashrc ./.bashrc
  #
  # Some example alias instructions
  # If these are enabled they will be used instead of any instructions
-@@ -91,28 +92,28 @@
+@@ -91,28 +94,28 @@
  # \rm will call the real rm not the alias.
  #
  # Interactive operation...
 -# alias rm='rm -i'
 -# alias cp='cp -i'
 -# alias mv='mv -i'
--#
 +alias rm='rm -i'
 +alias cp='cp -i'
 +alias mv='mv -i'
-+
+ #
  # Default to human readable figures
 -# alias df='df -h'
 -# alias du='du -h'
--#
 +alias df='df -h'
 +alias du='du -h'
-+
+ #
  # Misc :)
 -# alias less='less -r'                          # raw control characters
 -# alias whence='type -a'                        # where, of a sort
 -# alias grep='grep --color'                     # show differences in colour
 -# alias egrep='egrep --color=auto'              # show differences in colour
 -# alias fgrep='fgrep --color=auto'              # show differences in colour
--#
 +alias less='less -r'                          # raw control characters
 +alias whence='type -a'                        # where, of a sort
 +alias grep='grep --color'                     # show differences in colour
 +alias egrep='egrep --color=auto'              # show differences in colour
 +alias fgrep='fgrep --color=auto'              # show differences in colour
-+
+ #
  # Some shortcuts for different directory listings
 -# alias ls='ls -hF --color=tty'                 # classify files in colour
 -# alias dir='ls --color=auto --format=vertical'
@@ -94,13 +91,9 @@ diff -u orig/.bashrc ./.bashrc
  
  # Umask
  #
-@@ -128,6 +129,9 @@
- # if [ -f "${HOME}/.bash_functions" ]; then
- #   source "${HOME}/.bash_functions"
- # fi
-+if [ -f "${HOME}/bin/myfuncitons" ]; then
-+    source "${HOME}/bin/myfuncitons"
-+fi
- #
- # Some example functions:
- #
+@@ -196,3 +199,5 @@
+ # }
+ # 
+ # alias cd=cd_func
++source "${HOME}/bin/myaliases"
++source "${HOME}/bin/myfunctions"

@@ -1,6 +1,6 @@
 # vim: set syntax=sh :
 if [ -d /etc/skel ]; then
-	LANG=C diff -u /etc/skel ~ | grep -v ^Only.in
+	LANG=C diff -u -I "^#" /etc/skel ~ | grep -v ^Only.in
 elif [ -d ~/orig ]; then
-	LANG=C diff -u ~/orig ~ | grep -v ^Only.in
+	LANG=C diff -u -I "^#" ~/orig    ~ | grep -v ^Only.in
 fi
