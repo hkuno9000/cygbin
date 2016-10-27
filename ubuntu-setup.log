@@ -1,0 +1,23 @@
+    1  LANG=C xdg-user-dirs-gtk-update
+    2  sudo add-apt-repository ppa:git-core/ppa
+    3  sudo apt update ; sudo apt upgrade
+    4  sudo apt -y install vim git nkf tig
+    5  mkdir GitHub backup orig save
+    6  cp -p .* orig/
+    7  alias    > save/default-alias
+    8  printenv > save/default-env
+    9  cd GitHub/
+   10  git clone http://hkuno9000@github.com/hkuno9000/cygbin.git
+   11  cd
+   12  ln -s GitHub/cygbin bin
+   13  ln -s bin/myvimrc .vimrc
+   14  source bin/mygitconf
+   15  echo "export HISTIGNORE='?:??:???:exit:h *'" >> .bashrc
+   16  echo "source ~/bin/myfunctions" >> .bashrc
+   17  echo "source ~/bin/myaliases 2>/dev/null" >> .bashrc
+   18  sudo ./vmware-install.pl -d
+   19  history > save/setup-history
+   20  reboot
+   21  savehome
+   22  cd ~/bin
+   23  history > ubuntu-setup.log 
