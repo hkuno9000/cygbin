@@ -1,0 +1,24 @@
+diff -u /c/Users/hkuno/orig/.bash_profile /c/Users/hkuno/.bash_profile
+--- /c/Users/hkuno/orig/.bash_profile	2016-10-27 10:58:20.712277900 +0900
++++ /c/Users/hkuno/.bash_profile	2016-01-12 10:27:01.660826000 +0900
+@@ -1 +1,2 @@
++if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+ 
+diff -u /c/Users/hkuno/orig/.bashrc /c/Users/hkuno/.bashrc
+--- /c/Users/hkuno/orig/.bashrc	2016-10-27 10:58:14.774437300 +0900
++++ /c/Users/hkuno/.bashrc	2016-10-27 09:55:54.774804700 +0900
+@@ -1 +1,14 @@
++export HISTCONTROL=ignoreboth
++#export HISTTIMEFORMAT='%y/%m/%d %T '
++export HISTIGNORE='?:??:???:exit:h *'
++export LESSCHARSET=utf-8
+ 
++alias egrep='egrep --color=auto'
++alias fgrep='fgrep --color=auto'
++alias grep='grep --color=auto'
++#alias ls='ls -F --color=auto --show-control-chars'
++alias ls='ls -hFG --color=auto --show-control-chars'
++
++source "${HOME}/bin/myfunctions"
++source "${HOME}/bin/myaliases" 2>/dev/null
++source "${HOME}/.bash_aliases"
