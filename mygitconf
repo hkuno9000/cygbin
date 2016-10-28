@@ -1,3 +1,4 @@
+# vim: set syntax=sh tabstop=4 :
 ifz-git-conf-global()
 {
   if [ -z "$(git config --global --get $1)" ] ; then
@@ -15,11 +16,12 @@ ifz-git-conf-global credential.helper cache
 # git rebase
 ifz-git-conf-global rebase.autosquash true
 # pager
-if [ ! -f /usr/local/bin/diff-highlight ] ; then
-  sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin
-  sudo chmod +x /usr/local/bin/diff-highlight
+src="/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
+cmd="/usr/local/bin/diff-hightlight"
+if [ -f $src ] && [ ! -x $cmd ] ; then
+  sudo ln -s $src $cmd && sudo chmod +x $cmd
 fi
-if [ -x /usr/local/bin/diff-highlight ] ; then
+if [ -n "$(which diff-highlight)" ] ; then
   ifz-git-conf-global pager.log  'diff-highlight | less'
   ifz-git-conf-global pager.diff 'diff-highlight | less'
   ifz-git-conf-global pager.show 'diff-highlight | less'
