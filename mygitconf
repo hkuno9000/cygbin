@@ -11,6 +11,8 @@ ifz-git-conf-global core.excludesfile ~/.gitignore_global
 git config --global core.quotepath false
 # git push
 git config --global push.default simple
+# git pull
+git config --global pull.ff only
 # git credential
 ifz-git-conf-global credential.helper cache
 # git rebase
@@ -34,11 +36,13 @@ git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
 git config --global alias.st 'status'
 git config --global alias.co 'checkout'
 git config --global alias.ci 'commit'
-git config --global alias.cia 'commit -a --amend'
-git config --global alias.cif 'commit -a --fixup'
-git config --global alias.cis 'commit -a --squash'
+git config --global alias.cia 'commit --amend'
+git config --global alias.cif 'commit --fixup'
+git config --global alias.cis 'commit --squash'
 git config --global alias.uncommit 'reset --soft'
 git config --global alias.rollback 'reset --hard'
+git config --global alias.pullr  'pull --rebase'
+git config --global alias.pullri 'pull --rebase=interactive'
 git config --global alias.br 'branch'
 git config --global alias.bl 'branch -avv'
 git config --global alias.tl 'tag -l -n'
