@@ -5,6 +5,9 @@ ifz-git-conf-global()
              git config --global "$@"
   fi
 }
+# git user
+ifz-git-conf-global user.name 'YOUR NAME'
+ifz-git-conf-global user.email 'YOUR@mail.address.com'
 # git core
 git config --global core.editor vim
 ifz-git-conf-global core.excludesfile ~/.gitignore_global
@@ -28,6 +31,9 @@ if [ -n "$(which diff-highlight)" ] ; then
   ifz-git-conf-global pager.diff 'diff-highlight | less'
   ifz-git-conf-global pager.show 'diff-highlight | less'
 fi
+# tig
+git config --global tig.tab-size 4
+git config --global tig.mouse yes
 # git diff
 git config --global diff.compactionHeuristic true
 # git alias
