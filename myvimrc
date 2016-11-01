@@ -26,13 +26,17 @@ syntax on
 filetype on
 autocmd FileType c,cpp,perl,javascript set cindent tabstop=4 shiftwidth=4
 
-"==== cursor
+"=== cursor
 " FORM <http://qiita.com/usamik26/items/f733add9ca910f6c5784>
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 "set cursorline
+
+"=== mouse
+set mouse=a
+set ttymouse=sgr
 
 "=== color
 "colorscheme elflord
