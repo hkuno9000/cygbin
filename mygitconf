@@ -22,7 +22,7 @@ ifz-git-conf-global credential.helper cache
 ifz-git-conf-global rebase.autosquash true
 # pager
 src="/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
-cmd="/usr/local/bin/diff-hightlight"
+cmd="/usr/local/bin/diff-highlight"
 if [ -f $src ] && [ ! -x $cmd ] ; then
   sudo ln -s $src $cmd && sudo chmod +x $cmd
 fi
