@@ -24,7 +24,7 @@ ifz-git-conf-global rebase.autosquash true
 src="/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
 cmd="/usr/local/bin/diff-highlight"
 if [ -f $src ] && [ ! -x $cmd ] ; then
-  sudo ln -s $src $cmd && sudo chmod +x $cmd
+  sudo ln -sf $src $cmd && sudo chmod +x $cmd
 fi
 if [ -n "$(which diff-highlight)" ] ; then
   ifz-git-conf-global pager.log  'diff-highlight | less'
