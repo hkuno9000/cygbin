@@ -1,3 +1,4 @@
+#!/bin/bash
 # diff to fuzzy backup file
 function ls {
 	command ls -lFGt $*

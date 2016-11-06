@@ -1,3 +1,4 @@
+#!/bin/bash
 # archive home config and local sh
 cd ~
 if [ ! -d backup ]; then mkdir backup; fi

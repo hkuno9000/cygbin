@@ -1,4 +1,4 @@
-# vim: set syntax=sh tabstop=4 :
+#!/bin/bash
 ifz-git-conf-global()
 {
   if [ -z "$(git config --global --get $1)" ] ; then

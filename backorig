@@ -1,3 +1,4 @@
+#!/bin/bash
 # backup to ~/orig
 if [ ! -d ~/orig ]; then
 	mkdir ~/orig
