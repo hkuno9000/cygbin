@@ -1,13 +1,23 @@
-diff -u /etc/skel/.bashrc /home/hkuno/.bashrc
---- /etc/skel/.bashrc	2015-09-01 08:26:22.000000000 +0900
-+++ /home/hkuno/.bashrc	2016-10-23 17:35:53.284481371 +0900
-@@ -115,3 +115,9 @@
+diff -u -I '^#' /etc/skel/.bashrc /home/hkuno/.bashrc
+--- /etc/skel/.bashrc	2015-09-01 08:27:45.000000000 +0900
++++ /home/hkuno/.bashrc	2016-10-24 13:06:36.696144943 +0900
+@@ -115,3 +115,6 @@
      . /etc/bash_completion
    fi
  fi
-+
-+# hkuno add 2016-08-26
-+HISTIGNORE="?:??:???:exit:h *"
++export HISTIGNORE='?:??:???:exit:h *'
++source ~/bin/myaliases 2> /dev/null
 +source ~/bin/myfunctions
-+source ~/bin/myaliases 2>/dev/null
-+
+diff -u -I '^#' /etc/skel/.profile /home/hkuno/.profile
+--- /etc/skel/.profile	2016-06-25 00:44:02.000000000 +0900
++++ /home/hkuno/.profile	2016-10-19 10:18:30.762072451 +0900
+@@ -16,5 +16,7 @@
+     fi
+ fi
+ 
+-# set PATH so it includes user's private bin directories
+-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
++# set PATH so it includes user's private bin if it exists
++if [ -d "$HOME/bin" ] ; then
++    PATH="$HOME/bin:$PATH"
++fi
