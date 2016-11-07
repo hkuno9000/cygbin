@@ -1,10 +1,8 @@
-diff -u /c/Users/hkuno/orig/.bash_profile /c/Users/hkuno/.bash_profile
 --- /c/Users/hkuno/orig/.bash_profile	2016-10-27 10:58:20.712277900 +0900
 +++ /c/Users/hkuno/.bash_profile	2016-01-12 10:27:01.660826000 +0900
 @@ -1 +1,2 @@
 +if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
  
-diff -u /c/Users/hkuno/orig/.bashrc /c/Users/hkuno/.bashrc
 --- /c/Users/hkuno/orig/.bashrc	2016-10-27 10:58:14.774437300 +0900
 +++ /c/Users/hkuno/.bashrc	2016-10-27 09:55:54.774804700 +0900
 @@ -1 +1,14 @@
