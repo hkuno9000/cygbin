@@ -1,4 +1,4 @@
-diff -u /etc/skel/.bashrc /home/pi/.bashrc
+diff -u -I '^#' /etc/skel/.bashrc /home/pi/.bashrc
 --- /etc/skel/.bashrc	2015-11-22 05:28:31.958655552 +0900
 +++ /home/pi/.bashrc	2016-10-24 12:05:42.027314997 +0900
 @@ -111,3 +111,6 @@
