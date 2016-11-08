@@ -1,21 +1,37 @@
 #!/bin/bash
 # diff to fuzzy backup file
-function ls {
-	command ls -lFGt $*
+function pushback {
+	for f in $@; do
+		if [ -f "$f" ] ; then back="$back $f"; fi
+	done
 }
-if [ -f    $1.bak ] ; then	# DIR/BASE.EXT.bak
-	ls $1.bak $1*~ $1
-	diff $1.bak $*
-elif [ -f  ${1%.*}.bak ] ; then	# DIR/BASE.bak
-	ls ${1%.*}.bak $1*~ $1
-	diff ${1%.*}.bak $*
-elif [ -f  $1~ ] ; then		# DIR/BASE.EXT~
-	ls $1*~ $1
-	diff $1~ $*
-elif [ -f  $1.~1~ ] ; then	# DIR/BASE.EXT.~1~
-	ls $1*~ $1
-	diff $1.~1~ $*
-elif [ -f  ~/orig/${1##*/} ] ; then # ~/orig/BASE.EXT
-	ls ~/orig/${1##*/} ~/orig/${1##*/}*~ $1
-	diff ~/orig/ $*
+function pushbackt {
+	for f in $@; do
+		pushback $f{,~,.~*~} # fname fname~ fname.~*~
+	done
+}
+base=${1##*/} # BASE.EXT
+noext=${1%.*} # DIR/BASE
+dir=${1%/*}   # DIR
+
+pushback $1{~,.~*~}		# fname~ fname.~*~
+pushbackt $1.{bak,orig,save}	# fname.bak fname.orig fname.save
+if [ ${noext:-$1} != $1 ] ; then
+	pushbackt $noext.{bak,orig,save}
 fi
+if [ -n "$base" ] ; then
+	pushbackt ~/{orig,save}/$base
+	if [ "$PWD" != "$HOME" ] ; then
+		pushbackt ./{orig,save}/$base
+	fi
+	if [ -d "$dir" ] ; then
+		pushbackt $dir/{orig,save}/$base
+	fi
+fi
+##echo "@:[$@], base:[$base], noext:[$noext], dir:[$dir], back:[$back]"
+ls -ltFG $1
+ls -ltFG $back | uniq
+select sel in $(ls -1t $back | uniq); do
+	diff $sel $@
+	exit
+done

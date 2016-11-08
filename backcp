@@ -1,3 +1,14 @@
 #!/bin/bash
-ls -lFGt $1*
-cp -p $1 $1.bak
+if [ -n "$2" ] ; then
+	base=${1##*/} # BASE.EXT
+	if [ -d "$2" ] ; then
+		ls -lFt $2/$base*
+		cp -ip --backup=t $1 $2/
+	else
+		ls -lFt $2*
+		cp -ip --backup=t $1 $2
+	fi
+else
+	ls -lFt $1*
+	cp -ip --backup=t $1{,.bak}
+fi

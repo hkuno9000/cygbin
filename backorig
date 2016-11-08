@@ -4,6 +4,6 @@ if [ ! -d ~/orig ]; then
 	mkdir ~/orig
 fi
 if [ -f ~/orig/$1 ]; then
-	ls -lFGt ~/orig/$1*
+	ls -lFt ~/orig/$1*
 fi
-cp -ipb $1 ~/orig/
+cp -ip --backup=t $1 ~/orig/
