@@ -1,0 +1,7 @@
+#!/bin/sh
+echo === dist
+lsb_release -a
+echo === uname
+uname -a
+echo === ip
+ip route
