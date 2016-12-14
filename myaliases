@@ -16,9 +16,13 @@ if [ -z "$(alias df)" ]; then alias df='df -h'; fi
 if [ -z "$(alias du)" ]; then alias du='du -h'; fi
 alias mg='make -f GNUmakefile'
 alias aw='aliaswhich'
-if [ -d "${USERPROFILE}" ]; then
+if [ -d "${USERPROFILE}" ]; then # Git bash, cygwin
   alias winhome='pushd "${USERPROFILE}"'
   alias windoc='pushd "${USERPROFILE}/Documents"'
+fi
+if [ -d "/mnt/c/Users/$USER/" ]; then # Bash on Ubuntu on Win
+  alias winhome='pushd "/mnt/c/Users/$USER"'
+  alias windoc='pushd "$/mnt/c/Users/$USER/Documents"'
 fi
 # cygwin .bashrc
 ##alias less='less -r'                          # raw control characters
