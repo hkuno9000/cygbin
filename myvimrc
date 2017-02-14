@@ -15,6 +15,9 @@ if has('autocmd')
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 
+"=== for sudo vim cursorkey
+set nocompatible
+
 "=== status line
 set laststatus=2
 set statusline=%<%F%h%m%r\ [%Y][%{&ff}][%{&fenc!=''?&fenc:&enc}:0x\%02.6B]%=%l,%c%V\ %P
@@ -39,8 +42,15 @@ set mouse=a
 set ttymouse=sgr
 
 "=== color
+" default colorscheme are here: /usr/share/vim/vim74/colors/
+" user installed      are here: ~/.vim/colors/
+set background=dark
 "colorscheme elflord
 "set t_Co=256
+"if &t_Co >= 256
+"  colorscheme molokai
+"  colorscheme solarized
+"endif
 
 "=== highlight
 set hlsearch
@@ -51,3 +61,15 @@ set listchars=tab:»-,trail:-,nbsp:%,eol:↓
 " NonText:eol, SpecialKey:tab,trail
 highlight NonText    ctermfg=DarkGreen guifg=DarkGreen
 highlight SpecialKey ctermfg=DarkGreen guifg=DarkGreen
+
+"=== OS dependant
+if     has("mac")
+elseif has("unix")
+elseif has("win64")
+elseif has("win32unix")
+elseif has("win32")
+endif
+"=== local
+if filereadable(expand($HOME.'/.vimrc_local'))
+  source $HOME/.vimrc_local
+endif
