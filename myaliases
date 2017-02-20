@@ -6,7 +6,9 @@ alias lt='ll -t'
 alias ..='pushd ..'
 alias ...='pushd ../..'
 alias ....='pushd ../../..'
-alias sudovim='sudo vim -u ~/.vimrc'
+#alias sudovim='sudo vim -u ~/.vimrc'
+#alias sudovim='sudo -E vim'
+alias sudovim='EDITOR=vim sudoedit'
 if [ -z "$(alias ll)" ]; then alias ll='ls -l'; fi
 if [ -z "$(alias la)" ]; then alias la='ls -A'; fi
 if [ -z "$(alias l)"  ]; then alias l='ls -CF'; fi
