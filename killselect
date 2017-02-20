@@ -1,0 +1,15 @@
+#!/bin/bash
+# print PID and commad name list to match command "$1", to exclude myself
+pgrep -af "$1" | grep -v ^$$
+
+# make PID list, and exclude myself
+list=$(pgrep -f "$1")
+list=${list/$$/}
+
+# select to kill.
+# @note use "pkill -f $1" for no-selection.
+PS3="select to kill ? "
+select sel in ${list}; do
+	kill $sel
+	exit
+done
