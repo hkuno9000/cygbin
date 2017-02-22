@@ -1,0 +1,6 @@
+sudo apt update
+sudo apt upgrade
+sudo systemctl daemon-reload
+sudo apt-get autoremove
+sudo cpan upgrade
+
