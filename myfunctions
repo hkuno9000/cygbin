@@ -58,3 +58,17 @@ aliaswhich()
 	which $1
   fi
 }
+
+histclean()
+{
+  # save current history to $HISTFILE.
+  history -w
+  # remove status check commands from history.
+  local org="$HISTFILE"
+  local new="/tmp/histfile.new"
+  egrep -vw \
+  -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|diff|less|man)' \
+  -e '^git (status|show|grep|diff.*|log.*|[a-z]l|st|crlf)' \
+  $org > $new
+  history -c && history -r $new && history -w
+}

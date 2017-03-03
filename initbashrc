@@ -2,7 +2,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	## un-comment if you need.
 	#HISTTIMEFORMAT='%F %T '
 	#HISTCONTROL=ignoreboth
-	#HISTIGNORE='?:??:???:exit:h *'
+	#HISTIGNORE='?:??:???:exit'
 	#source "$HOME/bin/myaliases" 2> /dev/null
 	#source "$HOME/bin/myfunctions"
 	#GIT_PS1_SHOWUPSTREAM=1
