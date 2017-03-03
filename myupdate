@@ -1,3 +1,5 @@
+#!/bin/sh
+# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
 sudo apt update
 sudo apt upgrade
 sudo systemctl daemon-reload

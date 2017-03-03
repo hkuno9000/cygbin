@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
 ifz-git-conf-global()
 {
   if [ -z "$(git config --global --get $1)" ] ; then

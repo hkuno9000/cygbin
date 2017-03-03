@@ -1,3 +1,4 @@
+# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
 cdx()
 {
   if [ -z "$1" ]; then
@@ -35,10 +36,10 @@ setll()
 {
   local ll=$(alias ll)			# get alias command of ll. i.e. "alias ll='ls -l --time-style=iso'"
   ll=$(echo $ll | perl -lpe "
-	s/alias ll='(.+)\s*'/\1/;	# extract alias value. i.e. 'ls -l --time-style=iso'
-	s/\s*--time-style=[\w-]+//g;	# strip '--time-style=*'
-	")
-  ll=${ll:=ls -l};			# if null, then use "ls -l"
+      s/alias ll='(.+)\s*'/\1/;		# extract alias value. i.e. 'ls -l --time-style=iso'
+      s/\s*--time-style=[\w-]+//g;	# strip '--time-style=*'
+    ")
+  ll=${ll:=ls -l};				# if null, then use "ls -l"
   case $1 in
     iso|long-iso|full-iso)
       alias ll="$ll --time-style=$1";;
@@ -53,9 +54,9 @@ setll()
 aliaswhich()
 {
   if [ is_$(type -t $1) == is_alias ]; then
-	alias $1
+    alias $1
   else
-	which $1
+    which $1
   fi
 }
 

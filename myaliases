@@ -1,3 +1,4 @@
+# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
 # my aliases
 alias a='alias'
 alias f='find . -iname'
