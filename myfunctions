@@ -64,12 +64,18 @@ histclean()
 {
   # save current history to $HISTFILE.
   history -w
-  # remove status check commands from history.
-  local org="$HISTFILE"
-  local new="/tmp/histfile.new"
-  egrep -vw \
-  -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|diff|less|man)' \
-  -e '^git (status|show|grep|diff.*|log.*|[a-z]l|st|crlf)' \
-  $org > $new
-  history -c && history -r $new && history -w
+  if [ "$1" == "-e" ]; then
+    # edit history
+    ${EDITOR:-vi} $HISTFILE
+    history -c && history -r $HISTFILE
+  else
+    # remove status check commands from history.
+    local new=$(mktemp)
+    egrep -vw \
+      -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|diff|less|man)' \
+      -e '^git (status|show|grep|diff.*|log.*|[a-z]l|st|crlf)' \
+      $HISTFILE > $new
+    history -c && history -r $new && history -w
+    rm -f $new
+  fi
 }
