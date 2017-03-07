@@ -13,8 +13,6 @@ alias ....='pushd ../../..'
 alias sudovim='EDITOR=vim sudoedit'
 alias st='[ -d .git ] && git st ; [ -d .svn ] && svn st'
 alias top20='echo === Top new 20 ==== ; ls -lt | head -20 && echo === Top bit 20 === ; ls -lS | head -20'
-#alias poff='sudo poweroff'
-#alias boot='sudo reboot'
 if [ -z "$(alias ll)" ]; then alias ll='ls -l'; fi
 if [ -z "$(alias la)" ]; then alias la='ls -A'; fi
 if [ -z "$(alias l)"  ]; then alias l='ls -CF'; fi
