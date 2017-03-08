@@ -1,0 +1,10 @@
+#!/bin/bash
+# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
+for dir in ~/bin ~/GitHub/* ~/BitBucket/* ~/install/* ; do
+  if [ -d $dir/.git ]; then
+    cd $dir
+    pwd
+    git status --short --branch
+    git pull --ff-only
+  fi
+done
