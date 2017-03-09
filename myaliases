@@ -29,7 +29,7 @@ if [ -d "${USERPROFILE}" ]; then # Git bash, cygwin
 fi
 if [ -d "/mnt/c/Users/$USER/" ]; then # Bash on Ubuntu on Win
   alias winhome='pushd "/mnt/c/Users/$USER"'
-  alias windoc='pushd "$/mnt/c/Users/$USER/Documents"'
+  alias windoc='pushd "/mnt/c/Users/$USER/Documents"'
 fi
 # cygwin .bashrc
 ##alias less='less -r'                          # raw control characters
