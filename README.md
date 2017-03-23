@@ -5,4 +5,4 @@ But you can use them under MIT License.
 ## contents
 * my configs
 * my public shell scripts
- * my private shell scripts are set in .gitignore, so not backup here.
+ * my private shell scripts are *.sh and ignored by .gitignore, so not backup here.
