@@ -1,0 +1,21 @@
+#!/bin/sh
+# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
+# init package
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt -y install vim git tig jless nkf zip p7zip-full
+sudo apt -y install build-essential libtool automake autoconf pkg-config
+sudo apt -y upgrade
+sudo apt-get autoremove
+# init home
+cd ~
+mkdir orig save backup install
+sudo cp -p .* /etc/* orig/
+dpkg --get-selections > save/pkg-selections
+git clone https://github.com/hkuno9000/cygbin.git bin
+ln bin/myvimrc     .vimrc
+ln bin/mygitignore .gitignore_global
+ln bin/myminttyrc  .minttyrc
+echo colorscheme elflord >.vimrc_local
+source bin/initbashrc
+source bin/mygitconf
