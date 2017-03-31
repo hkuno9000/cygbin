@@ -67,7 +67,7 @@ histclean()
   if [ "$1" == "-e" ]; then
     # edit history
     ${EDITOR:-vi} $HISTFILE
-    history -r $HISTFILE
+    history -c && history -r $HISTFILE
   else
     # remove status check commands from history.
     local new=$(mktemp)
@@ -75,7 +75,7 @@ histclean()
       -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|diff|less|man|help|histclean)' \
       -e '^git (status|show|grep|diff.*|log.*|[a-z]l|st|ss|crlf)' \
       $HISTFILE > $new
-    history -r $new && history -w
+    history -c && history -r $new && history -w
     command rm $new
   fi
 }
