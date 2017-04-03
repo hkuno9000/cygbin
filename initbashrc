@@ -2,7 +2,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	## un-comment if you need.
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
-	#EDITOR=vim
+	#export EDITOR=vim
 	#HISTTIMEFORMAT='%F %T '
 	#HISTCONTROL=ignoreboth
 	#HISTIGNORE='?:??:???:exit'
