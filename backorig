@@ -1,9 +1,36 @@
 #!/bin/bash
-# backup to ~/orig
-if [ ! -d ~/orig ]; then
-	mkdir ~/orig
+usage() { cat <<EOF
+$*
+
+Usage:
+    backorig FILE          # cp --backup=t FILE ~/orig/FILE
+    backorig <(CMD) FILE2  # cp --backup=t <(CMD) ~/orig/FILE2
+
+Options:
+    --help, -h, -?  show help
+EOF
+}
+help_exit() {
+	usage "copy FILE to ~/orig for backup."
+	exit 0
+}
+error_exit() {
+	usage $1 >&2
+	exit 1
+}
+# parse command line
+case $1 in
+--help|-h|-\?|"") help_exit;;
+esac
+src=$1
+dst=~/orig/$2
+if [ -p "$src" ] && [ -z "$2" ]; then
+	error_exit "$src is pipe, please specify FILE2"
 fi
-if [ -f ~/orig/$1 ]; then
-	ls -lFt ~/orig/$1*
-fi
-cp -ip --backup=t $1 ~/orig/
+
+# setup and print exist backup-files.
+[ -d ~/orig ] || mkdir ~/orig
+[ -f "$dst" ] && ls -lFt $dst*
+
+# do backup
+cp -ip --backup=t $src $dst
