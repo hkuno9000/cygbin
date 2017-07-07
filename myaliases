@@ -11,7 +11,8 @@ alias ....='pushd ../../..'
 #alias sudovim='sudo vim -u ~/.vimrc'
 #alias sudovim='sudo -E vim'
 alias sudovim='EDITOR=vim sudoedit'
-alias st='[ -d .git ] && git st ; [ -d .svn ] && svn st'
+alias st='(git status      ; svn stat -u) 2>/dev/null'
+alias sts='(git status -sb ; svn stat -u) 2>/dev/null'
 alias top20='echo === Top new 20 ==== ; ls -lt | head -20 && echo === Top big 20 === ; ls -lS | head -20'
 if [ -z "$(alias ll)" ]; then alias ll='ls -l'; fi
 if [ -z "$(alias la)" ]; then alias la='ls -A'; fi
