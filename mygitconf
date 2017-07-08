@@ -31,9 +31,10 @@ if [ -f $src ] && [ ! -x $cmd ] ; then
   sudo ln -sf $src $cmd && sudo chmod +x $cmd
 fi
 if [ -n "$(which diff-highlight)" ] ; then
-  ifz-git-conf-global pager.log  'diff-highlight | less'
-  ifz-git-conf-global pager.diff 'diff-highlight | less'
-  ifz-git-conf-global pager.show 'diff-highlight | less'
+  pager="${PAGER:-less}"
+  ifz-git-conf-global pager.log  "diff-highlight | $pager"
+  ifz-git-conf-global pager.diff "diff-highlight | $pager"
+  ifz-git-conf-global pager.show "diff-highlight | $pager"
 fi
 # tig
 git config --global tig.tab-size 4
