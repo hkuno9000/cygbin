@@ -17,16 +17,22 @@ setlang()
 {
   case $1 in
     sjis)
-      export LANG=ja_JP.SJIS;
+      export LANG=ja_JP.SJIS
       export LESSCHARSET=dos;;
     utf8)
+      export LANG=ja_JP.UTF-8
+      export LESSCHARSET=utf-8;;
+    utf8n)
       export LANG=ja_JP.UTF-8@cjknarrow
       export LESSCHARSET=utf-8;;
     en)
       export LANG=en_US.UTF-8
       export LESSCHARSET=utf-8;;
+    C)
+      export LANG=C
+      export LESSCHARSET=utf-8;;
     *)
-      echo "usage: setlang [sjis|utf8|en]";;
+      echo "usage: setlang [sjis|utf8|utf8n|en|C]";;
   esac
   locale
   printenv LESSCHARSET
