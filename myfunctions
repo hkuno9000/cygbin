@@ -57,15 +57,6 @@ setll()
   alias ll
 }
 
-aliaswhich()
-{
-  if [ is_$(type -t $1) == is_alias ]; then
-    alias $1
-  else
-    which $1
-  fi
-}
-
 histclean()
 {
   # save current history to $HISTFILE.
