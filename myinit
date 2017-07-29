@@ -5,6 +5,9 @@ sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt -y upgrade
 sudo apt -y install vim git tig nkf jless lv zip p7zip-full xsel
 sudo apt -y install build-essential libtool automake autoconf pkg-config
+sudo apt install npm && npm -g install electron
+sudo apt install vim-gtk3
+sudo apt install golang-go
 sudo apt-get autoremove
 # init home
 cd ~
