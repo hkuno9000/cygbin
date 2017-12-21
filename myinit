@@ -4,20 +4,18 @@
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt -y upgrade
 sudo apt -y install vim git tig nkf jless lv zip p7zip-full xsel
-sudo apt -y install build-essential libtool automake autoconf pkg-config
+# opt package
+sudo apt install build-essential libtool automake autoconf pkg-config
 sudo apt install npm && npm -g install electron
-sudo apt install vim-gtk3
 sudo apt install golang-go
 sudo apt-get autoremove
 # init home
 cd ~
-mkdir orig save backup install
-sudo cp -p .* /etc/* orig/
-dpkg --get-selections > save/pkg-selections
-git clone https://github.com/hkuno9000/cygbin.git bin
+[ -d orig ] || mkdir orig save backup install && sudo cp -p .* /etc/* orig/ && dpkg --get-selections > save/pkg-selections
+[ -d bin  ] || git clone https://github.com/hkuno9000/cygbin.git bin
 ln bin/myvimrc     .vimrc
 ln bin/mygitignore .gitignore_global
 ln bin/myminttyrc  .minttyrc
-echo colorscheme elflord >.vimrc_local
+[ -f .vimrc_local ] || echo colorscheme elflord >.vimrc_local
 source bin/initbashrc
 source bin/mygitconf
