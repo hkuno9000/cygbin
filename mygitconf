@@ -25,10 +25,9 @@ ifz-git-conf-global credential.helper cache
 # git rebase
 ifz-git-conf-global rebase.autosquash true
 # pager
-src="/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
-cmd="/usr/local/bin/diff-highlight"
-if [ -f $src ] && [ -f $cmd ] && ! diff $src $cmd ; then
-  sudo install $src $cmd
+dir="/usr/share/doc/git/contrib/diff-highlight"
+if [ -d $dir ] ; then
+  (cd $dir ; make -q diff-highlight || sudo make && sudo install -v -t /usr/local/bin diff-highlight)
 fi
 if [ -n "$(which diff-highlight)" ] ; then
   pager="${PAGER:-less}"
