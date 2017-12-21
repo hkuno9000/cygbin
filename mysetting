@@ -1,0 +1,5 @@
+#!/bin/sh
+# my config
+LANG=C xdg-user-dirs-gtk-update
+gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+[ -d /C: ] || (sudo mkdir /C: ; sudo ln -s /home /C:/Users)
