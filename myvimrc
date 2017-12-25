@@ -30,11 +30,11 @@ filetype on
 autocmd FileType c,cpp,perl,javascript,SH set cindent tabstop=4 shiftwidth=4
 
 "=== cursor
-" FORM <http://qiita.com/usamik26/items/f733add9ca910f6c5784>
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
+" FROM <http://qiita.com/usamik26/items/f733add9ca910f6c5784>
+"let &t_ti.="\e[1 q"
+"let &t_SI.="\e[5 q"
+"let &t_EI.="\e[1 q"
+"let &t_te.="\e[0 q"
 "set cursorline
 
 "=== mouse
@@ -44,6 +44,7 @@ set ttymouse=sgr
 "=== color
 " default colorscheme are here: /usr/share/vim/vim74/colors/
 " user installed      are here: ~/.vim/colors/
+set termguicolors
 set background=dark
 "colorscheme elflord
 "set t_Co=256
@@ -52,12 +53,27 @@ set background=dark
 "  colorscheme solarized
 "endif
 
-"=== highlight
+"=== search
+" FROM <https://qiita.com/nrk_baby/items/154e3fa15c48a39e3375#%E3%82%B4%E3%83%BC%E3%83%AB>
+" 小文字の検索でも大文字も見つかるようにする
+set ignorecase
+" ただし大文字も含めた検索の場合はその通りに検索する
+set smartcase
+" インクリメンタルサーチを行う
+set incsearch
+" 検索結果をハイライト表示
 set hlsearch
+
+"=== keybind
+" FROM <https://qiita.com/nrk_baby/items/154e3fa15c48a39e3375#%E3%82%B4%E3%83%BC%E3%83%AB>
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
+" vを二回で行末まで選択
+vnoremap v $h
 
 "=== visible tab,space,eol
 set list
-set listchars=tab:»-,trail:-,nbsp:%,eol:↓
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 " NonText:eol, SpecialKey:tab,trail
 highlight NonText    ctermfg=DarkGreen guifg=DarkGreen
 highlight SpecialKey ctermfg=DarkGreen guifg=DarkGreen
