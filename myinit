@@ -6,8 +6,11 @@ sudo apt update ; sudo apt -y upgrade
 sudo apt -y install vim git tig nkf jless lv zip p7zip-full xsel
 # opt package
 sudo apt install build-essential libtool automake autoconf pkg-config
+sudo apt install cpanminus
 sudo apt install npm && npm -g install electron
 sudo apt install golang-go
+sudo apt install libimage-exiftool-perl
+sudo apt install libflickr-upload-perl
 sudo apt-get autoremove
 # init home
 cd ~
