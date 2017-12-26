@@ -44,8 +44,8 @@ set ttymouse=sgr
 "=== color
 " default colorscheme are here: /usr/share/vim/vim74/colors/
 " user installed      are here: ~/.vim/colors/
-set termguicolors
 set background=dark
+"set termguicolors
 "colorscheme elflord
 "set t_Co=256
 "if &t_Co >= 256
