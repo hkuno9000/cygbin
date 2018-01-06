@@ -1,5 +1,6 @@
 #!/bin/bash
 [ -f ~/.minttyrc ] && diff -swu ~/bin/myminttyrc ~/.minttyrc
 [ -f ~/.vimrc    ] && diff -swu ~/bin/myvimrc    ~/.vimrc
+[ -f ~/.tigrc    ] && diff -swu ~/bin/mytigrc    ~/.tigrc
 gitignore=$(git config --get core.excludesfile)
 [ -f $gitignore  ] && diff -swu ~/bin/mygitignore $gitignore

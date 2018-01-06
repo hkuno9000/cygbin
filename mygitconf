@@ -38,6 +38,7 @@ fi
 # tig
 git config --global tig.tab-size 4
 git config --global tig.mouse yes
+cd `dirname $0` && ln -f mytigrc ~/.tigrc
 # git diff
 git config --global diff.compactionHeuristic true
 # git alias
