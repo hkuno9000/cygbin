@@ -3,7 +3,7 @@ bind main I !git diff %(commit)
 bind main B ?git branch '%(prompt Enter new-branch-name :)' %(commit)
 bind main T ?git tag '%(prompt Enter tag-name :)' %(commit)
 bind main R ?git rebase -i %(commit)
-bind main + ?git commit --fixup  %(commit)
-bind main * ?git commit --squash %(commit)
+bind main + ?git commit -v --fixup  %(commit)
+bind main * ?git commit -v --squash %(commit)
 # status view
-bind status + ?git commit --amend
+bind status + ?git commit -v --amend
