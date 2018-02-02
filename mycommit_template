@@ -1,0 +1,13 @@
+# ------ prefix ------
+# fixup! typofix or amend previous commits
+# Feat: A new feature
+# Fix: A bug fix
+# Docs: Documentation only changes
+# Style: Changes that do not affect the meaning of the code
+# Perf: A code change that improves performance
+# Safety: A Code change that fool proof or security
+# Refactor: A code change that neither "Feat", "Fix", "Pref" nor "Safety"
+# Test: Adding missing or correcting existing tests
+# Debug: Changes to the debug staff
+# Chore: Changes to the build, release or publish.
+# --------------------
