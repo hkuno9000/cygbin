@@ -17,7 +17,6 @@ cd ~
 [ -d orig ] || (mkdir orig save backup install && sudo cp -p .* /etc/* orig/ && dpkg --get-selections > save/pkg-selections)
 [ -d bin  ] || git clone https://github.com/hkuno9000/cygbin.git bin
 ln bin/myvimrc     .vimrc
-ln bin/mygitignore .gitignore_global
 ln bin/myminttyrc  .minttyrc
 [ -f .vimrc_local ] || echo colorscheme elflord >.vimrc_local
 bash -c bin/initbashrc

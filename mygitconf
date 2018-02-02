@@ -20,6 +20,7 @@ ifz-git-conf-global commit.template ~/.commit_template
 # 1. core.excludesfile の初期値は $XDG_CONFIG_HOME/git/ignore なので、その場所に作る方法と、
 # 2. 任意の場所にファイルを作成し、そのパスを core.excludesfile に設定する方法がある.
 ifz-git-conf-global core.excludesfile ~/.gitignore_global
+[ -f ~/.gitignore_global ] || ln -f $MYDIR/myignore ~/.gitignore_global
 # git push
 git config --global push.default simple
 # git pull
@@ -42,7 +43,7 @@ fi
 # tig
 git config --global tig.tab-size 4
 git config --global tig.mouse yes
-cd `dirname $0` && ln -f mytigrc ~/.tigrc
+[ -f ./.tigrc ] || ln -f $MYDIR/mytigrc ~/.tigrc
 # git diff
 git config --global diff.compactionHeuristic true
 # git alias
