@@ -5,4 +5,4 @@
 committmp=$(git config --get commit.template)
 [ -f $committmp  ] && diff -swu ~/bin/mycommit_template $committmp
 gitignore=$(git config --get core.excludesfile)
-[ -f $gitignore  ] && diff -swu ~/bin/mygitignore $gitignore
+[ -f $gitignore  ] && diff -swu ~/bin/myignore $gitignore
