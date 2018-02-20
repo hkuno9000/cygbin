@@ -2,7 +2,7 @@
 # fixup! typofix or amend previous commits
 # Feat: A new feature
 # Fix: A bug fix
-# Docs: Documentation only changes
+# Docs: Documentation only changes. a code comment, user prompt, erorr message etc.
 # Style: Changes that do not affect the meaning of the code
 # Perf: A code change that improves performance
 # Safety: A Code change that fool proof or security
