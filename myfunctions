@@ -71,7 +71,7 @@ histclean()
     local new=$(mktemp)
     command egrep -vw \
       -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|diff|less|man|help|histclean)' \
-      -e '^git (status|show|grep|diff.*|log.*|[a-z]l|st|ss|crlf)' \
+      -e '^git (status|show|help|grep|diff.*|log.*|[a-z]l|st|sts|crlf)' \
       $HISTFILE > $new
     history -c && history -r $new && history -w
     command rm $new
