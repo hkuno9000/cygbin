@@ -23,7 +23,7 @@ if [ -z "$(alias mv)" ]; then alias mv='mv -i'; fi
 if [ -z "$(alias df)" ]; then alias df='df -h'; fi
 if [ -z "$(alias du)" ]; then alias du='du -h'; fi
 alias mg='make -f GNUmakefile'
-alias aw='type'
+alias aw='type -a'
 alias clipin='xsel -bi'
 alias clipout='xsel -bo'
 if [ -d "${USERPROFILE}" ]; then # Git bash, cygwin
