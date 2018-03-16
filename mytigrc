@@ -1,5 +1,5 @@
 # main view
-bind main I !git diff %(commit)
+bind main . !git diff %(commit)
 bind main B ?git branch '%(prompt Enter new-branch-name :)' %(commit)
 bind main T ?git tag '%(prompt Enter tag-name :)' %(commit)
 bind main R ?git rebase -i %(commit)
