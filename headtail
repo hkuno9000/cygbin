@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+use v5.10; use strict;
+# parse option
+my $N=10;
+use Getopt::Long qw(:config posix_default no_ignore_case gnu_compat);
+GetOptions('lines|n=i' => \$N, 'help|h|?' => sub { usage()}) || usage("invalid options");
+sub usage {
+	say STDERR @_ if @_;
+	say STDERR <<EOF;
+usage: headtail [--help|-h|-?] [--lines=N|-n N]
+       this works as (head -N ; echo "..."; tail -N) without duplicated lines.
+       default N is 10.
+EOF
+	exit;
+}
+# input all lines.
+my @line=<>;
+my $A=$#line + 1;
+# snip lines.
+@line=(@line[0..$N-1],qq/...\n/,@line[$A-$N..$A]) if $A > $N*2;
+print @line;
+#end
