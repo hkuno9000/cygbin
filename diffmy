@@ -1,8 +1,8 @@
 #!/bin/bash
-[ -f ~/.minttyrc ] && diff -swu ~/bin/myminttyrc ~/.minttyrc
-[ -f ~/.vimrc    ] && diff -swu ~/bin/myvimrc    ~/.vimrc
-[ -f ~/.tigrc    ] && diff -swu ~/bin/mytigrc    ~/.tigrc
+[ -e ~/.minttyrc ] && diff -swu ~/bin/myminttyrc ~/.minttyrc
+[ -e ~/.vimrc    ] && diff -swu ~/bin/myvimrc    ~/.vimrc
+[ -e ~/.tigrc    ] && diff -swu ~/bin/mytigrc    ~/.tigrc
 committmp=$(git config --get commit.template)
-[ -f $committmp  ] && diff -swu ~/bin/mycommit_template $committmp
+[ -e $committmp  ] && diff -swu ~/bin/mycommit_template $committmp
 gitignore=$(git config --get core.excludesfile)
-[ -f $gitignore  ] && diff -swu ~/bin/myignore $gitignore
+[ -e $gitignore  ] && diff -swu ~/bin/myignore $gitignore
