@@ -15,4 +15,5 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#PS1=${PS1/ \\$/\`__git_ps1\`\\n\\$}
 	#PS1=${PS1/\\n\\$/\`__git_ps1\`\\n\\$}
 	#PS1=${PS1/\\w\\[/\\w\`__git_ps1\`\\[}
+	#PROMPT_COMMAND=jobs
 EOF
