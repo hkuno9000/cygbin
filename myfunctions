@@ -70,7 +70,8 @@ histclean()
     # remove status check commands from history.
     local new=$(mktemp)
     command egrep -vw \
-      -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|diff|less|man|help|histclean)' \
+      -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|jobs|diff|less|man|help|histclean)' \
+      -e '^(logs|logss|st|sts)' \
       -e '^git (status|show|help|grep|diff.*|log.*|[a-z]l|st|sts|crlf)' \
       $HISTFILE > $new
     history -c && history -r $new && history -w
