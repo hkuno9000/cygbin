@@ -4,5 +4,9 @@ echo === dist
 lsb_release -a
 echo === uname
 uname -a
+echo == lscpu
+lscpu
+echo == cpuinfo
+cat /proc/cpuinfo
 echo === ip
 ip route
