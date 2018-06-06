@@ -3,7 +3,7 @@
 # init package
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt -y upgrade
-sudo apt -y install vim git tig nkf jless lv zip p7zip-full xsel
+sudo apt -y install vim git tig nkf lv zip p7zip-full rar zstd xsel
 # opt package
 sudo apt install build-essential libtool automake autoconf pkg-config
 sudo apt install cpanminus
