@@ -14,8 +14,9 @@ sudo apt install libflickr-upload-perl
 sudo apt-get autoremove
 # init home
 cd ~
-[ -d orig ] || (mkdir orig save backup install && sudo cp -p .* /etc/* orig/ && dpkg --get-selections > save/pkg-selections)
+[ -d orig ] || (mkdir orig save backup install ; sudo cp -p .* /etc/* orig/ ; dpkg --get-selections > save/pkg-selections)
 [ -d bin  ] || git clone https://github.com/hkuno9000/cygbin.git bin
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > bin/git-prompt.sh
 bash -c bin/initmyrc
 bash -c bin/initbashrc
 bash -c bin/mygitconf
