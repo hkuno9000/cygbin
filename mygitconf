@@ -18,6 +18,7 @@ ifz-git-conf-global commit.template ~/.commit_template
 # git無視パターンファイルを作成して、登録する
 # 1. core.excludesfile の初期値は $XDG_CONFIG_HOME/git/ignore なので、その場所に作る方法と、
 # 2. 任意の場所にファイルを作成し、そのパスを core.excludesfile に設定する方法がある.
+# 各プロジェクト固有な無視パターンについては proj/.gitignore または、proj/.git/info/exclude に作成する.
 ifz-git-conf-global core.excludesfile ~/.gitignore_global
 # git push
 git config --global push.default simple
