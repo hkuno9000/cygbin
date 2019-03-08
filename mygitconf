@@ -63,6 +63,7 @@ git config --global alias.recommit '!git reset HEAD^ && git commit -pvc ORIG_HEA
 git config --global alias.pullr  'pull --rebase'
 git config --global alias.pullri 'pull --rebase=interactive'
 git config --global alias.pushf  'push --force-with-lease'
+git config --global alias.pushu  'push --set-upstream origin'
 git config --global alias.br 'branch'
 git config --global alias.bl 'branch -avv'
 git config --global alias.tl 'tag -l -n'
