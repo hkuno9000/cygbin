@@ -3,6 +3,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
 	#export EDITOR=vim
+	#export GIT_EDITOR=vim
 	#export PAGER=lv
 	#HISTTIMEFORMAT='%F %T '
 	#HISTCONTROL=ignoreboth

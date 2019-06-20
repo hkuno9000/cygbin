@@ -11,7 +11,7 @@ MYDIR=$(cd $(dirname $0); pwd)
 ifz-git-conf-global user.name 'YOUR NAME'
 ifz-git-conf-global user.email 'YOUR@mail.address.com'
 # git core
-ifz-git-conf-global core.editor "${EDITOR:-vim}"
+ifz-git-conf-global core.editor "${GIT_EDITOR:-vim}"
 git config --global core.quotepath false
 # git commit template
 ifz-git-conf-global commit.template ~/.commit_template
