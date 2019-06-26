@@ -10,6 +10,33 @@ function pushbackt {
 		pushback $f{,~,.~*~} # fname fname~ fname.~*~
 	done
 }
+usage() { cat <<EOF
+$*
+
+Usage:
+    backdiff [options] FILE [-diff-options] # diff BACKUP FILE -diff-options
+
+BACKUP:
+    FILE~ FILE.~*~ FILE.bak FILE.orig FILE.save
+    ~/orig/FILE ~/save/FILE ~/backup/FILE
+    ./orig/FILE ./save/FILE
+
+options:
+    --help, -h, -?  show help
+EOF
+}
+help_exit() {
+	usage "diff SELECTED-BACKUP FILE."
+	exit 0
+}
+error_exit() {
+	usage $1 >&2
+	exit 1
+}
+# parse command line
+case $1 in
+--help|-h|-\?|"") help_exit;;
+esac
 base=${1##*/} # BASE.EXT
 noext=${1%.*} # DIR/BASE
 dir=${1%/*}   # DIR
@@ -20,7 +47,7 @@ if [ ${noext:-$1} != $1 ] ; then
 	pushbackt $noext.{bak,orig,save}
 fi
 if [ -n "$base" ] ; then
-	pushbackt ~/{orig,save}/$base
+	pushbackt ~/{orig,save,backup}/$base
 	if [ "$PWD" != "$HOME" ] ; then
 		pushbackt ./{orig,save}/$base
 	fi
