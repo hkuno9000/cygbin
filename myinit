@@ -1,22 +1,37 @@
 #!/bin/sh
-# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
-# init package
-sudo add-apt-repository ppa:git-core/ppa
-sudo apt update ; sudo apt -y upgrade
-sudo apt -y install vim git tig nkf lv zip p7zip-full rar zstd xsel
-# opt package
-sudo apt install build-essential libtool automake autoconf pkg-config
-sudo apt install cpanminus
-sudo apt install npm && npm -g install electron
-sudo apt install golang-go
-sudo apt install libimage-exiftool-perl
-sudo apt install libflickr-upload-perl
-sudo apt-get autoremove
-# init home
+# vim: set filetype=sh softtabstop=2 shiftwidth=2 smarttab cindent:
+
+# init home dir
 cd ~
-[ -d orig ] || (mkdir orig save backup install ; sudo cp -p .* /etc/* orig/ ; dpkg --get-selections > save/pkg-selections)
-[ -d bin  ] || git clone https://github.com/hkuno9000/cygbin.git bin
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > bin/git-prompt.sh
+mkdir orig save backup install
+sudo cp -p .* orig/
+sudo cp -pr /etc orig/etc
+dpkg --get-selections > save/pkg-selections
+alias    > save/alias
+printenv > save/env
+apt list > save/apt-list
+
+# install minimum package
+##sudo add-apt-repository ppa:git-core/ppa
+sudo apt update ; sudo apt full-upgrade
+sudo apt install vim git tig nkf make zip zstd
+# install option package
+sudo apt install p7zip-full rar xsel
+#sudo apt install build-essential libtool automake autoconf pkg-config
+#sudo apt install cpanminus
+#sudo apt install npm && npm -g install electron
+#sudo apt install golang-go
+#sudo apt install libimage-exiftool-perl
+#sudo apt install libflickr-upload-perl
+#sudo apt-get autoremove
+
+# init shell and git
+git clone https://github.com/hkuno9000/cygbin.git bin
+##curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > bin/git-prompt.sh
 bash -c bin/initmyrc
 bash -c bin/initbashrc
+vim .bashrc
 bash -c bin/mygitconf
+git config --global user.name "Hiroshi Kuno"
+git config --global user.email "hkuno9000@gmail.com"
+# end
