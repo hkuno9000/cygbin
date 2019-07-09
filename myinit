@@ -3,7 +3,7 @@
 
 # init home dir
 cd ~
-mkdir orig save backup install
+mkdir orig save log backup install
 sudo cp -p .* orig/
 sudo cp -pr /etc orig/etc
 dpkg --get-selections > save/pkg-selections
