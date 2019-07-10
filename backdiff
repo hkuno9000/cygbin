@@ -2,7 +2,7 @@
 # diff to fuzzy backup file
 function pushback {
 	for f in $@; do
-		if [ -f "$f" ] ; then back="$back $f"; fi
+		[ -f "$f" ] && back="$back $f" # append existing files to $back
 	done
 }
 function pushbackt {
@@ -37,6 +37,7 @@ error_exit() {
 case $1 in
 --help|-h|-\?|"") help_exit;;
 esac
+[ -f "$1" ] || error_exit "file not found: $1";
 base=${1##*/} # BASE.EXT
 noext=${1%.*} # DIR/BASE
 dir=${1%/*}   # DIR
@@ -44,7 +45,7 @@ dir=${1%/*}   # DIR
 pushback $1{~,.~*~}		# fname~ fname.~*~
 pushbackt $1.{bak,orig,save}	# fname.bak fname.orig fname.save
 if [ ${noext:-$1} != $1 ] ; then
-	pushbackt $noext.{bak,orig,save}
+	pushbackt $noext.{bak,orig,save} # dir/base.bak dir/base.orig dir/base.save
 fi
 if [ -n "$base" ] ; then
 	pushbackt ~/{orig,save,backup}/$base
@@ -53,6 +54,7 @@ if [ -n "$base" ] ; then
 	fi
 	if [ -d "$dir" ] ; then
 		pushbackt $dir/{orig,save}/$base
+		pushback ~/{orig,save,backup}/${dir#/}/$base
 	fi
 fi
 ##echo "@:[$@], base:[$base], noext:[$noext], dir:[$dir], back:[$back]"
