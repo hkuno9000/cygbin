@@ -17,7 +17,9 @@ groups   > save/groups
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig nkf make zip zstd
 # install option package
-sudo apt install p7zip-full rar xsel
+sudo apt install p7zip-full
+sudo apt install rar
+sudo apt install xsel # need X11
 #sudo apt install build-essential libtool automake autoconf pkg-config
 #sudo apt install cpanminus
 #sudo apt install npm && npm -g install electron
