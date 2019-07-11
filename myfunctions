@@ -1,4 +1,40 @@
-# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
+# vim: set filetype=sh shiftwidth=2 expandtab smarttab cindent:
+yesno() {
+  local yn cmd msg="${1:-OK? [y/N]} "
+  case $1 in
+    -c)
+      shift
+      cmd="$@"
+      msg="$* [y/N] "
+      ;;
+  -h|-?|--help)
+    echo 'usage: yesno "prompt"'
+    echo '       yesno -c command arg1 arg2 ...'
+    return
+    ;;
+  esac
+  read -r -p "$msg" yn
+  case $yn in
+    Y|y|yes)
+      $cmd
+      true
+      ;;
+    *)
+      false
+      ;;
+esac
+}
+
+cpx() {
+  local ext="${2:-bak}"
+  [ -f "$1.$ext" ] || cp -p "$1" "$1.$ext"
+}
+
+diffx() {
+  local ext="${2:-bak}"
+  diff "$1.$ext" "$1"
+}
+
 cdx()
 {
   if [ -z "$1" ]; then
