@@ -1,7 +1,9 @@
+#!/bin/bash
 cat >>$HOME/.bashrc <<- 'EOF'
 	## un-comment if you need.
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
+	#alias diff='diff --color=auto'
 	#export EDITOR=vim
 	#export GIT_EDITOR=vim
 	#export PAGER=lv
