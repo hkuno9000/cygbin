@@ -3,15 +3,18 @@
 
 # init home dir
 cd ~
-mkdir orig save log backup install
-sudo cp -p .* orig/
-sudo cp -pr /etc orig/etc
-dpkg --get-selections > save/pkg-selections
-alias    > save/alias
-printenv > save/env
-apt list > save/apt-list
-groups   > save/groups
-
+mkdir log backup install
+if mkdir orig; then
+  sudo cp -p .* orig/
+  sudo cp -pr /etc orig/etc
+fi
+if mkdir save; then
+  dpkg --get-selections > save/pkg-selections
+  alias    > save/alias
+  printenv > save/env
+  apt list > save/apt-list
+  groups   > save/groups
+fi
 # install minimum package
 ##sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
