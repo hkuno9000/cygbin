@@ -25,16 +25,6 @@ yesno() {
 esac
 }
 
-cpx() {
-  local ext="${2:-bak}"
-  [ -f "$1.$ext" ] || cp -p "$1" "$1.$ext"
-}
-
-diffx() {
-  local ext="${2:-bak}"
-  diff "$1.$ext" "$1"
-}
-
 cdx()
 {
   if [ -z "$1" ]; then
