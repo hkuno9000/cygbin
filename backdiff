@@ -1,11 +1,13 @@
 #!/bin/bash
 # diff to fuzzy backup file
 function pushback {
+	local f
 	for f in $@; do
 		[ -f "$f" ] && back="$back $f" # append existing files to $back
 	done
 }
 function pushbackt {
+	local f
 	for f in $@; do
 		pushback $f{,~,.~*~} # fname fname~ fname.~*~
 	done
@@ -42,6 +44,7 @@ base=${1##*/} # BASE.EXT
 noext=${1%.*} # DIR/BASE
 dir=${1%/*}   # DIR
 
+# search backup files
 pushback $1{~,.~*~}		# fname~ fname.~*~
 pushbackt $1.{bak,orig,save}	# fname.bak fname.orig fname.save
 if [ ${noext:-$1} != $1 ] ; then
@@ -57,6 +60,9 @@ if [ -n "$base" ] ; then
 		pushback ~/{orig,save,backup}/${dir#/}/$base
 	fi
 fi
+[ -n "$back" ] || error_exit "backup not found";
+
+# show files and select, then do diff
 ##echo "@:[$@], base:[$base], noext:[$noext], dir:[$dir], back:[$back]"
 ls -ltFG $1
 ls -ltFG $back | uniq
