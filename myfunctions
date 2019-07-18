@@ -1,4 +1,23 @@
 # vim: set filetype=sh shiftwidth=2 expandtab smarttab cindent:
+lltop() {
+  local ls_total_pattern='^\S+\s\d+$' # "total NN" or "合計 NN"
+  local n=10
+  case $1 in
+    -[0-9]*)
+      n=${1:1}
+      shift
+      ;;
+    -h|-?|--help)
+      echo 'usage: lltop [-N] [ls arguments ...]'
+      return
+      ;;
+  esac
+  echo "=== Top new $n ==="
+  ll -t $@ | grep -v -P "$ls_total_pattern" | head -$n
+  echo "=== Top big $n ==="
+  ll -S $@ | grep -v -P "$ls_total_pattern" | head -$n
+}
+
 yesno() {
   local yn cmd msg="${1:-OK? [y/N]} "
   case $1 in
