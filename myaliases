@@ -1,11 +1,13 @@
-# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
+# vim: set filetype=sh softtabstop=2 shiftwidth=2 smarttab cindent:
 # my aliases
 alias a='alias'
 alias f='find . -iname'
 alias h='history'
 alias hh='history 20'
-alias lt='ls -Flt'
+alias ll='ls -lF'
+alias lt='ll -t'
 alias lta='lt -A'
+alias lla='ll -A'
 alias ..='pushd ..'
 alias ...='pushd ../..'
 alias ....='pushd ../../..'
@@ -17,7 +19,6 @@ alias sts='(git status -sb ; svn stat -u) 2>/dev/null'
 alias logs='git logs'
 alias logss='git logss'
 alias top20='echo === Top new 20 ==== ; ls -lt | head -20 && echo === Top big 20 === ; ls -lS | head -20'
-if [ -z "$(alias ll)" ]; then alias ll='ls -l'; fi
 if [ -z "$(alias la)" ]; then alias la='ls -A'; fi
 if [ -z "$(alias l)"  ]; then alias l='ls -CF'; fi
 if [ -z "$(alias rm)" ]; then alias rm='rm -i'; fi
@@ -25,7 +26,6 @@ if [ -z "$(alias cp)" ]; then alias cp='cp -i'; fi
 if [ -z "$(alias mv)" ]; then alias mv='mv -i'; fi
 if [ -z "$(alias df)" ]; then alias df='df -h'; fi
 if [ -z "$(alias du)" ]; then alias du='du -h'; fi
-alias mg='make -f GNUmakefile'
 alias aw='type -a'
 alias clipin='xsel -bi'
 alias clipout='xsel -bo'
