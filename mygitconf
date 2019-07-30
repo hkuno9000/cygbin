@@ -33,7 +33,7 @@ pager="${PAGER:-less -FX}"
 ifz-git-conf-global core.pager "$pager"
 dir="/usr/share/doc/git/contrib/diff-highlight"
 if [ -d $dir ] ; then
-  (cd $dir ; make -q diff-highlight || sudo make && sudo install -v -t /usr/local/bin diff-highlight)
+  (cd $dir ; [ -e diff-highlight ] || sudo make ; sudo install diff-highlight /usr/local/bin)
 fi
 if [ -n "$(which diff-highlight)" ] ; then
   ifz-git-conf-global pager.log  "diff-highlight | $pager"
