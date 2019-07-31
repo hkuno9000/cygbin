@@ -4,6 +4,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
 	#alias diff='diff --color=auto'
+	#alias start='xdg-open'
 	#export EDITOR=vim
 	#export GIT_EDITOR=vim
 	#export PAGER=lv
