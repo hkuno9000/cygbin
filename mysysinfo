@@ -1,12 +1,15 @@
 #!/bin/sh
-# vim: set filetype=sh tabstop=4 softtabstop=2 shiftwidth=2 expandtab cindent:
+# vim: set filetype=sh softtabstop=2 shiftwidth=2 smarttab cindent:
 echo === dist
 lsb_release -a
 echo === uname
 uname -a
 echo == lscpu
 lscpu
-echo == cpuinfo
-cat /proc/cpuinfo
+echo more: cat /proc/cpuinfo
+echo == lsusb
+lsusb
+echo == lsblk
+lsblk
 echo === ip
 ip route
