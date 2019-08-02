@@ -92,5 +92,6 @@ git config --global alias.reflogr 'reflog --decorate --relative-date'
 git config --global alias.ignore '!vim $(git config --get core.excludesfile)'
 git config --global alias.ignorelocal '!vim .git/info/exclude'
 git config --global alias.top20 '!echo === Top new 20 === && ls -lt $(git ls-files) | head -20 && echo === Top big 20 === && ls -lS $(git ls-files) | head -20'
+git config --global alias.zip '!git archive --format zip -o `git rev-parse --abbrev-ref @`.zip HEAD'
 echo '#### check user setting ####'
 git ul
