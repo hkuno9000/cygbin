@@ -4,6 +4,8 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
 	#alias diff='diff --color=auto'
+	#alias mount-clone='sudo mount /dev/sda2 /mnt/clone && lsblk'
+	#alias umount-clone='sudo umount /mnt/clone && lsblk'
 	#alias start='xdg-open'
 	#export EDITOR=vim
 	#export GIT_EDITOR=vim
