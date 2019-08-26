@@ -7,7 +7,7 @@ lltop() {
       n=${1:1}
       shift
       ;;
-    -h|-?|--help)
+    -h|-\?|--help)
       echo 'usage: lltop [-N] [ls arguments ...]'
       return
       ;;
@@ -26,7 +26,7 @@ yesno() {
       cmd="$@"
       msg="$* [y/N] "
       ;;
-  -h|-?|--help)
+  -h|-\?|--help)
     echo 'usage: yesno "prompt"'
     echo '       yesno -c command arg1 arg2 ...'
     return
