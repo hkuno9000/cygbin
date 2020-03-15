@@ -2,6 +2,7 @@
 # my aliases
 alias a='alias'
 alias f='find . -iname'
+alias g='git'
 alias h='history'
 alias hh='history 20'
 alias ll='ls -lF'
@@ -18,6 +19,8 @@ alias st='(git status      ; svn stat -u) 2>/dev/null'
 alias sts='(git status -sb ; svn stat -u) 2>/dev/null'
 alias logs='git logs'
 alias logss='git logss'
+alias today='git today'
+alias todays='git todays'
 if [ -z "$(alias la)" ]; then alias la='ls -A'; fi
 if [ -z "$(alias l)"  ]; then alias l='ls -CF'; fi
 if [ -z "$(alias rm)" ]; then alias rm='rm -i'; fi
