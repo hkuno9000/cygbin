@@ -5,5 +5,6 @@ bind main T ?git tag '%(prompt Enter tag-name :)' %(commit)
 bind main R ?git rebase -i %(commit)
 bind main + ?git commit -v --fixup  %(commit)
 bind main * ?git commit -v --squash %(commit)
-# status view
-bind status + ?git commit -v --amend
+# status/stage view
+bind stage  A ?git commit -v --amend
+bind status A ?git commit -v --amend
