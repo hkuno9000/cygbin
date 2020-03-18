@@ -12,3 +12,8 @@ bind stage  V ?git commit -v
 bind status V ?git commit -v
 bind stage  A ?git commit -v --amend
 bind status A ?git commit -v --amend
+# diff view
+bind diff V ?git commit -v
+bind diff A ?git commit -v --amend
+bind diff + ?git commit -v --fixup  %(commit)
+bind diff * ?git commit -v --squash %(commit)
