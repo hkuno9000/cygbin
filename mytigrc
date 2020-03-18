@@ -8,5 +8,7 @@ bind main * ?git commit -v --squash %(commit)
 # status/stage view
 bind stage  C !git commit -m "%(prompt Enter commit-log :)"
 bind status C !git commit -m "%(prompt Enter commit-log :)"
+bind stage  V ?git commit -v
+bind status V ?git commit -v
 bind stage  A ?git commit -v --amend
 bind status A ?git commit -v --amend
