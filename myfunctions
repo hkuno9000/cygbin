@@ -1,4 +1,30 @@
 # vim: set filetype=sh shiftwidth=2 expandtab smarttab cindent:
+myfunc() {
+  declare -f | egrep '^[a-z]+ '
+}
+
+apt-history() {
+  # listup logs, oldest first order
+  local pkg=$(ls -rt /var/log/dpkg.log*)
+  local apt=$(ls -rt /var/log/apt/history.log*)
+  if [ -z "$pkg" ]; then
+    return
+    echo 'not found: /var/log/dpkg.log*'
+  fi
+  if [ -z "$apt" ]; then
+    echo 'not found: /var/log/apt/history.log*'
+    return
+  fi
+  case "$1" in
+    install|upgrade|remove)
+      zcat -f $pkg | grep -w "$1"
+      ;;
+    *)
+      zcat -f $apt | less
+      ;;
+  esac
+}
+
 lltop() {
   local ls_total_pattern='^\S+\s\d+$' # "total NN" or "合計 NN"
   local n=10
