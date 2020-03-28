@@ -18,16 +18,21 @@ fi
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig nkf make zip zstd
 # install option package
-sudo apt install p7zip-full
-sudo apt install rar
-sudo apt install xsel # need X11
+cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg"
+## un-comment if you need.
+#sudo apt install p7zip-full
+#sudo apt install rar
+#sudo apt install xsel # need X11
 #sudo apt install build-essential libtool automake autoconf pkg-config
 #sudo apt install cpanminus
 #sudo apt install npm && npm -g install electron
 #sudo apt install golang-go
 #sudo apt install libimage-exiftool-perl
 #sudo apt install libflickr-upload-perl
+#sudo apt install terminator
+#sudo apt install plantuml
 #sudo apt-get autoremove
+EOF
 
 # init shell and git
 git clone https://github.com/hkuno9000/cygbin.git bin
