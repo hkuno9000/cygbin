@@ -3,6 +3,8 @@
 # sytem folders
 vssver.scc
 .svn/
+.vscode/
+.vs/
 Debug/
 Release/
 
