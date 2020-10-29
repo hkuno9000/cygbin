@@ -15,6 +15,8 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	##  1. ~/.bash_logout
 	##
 	## un-comment if you need.
+	#HISTSIZE=2000
+	#HISTFILESIZE=2000
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
 	#alias diff='diff --color=auto'
