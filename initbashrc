@@ -1,5 +1,19 @@
 #!/bin/bash
+# vim: set shiftwidth=4 tabstop=4 noexpandtab nosmarttab:
 cat >>$HOME/.bashrc <<- 'EOF'
+	## Note: bash login workflow
+	##  1. /etc/profile
+	##  1a. /etc/bash.bashrc [Debian]
+	##  2. ~/.bash_profile || ~/.bash_login || ~/.profile
+	##  2a. ~/.bashrc
+	##  2b. /etc/bashrc [Redhat]
+	## Note: bash shell start workflow
+	##  1. /etc/bash.bashrc [Debian]
+	##  2. ~/.bashrc
+	##  2a. /etc/bashrc [Redhat]
+	## Note: bash logout
+	##  1. ~/.bash_logout
+	##
 	## un-comment if you need.
 	#alias poff='sudo poweroff'
 	#alias boot='sudo reboot'
