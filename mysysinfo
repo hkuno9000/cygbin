@@ -13,3 +13,5 @@ echo == lsblk
 lsblk
 echo === ip
 ip route
+echo === wifi
+nmcli device wifi
