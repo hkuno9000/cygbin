@@ -2,6 +2,8 @@
 # vim: set filetype=sh softtabstop=2 shiftwidth=2 smarttab cindent:
 echo === dist
 lsb_release -a
+echo === os-release
+cat /etc/os-release
 echo === uname
 uname -a
 echo == lscpu
