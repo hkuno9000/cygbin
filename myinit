@@ -16,13 +16,16 @@ fi
 # install minimum package
 ##sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
-sudo apt install vim git tig nkf make zip zstd
+sudo apt install vim git tig zip
 # install option package
 cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg"
 ## un-comment if you need.
+#sudo apt install dos2unix nkf
 #sudo apt install p7zip-full
+#sudo apt install zstd
 #sudo apt install rar
 #sudo apt install xsel # need X11
+#sudo apt install make
 #sudo apt install build-essential libtool automake autoconf pkg-config
 #sudo apt install cpanminus
 #sudo apt install npm && npm -g install electron
@@ -31,6 +34,8 @@ cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg
 #sudo apt install libflickr-upload-perl
 #sudo apt install terminator
 #sudo apt install plantuml
+#sudo apt install network-manager
+#sudo apt install whois
 #sudo apt-get autoremove
 EOF
 
