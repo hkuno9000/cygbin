@@ -36,6 +36,8 @@ cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg
 #sudo apt install plantuml
 #sudo apt install network-manager
 #sudo apt install whois
+#sudo apt install lua5.3
+#sudo apt install neovim
 #sudo apt-get autoremove
 EOF
 
