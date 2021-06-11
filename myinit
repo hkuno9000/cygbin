@@ -32,6 +32,7 @@ cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg
 #sudo apt install golang-go
 #sudo apt install libimage-exiftool-perl
 #sudo apt install libflickr-upload-perl
+#sudo apt install astronomical-almanac
 #sudo apt install terminator
 #sudo apt install plantuml
 #sudo apt install network-manager
