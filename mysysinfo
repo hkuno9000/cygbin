@@ -6,11 +6,13 @@ echo === os-release
 cat /etc/os-release
 echo === uname
 uname -a
+echo === model
+more /proc/device-tree/model
 echo == lscpu
 lscpu
 echo more: cat /proc/cpuinfo
 echo == lsusb
-lsusb
+lsusb && lsusb -t
 echo == lsblk
 lsblk
 echo === ip
