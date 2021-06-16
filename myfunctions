@@ -1,6 +1,6 @@
 # vim: set filetype=sh shiftwidth=2 expandtab smarttab cindent:
 myfunc() {
-  declare -f | egrep '^[a-z]+ '
+  declare -f | egrep '^[a-z-]+ '
 }
 
 apt-history() {
