@@ -8,8 +8,8 @@ apt-history() {
   local pkg=$(ls -rt /var/log/dpkg.log*)
   local apt=$(ls -rt /var/log/apt/history.log*)
   if [ -z "$pkg" ]; then
-    return
     echo 'not found: /var/log/dpkg.log*'
+    return
   fi
   if [ -z "$apt" ]; then
     echo 'not found: /var/log/apt/history.log*'
