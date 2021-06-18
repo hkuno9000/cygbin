@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # vim: set filetype=sh softtabstop=2 shiftwidth=2 smarttab cindent:
 
 # init home dir
@@ -18,7 +18,7 @@ fi
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig zip
 # install option package
-cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg"
+cat > install/mypkg << 'EOF'
 ## un-comment if you need.
 #sudo apt install dos2unix nkf
 #sudo apt install p7zip-full
@@ -41,6 +41,7 @@ cat > install/mypkg << 'EOF' ; vim install/mypkg ; bash -c "source install/mypkg
 #sudo apt install neovim
 #sudo apt-get autoremove
 EOF
+vim install/mypkg ; source install/mypkg
 
 # init shell and git
 git clone https://github.com/hkuno9000/cygbin.git bin
