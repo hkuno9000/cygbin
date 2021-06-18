@@ -45,11 +45,11 @@ vim install/mypkg ; source install/mypkg
 
 # init shell and git
 git clone https://github.com/hkuno9000/cygbin.git bin
+git config --global user.name "Hiroshi Kuno"
+git config --global user.email "hkuno9000@gmail.com"
 ##curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > bin/git-prompt.sh
 bash -c bin/initmyrc
 bash -c bin/initbashrc
 vim -c '/^##' .bashrc
 bash -c bin/mygitconf
-git config --global user.name "Hiroshi Kuno"
-git config --global user.email "hkuno9000@gmail.com"
 # end
