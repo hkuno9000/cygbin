@@ -6,7 +6,6 @@ ifz-git-conf-global()
              git config --global "$@"
   fi
 }
-MYDIR=$(cd $(dirname $0); pwd)
 # git user
 ifz-git-conf-global user.name 'YOUR NAME'
 ifz-git-conf-global user.email 'YOUR@mail.address.com'
