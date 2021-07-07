@@ -43,7 +43,7 @@ fi
 git config --global tig.tab-size 4
 git config --global tig.mouse yes
 # git diff
-git config --global diff.compactionHeuristic true
+git config --global diff.indentHeuristic true
 # git alias
 git config --global alias.utf8 '!LANG=ja_JP.UTF-8 LESSCHARSET=utf-8 git'
 git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
@@ -51,6 +51,7 @@ git config --global alias.st 'status'
 git config --global alias.sts 'status --short --branch'
 git config --global alias.sti 'status --ignored'
 git config --global alias.stiv 'check-ignore -v'
+git config --global alias.clone1 'clone --depth 1'
 git config --global alias.co 'checkout'
 git config --global alias.ci 'commit'
 git config --global alias.cia  'commit -v --amend'
