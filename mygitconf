@@ -24,6 +24,9 @@ git config --global push.default simple
 # git pull
 git config --global pull.ff only
 # git credential
+#ifz-git-conf-global credential.helper wincred
+#ifz-git-conf-global credential.helper manager-core
+#ifz-git-conf-global credential.helper store
 ifz-git-conf-global credential.helper cache
 # git rebase
 git config --global rebase.autosquash true
@@ -111,3 +114,5 @@ git config --global alias.ll 'ls-files'
 git config --global alias.zip '!git archive --format zip -o `git rev-parse --abbrev-ref @`.zip HEAD'
 echo '#### check user setting ####'
 git ul
+echo '#### check credential setting ####'
+git cl credential.helper
