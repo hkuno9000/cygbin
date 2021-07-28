@@ -42,6 +42,8 @@ fi
 # tig
 git config --global tig.tab-size 4
 git config --global tig.mouse yes
+# git log
+git config --global log.date iso-local # YYYY-MM-DD hh:mm:ss +ZZZZ
 # git diff
 git config --global diff.indentHeuristic true
 # git alias
