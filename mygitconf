@@ -26,7 +26,7 @@ git config --global pull.ff only
 # git credential
 ifz-git-conf-global credential.helper cache
 # git rebase
-ifz-git-conf-global rebase.autosquash true
+git config --global rebase.autosquash true
 # pager
 pager="${PAGER:-less -FX}"
 ifz-git-conf-global core.pager "$pager"
