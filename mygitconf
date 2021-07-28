@@ -110,6 +110,8 @@ git config --global alias.ll 'ls-files'
 git config --global alias.zip '!git archive --format zip -o `git rev-parse --abbrev-ref @`.zip HEAD'
 git config --global alias.rdate '!git -c log.date=relative'
 git config --global alias.hdate '!git -c log.date=human'
+git config --global alias.nolog "!f(){ git \$@ -- ':!*.log'; };f"
+git config --global alias.nohtm "!f(){ git \$@ -- ':!*.htm'; };f"
 echo '#### check user setting ####'
 git ul
 echo '#### check credential setting ####'
