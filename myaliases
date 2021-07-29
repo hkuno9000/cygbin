@@ -36,7 +36,7 @@ if [ -d "${USERPROFILE}" ]; then # Git bash, cygwin
   alias winhome='pushd "${USERPROFILE}"'
   alias windoc='pushd "${USERPROFILE}/Documents"'
 fi
-if [ -d "/mnt/c/Users/$USER/" ]; then # Bash on Ubuntu on Win
+if [ -d "/mnt/c/Users/$USER/" ]; then # WSL Windows Subsystem for Linux
   alias winhome='pushd "/mnt/c/Users/$USER"'
   alias windoc='pushd "/mnt/c/Users/$USER/Documents"'
 fi
