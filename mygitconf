@@ -6,6 +6,16 @@ ifz-git-conf-global()
              git config --global "$@"
   fi
 }
+ifz-git-select-conf-global()
+{
+  if [ -z "$(git config --global --get $1)" ] ; then
+    PS3="$1? "
+    select sel in $2; do
+      git config --global $1 $sel
+      break
+    done
+  fi
+}
 # git user
 ifz-git-conf-global user.name 'YOUR NAME'
 ifz-git-conf-global user.email 'YOUR@mail.address.com'
@@ -24,10 +34,7 @@ git config --global push.default simple
 # git pull
 git config --global pull.ff only
 # git credential
-#ifz-git-conf-global credential.helper wincred
-#ifz-git-conf-global credential.helper manager-core
-#ifz-git-conf-global credential.helper store
-ifz-git-conf-global credential.helper cache
+ifz-git-select-conf-global credential.helper "cache store manager-core wincred"
 # git rebase
 git config --global rebase.autosquash true
 # pager
