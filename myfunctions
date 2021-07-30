@@ -3,6 +3,14 @@ myfunc() {
   declare -f | egrep '^[a-z-]+ '
 }
 
+mybin-update() {
+  pushd ~/bin && git pull
+  git diff --stat --exit-code ORIG_HEAD -- mygitconf   || ./mygitconf
+  git diff --stat --exit-code ORIG_HEAD -- myfunctions || . myfunctions
+  git diff --stat --exit-code ORIG_HEAD -- myaliases   || . myaliases
+  popd
+}
+
 apt-history() {
   # listup logs, oldest first order
   local pkg=$(ls -rt /var/log/dpkg.log*)
