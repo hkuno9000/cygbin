@@ -10,7 +10,10 @@ mybin-update() {
   git diff --stat --exit-code ORIG_HEAD -- myaliases   || . myaliases
   popd
 }
-
+curl-github() {
+  echo "get https://raw.githubusercontent.com/$1 -- <USER>/<PROJECT>/<BRANCH>/<PATH-TO-FILE>"
+  curl -O "https://raw.githubusercontent.com/$1"
+}
 apt-history() {
   # listup logs, oldest first order
   local pkg=$(ls -rt /var/log/dpkg.log*)
