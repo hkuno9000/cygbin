@@ -20,6 +20,7 @@ sudo apt install vim git tig zip
 # install option package
 cat > install/mypkg << 'EOF'
 ## un-comment if you need.
+#sudo apt install ripgrep
 #sudo apt install dos2unix nkf
 #sudo apt install p7zip-full
 #sudo apt install zstd
