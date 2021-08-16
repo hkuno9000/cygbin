@@ -40,6 +40,8 @@ cat > install/mypkg << 'EOF'
 #sudo apt install whois
 #sudo apt install lua5.3
 #sudo apt install neovim
+#sudo apt install ffmpeg
+#sudo apt install imagemagick
 #sudo apt-get autoremove
 EOF
 vim install/mypkg ; source install/mypkg
