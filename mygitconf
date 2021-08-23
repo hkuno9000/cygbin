@@ -22,6 +22,7 @@ ifz-git-conf-global user.email 'YOUR@mail.address.com'
 # git core
 ifz-git-conf-global core.editor "${GIT_EDITOR:-vim}" # $GIT_EDITOR > core.editor > $VISUAL > $EDITOR
 git config --global core.quotepath false
+git config --global core.whitespace cr-at-eol
 # git commit template
 ifz-git-conf-global commit.template ~/.commit_template
 # git無視パターンファイルを作成して、登録する
@@ -77,6 +78,7 @@ git config --global alias.onstage  'add --patch'
 git config --global alias.unstage  'reset --patch --'
 git config --global alias.rollback 'reset --hard'
 git config --global alias.recommit '!git reset HEAD^ && git commit -pvc ORIG_HEAD'
+git config --global alias.rebasefix '!git rebase --whitespace=fix'
 git config --global alias.pullr  'pull --rebase'
 git config --global alias.pullri 'pull --rebase=interactive'
 git config --global alias.pullup 'pull --ff-only upstream master'
