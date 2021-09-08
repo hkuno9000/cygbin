@@ -2,5 +2,10 @@
 # archive home config and local sh
 cd ~
 [ -d backup ] || mkdir backup
+  dpkg --get-selections > log/pkg-selections.log
+  alias    > log/alias.log
+  printenv > log/printenv.log
+  apt list > log/apt-list.log
+  groups   > log/groups.log
 zip -u backup/savehome.zip .* *.sh bin/*.sh log/* \
 	-x "*/" "*.bak" "*~" ".#*"
