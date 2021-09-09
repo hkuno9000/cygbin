@@ -1,3 +1,5 @@
+set main-view-id-display = yes
+set line-graphics = ascii
 # main view
 bind main . !git diff %(commit)
 bind main B ?git branch '%(prompt Enter new-branch-name :)' %(commit)
