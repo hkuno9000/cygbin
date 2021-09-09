@@ -3,7 +3,7 @@ bind main . !git diff %(commit)
 bind main B ?git branch '%(prompt Enter new-branch-name :)' %(commit)
 bind main T ?git tag '%(prompt Enter tag-name :)' %(commit)
 bind main R ?git rebase -i %(commit)
-bind main + ?git commit -v --fixup  %(commit)
+bind main + ?git commit --fixup  %(commit)
 bind main * ?git commit -v --squash %(commit)
 bind main ! ?@sh -c "git reset HEAD^ && git commit -pvc ORIG_HEAD"
 # status/stage view
@@ -16,5 +16,5 @@ bind status A ?git commit -v --amend
 # diff view
 bind diff V ?git commit -v
 bind diff A ?git commit -v --amend
-bind diff + ?git commit -v --fixup  %(commit)
+bind diff + ?git commit --fixup  %(commit)
 bind diff * ?git commit -v --squash %(commit)
