@@ -152,6 +152,7 @@ histclean()
     local new=$(mktemp)
     command egrep -vw \
       -e '^(ls|ll|lt|la|l|h|[ef]?grep|ps|jobs|diff|less|man|help|histclean)' \
+      -e '^(#|if|for)' \
       -e '^(logs|logss|st|sts)' \
       -e '^git (status|show|help|grep|diff.?|log.?|today.?|reflog.?|show.?|[a-z]l|st|sts|crlf|logss|todayss|[hr]date|nolog)' \
       $HISTFILE > $new
