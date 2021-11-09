@@ -35,6 +35,9 @@ git config --global push.default simple
 # git pull
 git config --global pull.ff only
 # git credential
+if [ -d "/mnt/c/Program Files/Git/mingw64/" ]; then # WSL + "Git for Windows" on host WindowsOS.
+  ifz-git-conf-global credential.helper "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+fi
 ifz-git-select-conf-global credential.helper "cache store manager-core wincred"
 # git rebase
 git config --global rebase.autosquash true
