@@ -45,6 +45,8 @@ cat > install/mypkg << 'EOF'
 #sudo apt install neovim
 #sudo apt install ffmpeg
 #sudo apt install imagemagick
+#sudo apt install graphicsmagick
+#sudo apt install graphicsmagick-imagemagick-compat
 #sudo apt-get autoremove
 EOF
 vim install/mypkg ; source install/mypkg
