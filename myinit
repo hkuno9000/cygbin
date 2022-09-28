@@ -27,6 +27,7 @@ cat > install/mypkg << 'EOF'
 #sudo apt install rar
 #sudo apt install xsel # need X11
 #sudo apt install git-svn
+#sudo apt install git-cvs
 #sudo apt install subversion
 #sudo apt install make
 #sudo apt install build-essential libtool automake autoconf pkg-config
@@ -34,6 +35,7 @@ cat > install/mypkg << 'EOF'
 #sudo apt install npm && npm -g install electron
 #sudo apt install golang
 #sudo apt install rustc
+#sudo apt install lua5.3
 #sudo apt install libimage-exiftool-perl
 #sudo apt install libflickr-upload-perl
 #sudo apt install astronomical-almanac
@@ -41,7 +43,6 @@ cat > install/mypkg << 'EOF'
 #sudo apt install plantuml
 #sudo apt install network-manager
 #sudo apt install whois
-#sudo apt install lua5.3
 #sudo apt install neovim
 #sudo apt install ffmpeg
 #sudo apt install imagemagick
