@@ -129,6 +129,7 @@ git config --global alias.logv    'log --decorate --graph --branches --stat --fo
 git config --global alias.reflogv 'reflog --decorate --format=fuller'
 git config --global alias.ignore '!vim $(git config --get core.excludesfile)'
 git config --global alias.ignorelocal '!vim .git/info/exclude'
+git config --global alias.attributeslocal '!vim .git/info/attributes'
 git config --global alias.ll 'ls-files'
 git config --global alias.zip '!git archive --format zip -o `git rev-parse --abbrev-ref @`.zip HEAD'
 git config --global alias.code "!GIT_EDITOR='code --wait' git"
