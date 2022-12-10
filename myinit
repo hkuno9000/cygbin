@@ -1,5 +1,30 @@
 #!/bin/bash
 # vim: set filetype=sh softtabstop=2 shiftwidth=2 smarttab cindent:
+yesno() {
+  local yn cmd msg="${1:-OK? [y/N]} "
+  case $1 in
+    -c)
+      shift
+      cmd="$@"
+      msg="$* [y/N] "
+      ;;
+  -h|-\?|--help)
+    echo 'usage: yesno "prompt"'
+    echo '       yesno -c command arg1 arg2 ...'
+    return
+    ;;
+  esac
+  read -r -p "$msg" yn
+  case $yn in
+    Y|y|yes)
+      $cmd
+      true
+      ;;
+    *)
+      false
+      ;;
+esac
+}
 
 # init home dir
 cd ~
@@ -14,7 +39,7 @@ if mkdir orig; then
   groups   > orig/groups.log
 fi
 # install minimum package
-##sudo add-apt-repository ppa:git-core/ppa
+yesno -c sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig zip
 # install option package
@@ -53,12 +78,12 @@ EOF
 vim install/mypkg ; source install/mypkg
 
 # init shell and git
-git clone https://github.com/hkuno9000/cygbin.git bin
-git config --global user.name "Hiroshi Kuno"
-git config --global user.email "hkuno9000@gmail.com"
+yesno -c git clone https://github.com/hkuno9000/cygbin.git bin
+yesno -c git config --global user.name "Hiroshi Kuno"
+yesno -c git config --global user.email "hkuno9000@gmail.com"
 ##curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > bin/git-prompt.sh
-bash -c bin/initmyrc
-bash -c bin/initbashrc
+yesno -c bash -c bin/initmyrc
+yesno -c bash -c bin/initbashrc
 vim -c '/^##' .bashrc
-bash -c bin/mygitconf
+yesno -c bash -c bin/mygitconf
 # end
