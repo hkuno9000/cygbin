@@ -29,6 +29,8 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#HISTTIMEFORMAT='%F %T '
 	#HISTCONTROL=ignoreboth
 	#HISTIGNORE='?:??:???:exit'
+	#alias .a='source "$HOME/bin/myaliases"'
+	#alias .f='source "$HOME/bin/myfunctions"'
 	#source "$HOME/bin/myaliases" 2> /dev/null
 	#source "$HOME/bin/myfunctions"
 	#source "$HOME/bin/git-prompt.sh"
