@@ -31,9 +31,8 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#HISTIGNORE='?:??:???:exit'
 	#alias .a='source "$HOME/bin/myaliases"'
 	#alias .f='source "$HOME/bin/myfunctions"'
-	#source "$HOME/bin/myaliases" 2> /dev/null
+	#source "$HOME/bin/myaliases"
 	#source "$HOME/bin/myfunctions"
-	#source "$HOME/bin/git-prompt.sh"
 	#GIT_PS1_SHOWUPSTREAM=1
 	#GIT_PS1_SHOWDIRTYSTATE=1
 	## MINGW64/GitBush: \[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n$
