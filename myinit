@@ -75,6 +75,29 @@ cat > install/mypkg << 'EOF'
 #sudo apt install graphicsmagick
 #sudo apt install graphicsmagick-imagemagick-compat
 #sudo apt-get autoremove
+## === ubuntu-ja
+## https://www.ubuntulinux.jp/japanese
+##  Japanese Teamのパッケージレポジトリを追加する.
+#sudo wget https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg     -P /etc/apt/trusted.gpg.d/
+#sudo wget https://www.ubuntulinux.jp/ubuntu-ja-archive-keyring.gpg -P /etc/apt/trusted.gpg.d/
+#sudo wget https://www.ubuntulinux.jp/sources.list.d/jammy.list     -O /etc/apt/sources.list.d/ubuntu-ja.list
+#sudo apt update
+## === code
+#GPGKEY=/usr/share/keyrings/microsoft-packages-keyring.gpg
+#curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o $GPGKEY
+#echo "deb [arch=amd64 signed-by=$GPGKEY] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+#sudo apt update ; sudo apt install code
+## === google-chrome-stable
+#GPGKEY=/usr/share/keyrings/google-dl-keyring.gpg
+#curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o $GPGKEY
+#echo "deb [arch=amd64 signed-by=$GPGKEY] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+#sudo apt update ; sudo apt install google-chrome-stable
+## === anydesk
+## http://deb.anydesk.com/howto.html
+#GPGKEY=/usr/share/keyrings/anydesk-keyring.gpg
+#curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo gpg --dearmor -o $GPGKEY
+#echo "deb [arch=amd64 signed-by=$GPGKEY] http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
+#sudo apt update ; sudo apt install anydesk
 EOF
 vim install/mypkg ; source install/mypkg
 
