@@ -31,7 +31,7 @@ cd ~
 mkdir save log backup install
 if mkdir orig; then
   sudo cp -p .* orig/        || cp -p .* orig/
-  sudo cp -pr /etc orig/etc  || cp -pr /etc orig/etc
+  sudo cp -pr /etc orig/     || cp -pr /etc orig/
   dpkg --get-selections > orig/pkg-selections.log
   alias    > orig/alias.log
   printenv > orig/printenv.log

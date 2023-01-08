@@ -69,7 +69,7 @@ if [ -n "$base" ] ; then
 	fi
 	if [ -d "$dir" ] ; then
 		pushbackt $dir/{orig,save}/$base
-		pushback ~/{orig,save,backup}/${dir#/}/$base
+		pushbackt ~/{orig,save,backup}/${dir#/}/$base
 	fi
 fi
 [ -n "$back" ] || error_exit "backup not found";

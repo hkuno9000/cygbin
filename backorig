@@ -3,9 +3,9 @@ usage() { cat <<EOF
 $*
 
 Usage:
-    backorig FILE          # cp --backup=t FILE ~/orig/FILE
-    backorig <(CMD) FILE2  # cp --backup=t <(CMD) ~/orig/FILE2
-
+    backorig FILE          # cp -ip --backup=t FILE ~/orig/FILE
+    backorig <(CMD) FILE2  # cp -ip --backup=t <(CMD) ~/orig/FILE2
+    backorig DIR           # cp -ipur --backup=t DIR ~/orig/
 Options:
     --help, -h, -?  show help
 EOF
@@ -33,4 +33,8 @@ fi
 [ -f "$dst" ] && ls -lFt $dst*
 
 # do backup
-cp -ip --backup=t $src $dst
+if [ -d "$src" ]; then
+	cp -ipur --backup=t $src ~/orig/
+else
+	cp -ip --backup=t $src $dst
+fi
