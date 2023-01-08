@@ -30,8 +30,14 @@ esac
 cd ~
 mkdir save log backup install
 if mkdir orig; then
-  sudo cp -p .* orig/        || cp -p .* orig/
-  sudo cp -pr /etc orig/     || cp -pr /etc orig/
+  if [ -z `type -t sudo`]; then
+    # cygwin and git-for-windows have not "sudo"
+    cp -p .* orig/
+    cp -pr /etc orig/
+  else
+    sudo cp -p .* orig/
+    sudo cp -pr /etc orig/
+  fi
   dpkg --get-selections > orig/pkg-selections.log
   alias    > orig/alias.log
   printenv > orig/printenv.log
