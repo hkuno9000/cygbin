@@ -11,6 +11,7 @@ alias lla='ll -A'
 alias ..='pushd ..'
 alias ...='pushd ../..'
 alias ....='pushd ../../..'
+alias .sudo='sudo ' # if the alias's last character is a blank, then the next word will be alias expansion.
 #alias sudovim='sudo vim -u ~/.vimrc'
 #alias sudovim='sudo -E vim'
 alias sudovim='EDITOR=vim sudoedit'
