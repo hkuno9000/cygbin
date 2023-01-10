@@ -15,6 +15,7 @@ alias .sudo='sudo ' # if the alias's last character is a blank, then the next wo
 #alias sudovim='sudo vim -u ~/.vimrc'
 #alias sudovim='sudo -E vim'
 alias sudovim='EDITOR=vim sudoedit'
+alias cp-backup='cp -ip --backup=t'
 alias st='(git status      ; svn stat -u) 2>/dev/null'
 alias sts='(git status -sb ; svn stat -u) 2>/dev/null'
 alias logs='git logs'
