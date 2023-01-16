@@ -7,5 +7,5 @@ cd ~
   printenv > log/printenv.log
   apt list > log/apt-list.log
   groups   > log/groups.log
-zip -u backup/savehome.zip .* *.sh bin/*.sh log/* \
+zip -u backup/savehome.zip .* bin/*.sh log/* {.,backup,install}/*.{sh,txt,log} \
 	-x "*/" "*.bak" "*~" ".#*"
