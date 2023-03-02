@@ -76,6 +76,7 @@ git config --global alias.ci 'commit'
 git config --global alias.cia  'commit    --amend'
 git config --global alias.ciav 'commit -v --amend'
 git config --global alias.cian 'commit    --amend --no-edit'
+git config --global alias.ciar 'commit    --amend --reset-author'
 git config --global alias.cif  'commit --fixup'
 git config --global alias.cifa '!f(){ git commit --fixup=amend:$1; };f'   # later git v2.32: update commit-message, and amend commit.
 git config --global alias.cifr '!f(){ git commit --fixup=reword:$1; };f'  # later git v2.32: only update commit-message.
