@@ -30,6 +30,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#HISTCONTROL=ignoreboth
 	#HISTIGNORE='?:??:???:exit'
 	#alias .a='source "$HOME/bin/myaliases"'
+	#alias .b='source "$HOME/.bashrc"'
 	#alias .f='source "$HOME/bin/myfunctions"'
 	#source "$HOME/bin/myaliases"
 	#source "$HOME/bin/myfunctions"
