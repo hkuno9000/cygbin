@@ -31,11 +31,20 @@ autocmd FileType c,cpp,perl,javascript,SH set cindent tabstop=4 shiftwidth=4
 
 "=== cursor
 " FROM <http://qiita.com/usamik26/items/f733add9ca910f6c5784>
-"let &t_ti.="\e[1 q"
-"let &t_SI.="\e[5 q"
-"let &t_EI.="\e[1 q"
-"let &t_te.="\e[0 q"
-"set cursorline
+" style swith I / BOX
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q" " Insert: I
+let &t_SR.="\e[3 q" " Replace: _
+let &t_EI.="\e[1 q" " Normal: []
+let &t_te.="\e[0 q"
+set cursorline
+
+"=== IME
+" FROM <https://chanko.hatenadiary.jp/entry/2016/10/28/162648>
+" IME OFF when Insert/Replace/Normal
+let &t_SI.="\e[<0t"
+let &t_SR.="\e[<0t"
+let &t_EI.="\e[<0t"
 
 "=== mouse
 set mouse=a
