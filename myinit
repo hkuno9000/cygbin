@@ -53,6 +53,7 @@ cat > install/mypkg << 'EOF'
 ## un-comment if you need.
 #sudo apt install ripgrep
 #sudo apt install dos2unix nkf
+#sudo apt install fzf
 #sudo apt install p7zip-full
 #sudo apt install zstd
 #sudo apt install rar
