@@ -44,6 +44,10 @@ if mkdir orig; then
   apt list > orig/apt-list.log
   groups   > orig/groups.log
 fi
+# mysetting
+yesno -c LANG=C xdg-user-dirs-gtk-update
+yesno -c sudo LANG=C dpkg-reconfigure keyboard-configuration
+diff {~/orig/,/}etc/default/keyboard
 # install minimum package
 yesno -c sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
