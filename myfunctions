@@ -82,7 +82,7 @@ yesno() {
     *)
       false
       ;;
-esac
+  esac
 }
 
 cdx()
