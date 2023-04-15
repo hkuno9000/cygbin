@@ -20,7 +20,7 @@ Conversion	Ctrl p	ConvertToFullAlphanumeric
 Conversion	Ctrl Right	SegmentFocusLast
 Conversion	Ctrl s	SegmentFocusLeft
 Conversion	Ctrl Shift Space	InsertFullSpace
-Conversion	Ctrl Space	InsertHalfSpace
+Conversion	Ctrl Space	PredictAndConvert
 Conversion	Ctrl t	ConvertToHalfAlphanumeric
 Conversion	Ctrl u	ConvertToHiragana
 Conversion	Ctrl Up	ConvertPrev
@@ -60,9 +60,9 @@ Conversion	Shift Up	ConvertPrevPage
 Conversion	Space	ConvertNext
 Conversion	Tab	PredictAndConvert
 Conversion	Up	ConvertPrev
+Conversion	VirtualEnter	CommitOnlyFirstSegment
 Conversion	VirtualLeft	SegmentWidthShrink
 Conversion	VirtualRight	SegmentWidthExpand
-Conversion	VirtualEnter	CommitOnlyFirstSegment
 Composition	Backspace	Backspace
 Composition	Ctrl a	MoveCursorToBeginning
 Composition	Ctrl Backspace	Backspace
@@ -84,7 +84,7 @@ Composition	Ctrl p	ConvertToFullAlphanumeric
 Composition	Ctrl Right	MoveCursorToEnd
 Composition	Ctrl s	MoveCursorLeft
 Composition	Ctrl Shift Space	InsertFullSpace
-Composition	Ctrl Space	InsertHalfSpace
+Composition	Ctrl Space	PredictAndConvert
 Composition	Ctrl t	ConvertToHalfAlphanumeric
 Composition	Ctrl u	ConvertToHiragana
 Composition	Ctrl Up	MoveCursorToBeginning
@@ -118,27 +118,32 @@ Composition	Shift Right	MoveCursorRight
 Composition	Shift Space	Convert
 Composition	Space	Convert
 Composition	Tab	PredictAndConvert
+Composition	VirtualEnter	Commit
 Composition	VirtualLeft	MoveCursorLeft
 Composition	VirtualRight	MoveCursorRight
-Composition	VirtualEnter	Commit
 Precomposition	Backspace	Revert
 Precomposition	Ctrl Backspace	Undo
+Precomposition	Ctrl Muhenkan	InputModeHalfAlphanumeric
 Precomposition	Ctrl Shift Space	InsertFullSpace
+Precomposition	Ctrl Space	IMEOff
 Precomposition	Eisu	ToggleAlphanumericMode
 Precomposition	Hankaku/Zenkaku	IMEOff
-Precomposition	Hiragana	InputModeHiragana
 Precomposition	Henkan	Reconvert
+Precomposition	Hiragana	InputModeHiragana
 Precomposition	Katakana	InputModeFullKatakana
-Precomposition	Muhenkan	InputModeSwitchKanaType
+Precomposition	Muhenkan	IMEOff
 Precomposition	Shift Muhenkan	ToggleAlphanumericMode
 Precomposition	Shift Space	InsertAlternateSpace
 Precomposition	Space	InsertSpace
+DirectInput	Ctrl Muhenkan	InputModeHalfAlphanumeric
+DirectInput	Ctrl Space	IMEOn
 DirectInput	Eisu	IMEOn
 DirectInput	F13	IMEOn
 DirectInput	Hankaku/Zenkaku	IMEOn
-DirectInput	Henkan	Reconvert
-DirectInput	Hiragana	IMEOn
-DirectInput	Katakana	IMEOn
+DirectInput	Henkan	IMEOn
+DirectInput	Hiragana	InputModeHiragana
+DirectInput	Katakana	InputModeFullKatakana
+DirectInput	Shift Muhenkan	InputModeFullAlphanumeric
 Suggestion	Down	PredictAndConvert
 Suggestion	Shift Enter	CommitFirstSuggestion
 Prediction	Ctrl Delete	DeleteSelectedCandidate
