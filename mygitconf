@@ -112,8 +112,8 @@ show_option=''
 [ -n "$(git config -h | grep show-origin)" ] && show_option='--show-origin'
 [ -n "$(git config -h | grep show-scope)"  ] && show_option='--show-origin --show-scope'
 git config --global alias.cl   "config $show_option --get-regexp"
-git config --global alias.ul   'cl user.*'
-git config --global alias.crlf 'cl core.*crlf'
+git config --global alias.ul   "config $show_option --get-regexp 'user.*'"
+git config --global alias.crlf "config $show_option --get-regexp 'core.*crlf'"
 git config --global alias.confg 'config --global'
 git config --global alias.diffc 'diff --cached'
 git config --global alias.difftoolc 'difftool --cached'
