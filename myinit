@@ -115,8 +115,10 @@ vim install/mypkg ; source install/mypkg
 
 # init shell and git
 yesno -c git clone https://github.com/hkuno9000/cygbin.git bin
-yesno -c git config --global user.name "Hiroshi Kuno"
-yesno -c git config --global user.email "hkuno9000@gmail.com"
+if yesno "git user.name/email hkuno [y/N]"; then
+  git config --global user.name "Hiroshi Kuno"
+  git config --global user.email "hkuno9000@gmail.com"
+fi
 ##curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > bin/git-prompt.sh
 yesno -c bash -c bin/initmyrc
 yesno -c bash -c bin/initbashrc
