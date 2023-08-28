@@ -38,7 +38,6 @@ let &t_SI.="\e[5 q" " Insert: I
 let &t_SR.="\e[3 q" " Replace: _
 let &t_EI.="\e[1 q" " Normal: []
 let &t_te.="\e[0 q"
-set cursorline
 
 "=== IME
 " FROM <https://chanko.hatenadiary.jp/entry/2016/10/28/162648>
@@ -56,12 +55,22 @@ set ttymouse=sgr
 " user installed      are here: ~/.vim/colors/
 set background=dark
 "set termguicolors
+"colorscheme evening
 "colorscheme elflord
-"set t_Co=256
-"if &t_Co >= 256
-"  colorscheme molokai
-"  colorscheme solarized
-"endif
+"colorscheme molokai
+"colorscheme solarized
+
+"=== insert/normal mode
+set cursorline
+augroup InsertHook
+    autocmd!
+    " colorscheme によっては、適切な色ではない.
+    " vimrc_local側でcolorschemeに応じて調整が必要.
+    autocmd InsertEnter * hi StatusLine ctermbg=cyan  guibg=cyan
+    autocmd InsertLeave * hi StatusLine ctermbg=white guibg=white
+    autocmd InsertEnter * hi CursorLine cterm=bold gui=bold guibg=darkcyan
+    autocmd InsertLeave * hi CursorLine cterm=NONE gui=NONE guibg=gray40
+augroup END:
 
 "=== search
 " FROM <https://qiita.com/nrk_baby/items/154e3fa15c48a39e3375#%E3%82%B4%E3%83%BC%E3%83%AB>
