@@ -16,7 +16,7 @@ bind main ; ?git commit --fixup=reword:%(commit)
 bind main & ?git commit --fixup=amend:%(commit)
 bind main * ?git commit -v --squash %(commit)
 bind main = ?git commit -v --reset-author -c %(commit)
-bind main ! ?@sh -c "git reset HEAD^ && git commit -pvc ORIG_HEAD"
+bind main ! ?sh -c "git reset HEAD^ && git commit -pvc ORIG_HEAD"
 # status/stage view
 bind stage  C !git commit -m "%(prompt Enter commit-log :)"
 bind status C !git commit -m "%(prompt Enter commit-log :)"
