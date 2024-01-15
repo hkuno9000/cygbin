@@ -36,6 +36,8 @@ alias aw='type -a'
 alias clipin='xsel -bi'
 alias clipout='xsel -bo'
 alias sjistig='iconv -f sjis | tig' # convert sjis to utf-8, and view
+alias utf8bom='nkf --overwrite --oc=UTF-8-BOM' # convert to UTF-8-BOM
+alias noeol='perl -i.bak -pe "BEGIN{undef \$/;} s/(\r\n|\r|\n)\$//g;"' # read all-lines at once by undef $/, and remove CRLF at EOF.
 if [ -d "${USERPROFILE}" ]; then # Git bash, cygwin
   alias winhome='pushd "${USERPROFILE}"'
   alias windoc='pushd "${USERPROFILE}/Documents"'
