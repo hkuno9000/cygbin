@@ -5,7 +5,8 @@ set tab-size = 4
 set mouse = true
 set main-view-date-local = yes
 # main view
-bind main . !git diff %(commit)
+bind main   . !git diff %(commit)
+bind reflog . !git diff %(commit)
 bind main B ?git branch '%(prompt Enter new-branch-name :)' %(commit)
 bind main T ?git tag '%(prompt Enter tag-name :)' %(commit)
 bind main R ?git rebase -i %(commit)
