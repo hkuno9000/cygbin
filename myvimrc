@@ -99,12 +99,14 @@ highlight SpecialKey ctermfg=DarkGreen guifg=DarkGreen
 
 "=== OS dependant
 if     has("mac")
-elseif has("unix")
-  command! Q !xdg-open https://qiita.com/hkuno/items/4557f3f8d6b27d2884f2
 elseif has("win64")
-elseif has("win32unix")
-elseif has("win32")
-  command! Q !start https://qiita.com/hkuno/items/4557f3f8d6b27d2884f2
+  command! Q call system('start https://qiita.com/hkuno/items/4557f3f8d6b27d2884f2')
+elseif has("win32")	" win32/win64
+  command! Q call system('start https://qiita.com/hkuno/items/4557f3f8d6b27d2884f2')
+elseif has("win32unix")	" msys/cygwin
+  command! Q call system('start https://qiita.com/hkuno/items/4557f3f8d6b27d2884f2')
+elseif has("unix")	" msys/WSL/Linux
+  command! Q call system('xdg-open https://qiita.com/hkuno/items/4557f3f8d6b27d2884f2')
 endif
 "=== local
 if filereadable(expand($HOME.'/.vimrc_local'))
