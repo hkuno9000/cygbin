@@ -1,8 +1,12 @@
 #!/bin/bash
+opt="${@:--u}"
+
 if [ -d /etc/skel ]; then
-	LANG=C diff -u -I "^#" /etc/skel ~ | grep -v ^Only.in
+	LANG=C diff $opt -I "^#" /etc/skel ~ | grep -v ^Only.in
 elif [ -d ~/orig ]; then
 	for orig in ~/orig/.profile ~/orig/.bash* ; do
-		LANG=C diff -u -I "^#" $orig ~ | grep -v ^Only.in
+		[ ${orig##/*/} = ".bash_history" ] && continue
+		[ ! -s $orig ] && continue
+		LANG=C diff $opt -I "^#" $orig ~ | grep -v ^Only.in
 	done
 fi
