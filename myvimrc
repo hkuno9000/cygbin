@@ -90,6 +90,10 @@ inoremap jj <Esc>
 " vを二回で行末まで選択
 vnoremap v $h
 
+" ファイルを全部閉じる.
+inoremap qq <Esc><Cmd>qall<CR>
+nnoremap qq <Cmd>qall<CR>
+
 "=== visible tab,space,eol
 set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
