@@ -1,5 +1,6 @@
 # ------ prefix ------
-# fixup! typofix or amend previous commits
+# fixup! amend a previous commit
+# amend! amend a previous commit, and update commit-message
 # Feat: A new feature
 # Fix: A bug fix
 # Docs: Documentation only changes. a code comment, user prompt, erorr message etc.
