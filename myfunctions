@@ -60,23 +60,31 @@ lltop() {
 }
 
 yesno() {
-  local yn cmd msg="${1:-OK? [y/N]} "
+  local yn
   case $1 in
     -c)
       shift
-      cmd="$@"
-      msg="$* [y/N] "
+      read -r -p "$* [y/N] " yn
+      case $yn in
+        Y|y|yes)
+          command "$@"
+          # do not use "true" here. keep command-status
+          ;;
+        *)
+          false
+          ;;
+      esac
+      return
       ;;
-  -h|-\?|--help)
-    echo 'usage: yesno "prompt"'
-    echo '       yesno -c command arg1 arg2 ...'
-    return
-    ;;
+    -h|-\?|--help)
+      echo 'usage: yesno "prompt"'
+      echo '       yesno -c command arg1 arg2 ...'
+      return
+      ;;
   esac
-  read -r -p "$msg" yn
+  read -r -p "${*:-OK? [y/N]} " yn
   case $yn in
     Y|y|yes)
-      $cmd
       true
       ;;
     *)
