@@ -4,7 +4,7 @@ myfunc() {
 }
 
 mybin-update() {
-  pushd ~/bin && git pull
+  pushd ~/bin && git pull --rebase
   git diff --stat --exit-code ORIG_HEAD -- mygitconf   || ./mygitconf
   git diff --stat --exit-code ORIG_HEAD -- myfunctions || . myfunctions
   git diff --stat --exit-code ORIG_HEAD -- myaliases   || . myaliases
