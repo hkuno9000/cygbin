@@ -121,6 +121,17 @@ cat > install/mypkg << 'EOF'
 EOF
 vim install/mypkg ; source install/mypkg
 
+# WSL patch
+if yesno "WSL [y/N]"; then
+  cat <<-'EOF' | sudo tee -a /etc/wsl.conf
+# avoid => WSL (1015) ERROR: UtilTranslatePathList:2866: Failed to translate X:\path\to\windows-network-drive
+# global setting is: ${USERPROFILES}/.wslconfig
+[interop]
+appendWindowsPath=false
+EOF
+EDITOR=vim sudoedit /etc/wsl.conf
+fi
+
 # init shell and git
 yesno -c git clone https://github.com/hkuno9000/cygbin.git bin
 if yesno "git user.name/email hkuno [y/N]"; then
