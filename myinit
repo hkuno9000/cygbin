@@ -63,6 +63,7 @@ sudo apt install vim git tig zip
 # install option package
 cat > install/mypkg << 'EOF'
 ## un-comment if you need.
+#sudo apt install language-pack-ja && sudo update-locale LANG=ja_JP.UTF-8
 #sudo apt install ripgrep
 #sudo apt install dos2unix nkf
 #sudo apt install fzf
