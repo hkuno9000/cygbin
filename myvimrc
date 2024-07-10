@@ -29,6 +29,7 @@ syntax on
 filetype on
 autocmd FileType c,cpp,perl,javascript,SH set cindent tabstop=4 shiftwidth=4
 autocmd FileType MARKDOWN                 set shiftwidth=4 expandtab smarttab
+let g:is_bash = 1
 
 "=== cursor
 " FROM <http://qiita.com/usamik26/items/f733add9ca910f6c5784>
