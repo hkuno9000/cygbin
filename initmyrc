@@ -4,7 +4,6 @@ ln -f bin/myvimrc     .vimrc
 ln -f bin/mytigrc     .tigrc
 ln -f bin/myminttyrc  .minttyrc
 ln -f bin/mycommit_template .commit_template
-[ -e .vimrc_local ]        || echo colorscheme elflord >.vimrc_local
-[ -e ~/.gitignore_global ] || ln -f bin/myignore .gitignore_global
-[ -e ~/.editorconfig ]     || ln -f bin/myeditorconfig .editorconfig
-
+[ -e .gitignore_global ] || ln -f bin/myignore       .gitignore_global
+[ -e .editorconfig ]     || ln -f bin/myeditorconfig .editorconfig
+[ -e .vimrc_local ]      || echo colorscheme elflord >.vimrc_local

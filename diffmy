@@ -1,9 +1,11 @@
 #!/bin/bash
+cd ~
 opt="-w ${@:--su}" # get diff-options
-[ -e ~/.minttyrc ] && diff $opt ~/bin/myminttyrc ~/.minttyrc
-[ -e ~/.vimrc    ] && diff $opt ~/bin/myvimrc    ~/.vimrc
-[ -e ~/.tigrc    ] && diff $opt ~/bin/mytigrc    ~/.tigrc
 committmp=$(git config --get commit.template)
-[ -e $committmp  ] && diff $opt ~/bin/mycommit_template $committmp
 gitignore=$(git config --get core.excludesfile)
-[ -e $gitignore  ] && diff $opt ~/bin/myignore $gitignore
+diff $opt bin/myvimrc    .vimrc
+diff $opt bin/mytigrc    .tigrc
+diff $opt bin/myminttyrc .minttyrc
+diff $opt bin/mycommit_template $committmp
+diff $opt bin/myignore          $gitignore
+diff $opt bin/myeditorconfig    .editorconfig
