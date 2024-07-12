@@ -41,22 +41,55 @@ apt-history() {
 }
 
 lltop() {
-  local ls_total_pattern='^\S+\s\d+$' # "total NN" or "合計 NN"
+# parse lltop's option in the first arg only
   local n=10
   case $1 in
     -[0-9]*)
-      n=${1:1}
+      n=${1:1} # remove '-' at top of $1
       shift
       ;;
     -h|-\?|--help)
-      echo 'usage: lltop [-N] [ls arguments ...]'
+      echo 'usage: lltop [-N -h -? --help] [ls arguments ...]'
       return
       ;;
   esac
+# parse ls arguments
+  local opt files=()
+  while (( $# > 0 )); do
+    case $1 in
+      --)
+        break
+        ;;
+      -R|--recursive) # remove incompatible-list-options for lltop
+        ;;
+      -*)
+        opt+=" $1"
+        ;;
+      *)
+        files+=("$1")
+        ;;
+    esac
+    shift
+  done
+  while (( $# > 0 )); do
+    files+=("$1") # after "--" args is files
+    shift
+  done
+# if $files[] has none or only-one-directory, then fill myself.
+  local f
+  if (( ${#files[@]} == 0 )); then
+    files=(); for f in *; do files+=("$f"); done
+  elif (( ${#files[@]} == 1 )) && [ -d "${files[0]}" ]; then
+    local dir="${files[0]}"
+    files=(); for f in "$dir"/*; do files+=("$f"); done
+  fi
+# let print lltop of $files[] with $opt
   echo "=== Top new $n ==="
-  ll -t $@ | grep -v -P "$ls_total_pattern" | head -$n
+  eval ll $opt -dt $(command ls $opt -1dt "${files[@]}" | head -$n | sed -e 's/[ ()]/\\&/g')
   echo "=== Top big $n ==="
-  ll -S $@ | grep -v -P "$ls_total_pattern" | head -$n
+  eval ll $opt -dS $(command ls $opt -1dS "${files[@]}" | head -$n | sed -e 's/[ ()]/\\&/g')
+##  echo "=== n:$n, opt:$opt, files:${files[@]}"
+##  echo "=== command ls opt -1dt files" ; command ls $opt -1dt "${files[@]}"
 }
 
 yesno() {
