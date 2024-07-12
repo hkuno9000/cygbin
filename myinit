@@ -8,7 +8,7 @@ yesno() {
       read -r -p "$* [y/N] " yn
       case $yn in
         Y|y|yes)
-          command "$@"
+          eval "$@"
           # do not use "true" here. keep command-status
           ;;
         *)
