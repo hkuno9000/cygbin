@@ -1,6 +1,6 @@
 # vim: set filetype=sh shiftwidth=2 expandtab smarttab cindent:
 myfunc() {
-  declare -f | egrep '^[a-z-]+ '
+  declare -f | grep -E '^[a-z][a-z-]* \(\)'
 }
 
 mybin-update() {
