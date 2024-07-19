@@ -16,8 +16,8 @@ curl-github() {
 }
 apt-history() {
   # listup logs, oldest first order
-  local pkg=$(ls -rt /var/log/dpkg.log*)
-  local apt=$(ls -rt /var/log/apt/history.log*)
+  local pkg=$(command ls -rt /var/log/dpkg.log*)
+  local apt=$(command ls -rt /var/log/apt/history.log*)
   if [ -z "$pkg" ]; then
     echo 'not found: /var/log/dpkg.log*'
     return
@@ -27,12 +27,20 @@ apt-history() {
     return
   fi
   case "$1" in
-    install|upgrade|remove)
-      zcat -f $pkg | grep -w "$1"
-      ;;
     -h|-\?|--help)
-      echo 'usage: apt-histroy [install|upgrade|remove]'
+      echo 'usage: apt-histroy [install|upgrade|remove|list]'
       return
+      ;;
+    install|upgrade|remove)
+      zcat -f $pkg | grep -E "^[0-9][0-9-]+ [0-9][0-9:]+ $1 "
+      ;;
+    list)
+      echo '=== apt list --installed'
+      LANG=C    apt list --installed | grep -v -F automatic
+      echo '=== dpkg --get-selections'
+      LANG=C    dpkg --get-selections
+      echo '=== snap list'
+      LANG=C    snap list
       ;;
     *)
       zcat -f $apt | less
