@@ -80,9 +80,9 @@ fi
 ls -ltFG $back | uniq
 select sel in $(ls -1t $back | uniq); do
 	if [ -n "$cmd" ]; then
-		diff $sel <($cmd) $@
+		diff -u -p --color=auto $sel <($cmd) $@
 	else
-		diff $sel $file $@
+		diff -u -p --color=auto $sel $file $@
 	fi
 	exit
 done
