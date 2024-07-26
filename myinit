@@ -125,8 +125,13 @@ vim install/mypkg ; source install/mypkg
 # WSL patch
 if yesno "WSL [y/N]"; then
   cat <<-'EOF' | sudo tee -a /etc/wsl.conf
-# avoid => WSL (1015) ERROR: UtilTranslatePathList:2866: Failed to translate X:\path\to\windows-network-drive
 # global setting is: ${USERPROFILES}/.wslconfig
+# ------
+# avoid to lost focus on WindowsApp by WSL <https://jiyuukaitakusha.com/howto-deal-focus-loss/>
+#[wsl2]
+#guiApplications=false
+# ------
+# avoid => WSL (1015) ERROR: UtilTranslatePathList:2866: Failed to translate X:\path\to\windows-network-drive
 [interop]
 appendWindowsPath=false
 EOF
