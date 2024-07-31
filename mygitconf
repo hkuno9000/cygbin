@@ -87,6 +87,8 @@ git config --global alias.rollback 'reset --hard'
 git config --global alias.recommit '!git reset HEAD^ && git commit -pvc ORIG_HEAD'
 git config --global alias.rebasefix 'rebase --whitespace=fix'
 git config --global alias.rebase-i '!git tag -f save && git rebase -i'
+git config --global alias.cont  '!args=$(git status | perl -ne "print \$1 if /git (\w+ --continue)/"); git ${args:-status}' # if you have extracted "git xxx --continue" from git-status-message then run it, else run "git status"
+git config --global alias.abort '!args=$(git status | perl -ne "print \$1 if /git (\w+ --abort)/"); git ${args:-status}'    # if you have extracted "git xxx --abort"    from git-status-message then run it, else run "git status"
 git config --global alias.tagsave 'tag -f save'
 git config --global alias.pick 'cherry-pick -xe'
 git config --global alias.cv   'cherry -v'
