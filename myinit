@@ -97,12 +97,14 @@ cat > install/mypkg << 'EOF'
 #sudo apt install graphicsmagick-imagemagick-compat
 #sudo apt-get autoremove
 ## === ubuntu-ja
-## https://www.ubuntulinux.jp/japanese
+## https://www.ubuntulinux.jp/News/ubuntu2404-ja-remix
 ##  Japanese Teamのパッケージレポジトリを追加する.
-#sudo wget https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg     -P /etc/apt/trusted.gpg.d/
-#sudo wget https://www.ubuntulinux.jp/ubuntu-ja-archive-keyring.gpg -P /etc/apt/trusted.gpg.d/
-#sudo wget https://www.ubuntulinux.jp/sources.list.d/jammy.list     -O /etc/apt/sources.list.d/ubuntu-ja.list
-#sudo apt update
+## リポジトリ追加後、パッケージ情報の更新時に以下の警告が表示されますが、これはUbuntu 24.04 LTSから1024ビットRSAによるAPTリポジトリ署名鍵が非推奨になったことによるものです。
+## Launchpad PPAでの再署名と鍵の更新が完了後、この警告は表示されなくなる予定です。
+## W: http://archive.ubuntulinux.jp/ubuntu/dists/noble/InRelease: Signature by key 59676CBCF5DFD8C1CEFE375B68B5F60DCDC1D865 uses weak algorithm (rsa1024)
+#sudo wget https://www.ubuntulinux.jp/sources.list.d/noble.sources -O /etc/apt/sources.list.d/ubuntu-ja.sources
+#sudo apt -U upgrade
+#sudo apt install ubuntu-defaults-ja
 ## === code
 #GPGKEY=/usr/share/keyrings/microsoft-packages-keyring.gpg
 #curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o $GPGKEY
