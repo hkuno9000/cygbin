@@ -140,8 +140,10 @@ cdx()
     cd
     return
   fi
+  local gitdir=$(git rev-parse --show-toplevel 2>/dev/null)
+  [ -d "$gitdir" ] || gitdir="."
   local dir
-  for dir in $@ $1* ../$1* ../../$1* ~/$1* ~/GitHub/$1* ~/BitBucket/$1* ~/install/$1*; do
+  for dir in $@ $1* ../$1* ../../$1* ~/$1* ~/GitHub/$1* ~/BitBucket/$1* ~/install/$1* $gitdir/$1* $gitdir/src/$1* $gitdir/Source/$1*; do
     if [ -d "$dir" ]; then
       pushd "$dir"
       return
