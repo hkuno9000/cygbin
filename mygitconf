@@ -63,7 +63,7 @@ git config --global diff.indentHeuristic true
 # git alias
 git config --global alias.utf8 '!LANG=ja_JP.UTF-8 LESSCHARSET=utf-8 git'
 git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
-git config --global alias.nkf '!f(){ git $@ | nkf -w | tig; };f'
+git config --global alias.nkf '!f(){ cd ${GIT_PREFIX} ; git $@ | nkf -w; };f'
 git config --global alias.st 'status'
 git config --global alias.sts 'status --short --branch'
 git config --global alias.sti 'status --ignored'
