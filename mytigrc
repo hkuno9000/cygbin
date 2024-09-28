@@ -4,6 +4,7 @@ set diff-highlight = true
 set tab-size = 4
 set mouse = true
 set main-view-date-local = yes
+set diff-options = -m --first-parent
 # main view
 bind main   . !git diff %(commit)
 bind reflog . !git diff %(commit)
