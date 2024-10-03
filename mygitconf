@@ -119,8 +119,8 @@ git config --global alias.wl 'worktree list'
 git config --global alias.al 'config --get-regexp alias.*'
 git config --global alias.al-config '!git config --get-regexp "alias.*" | perl -lne "print if s/(alias\.\S+) (.+)/git config --global \$1 \x27\$2\x27/"'
 show_option=''
-[ -n "$(git config -H |& grep show-origin)" ] && show_option='--show-origin'
-[ -n "$(git config -H |& grep show-scope)"  ] && show_option='--show-origin --show-scope'
+[ -n "$(git config -H 2>&1 | grep show-origin)" ] && show_option='--show-origin'
+[ -n "$(git config -H 2>&1 | grep show-scope)"  ] && show_option='--show-origin --show-scope'
 git config --global alias.cl   "config $show_option --get-regexp"
 git config --global alias.ul   "config $show_option --get-regexp 'user.*'"
 git config --global alias.crlf "config $show_option --get-regexp 'core.*crlf'"
