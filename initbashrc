@@ -14,6 +14,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	## Note: bash logout
 	##  1. ~/.bash_logout
 	##
+	[ -z "$PS1" ] && return # return if non-interactive-mode.
 	## un-comment if you need.
 	#HISTSIZE=2000
 	#HISTFILESIZE=2000
