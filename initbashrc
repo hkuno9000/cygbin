@@ -24,6 +24,9 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#alias diff='diff --color=auto'
 	#alias mount-clone='sudo mount /dev/sda2 /mnt/clone && lsblk'
 	#alias umount-clone='sudo umount /mnt/clone && lsblk'
+	#alias tailss='tailscale status'
+	#alias tailup='tailscale up --ssh'
+	#alias taildn='tailscale down'
 	#alias start='xdg-open'
 	#export EDITOR=vim
 	#export GIT_EDITOR=vim
