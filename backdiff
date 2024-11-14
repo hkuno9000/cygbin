@@ -21,7 +21,7 @@ Usage:
 BACKUP:
     FILE~ FILE.~*~ FILE.bak FILE.orig FILE.save
     ~/orig/FILE ~/save/FILE ~/backup/FILE
-    ./orig/FILE ./save/FILE
+    ./orig/FILE ./save/FILE ./bak/FILE ./fix/FILE ./tmp/FILE
 
 options:
     --help, -h, -?  show help
@@ -65,10 +65,10 @@ fi
 if [ -n "$base" ] ; then
 	pushbackt ~/{orig,save,backup}/$base
 	if [ "$PWD" != "$HOME" ] ; then
-		pushbackt ./{orig,save}/$base
+		pushbackt ./{orig,save,bak,fix,tmp}/$base
 	fi
 	if [ -d "$dir" ] ; then
-		pushbackt $dir/{orig,save}/$base
+		pushbackt $dir/{orig,save,bak,fix,tmp}/$base
 		pushbackt ~/{orig,save,backup}/${dir#/}/$base
 	fi
 fi
