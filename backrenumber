@@ -1,0 +1,62 @@
+#!/bin/bash
+usage() { cat <<EOF
+$*
+
+Usage:
+    backrenumber FILE [BACKUPS...]  # for bak in FILE~ FILE.~*~ BACKUPS...; do mv --backup=t bak FILE
+
+BACKUPS: given args OR default are
+    FILE.bak  FILE.bak~ FILE.bak.~*~
+    FILE.orig FILE.orig~ FILE.orig.~*~
+    FILE.save FILE.save~ FILE.save.~*~
+
+Options:
+    --help, -h, -?  show help
+EOF
+}
+help_exit() {
+	usage "backup renumber FILES."
+	exit 0
+}
+error_exit() {
+	usage $1 >&2
+	exit 1
+}
+function pushback {
+	local f
+	for f in $@; do
+		[ -f "$f" ] && back="$back $f" # append existing files to $back
+	done
+}
+function pushbackt {
+	local f
+	for f in $@; do
+		pushback $f{,~,.~*~} # fname fname~ fname.~*~
+	done
+}
+# parse command line
+case $1 in
+--help|-h|-\?|"") help_exit;;
+esac
+file=$1
+if [ ! -f "$file" ]; then
+	error_exit "$file is not a file"
+fi
+
+# search backup files
+pushback $file{~,.~*~}	# fname~ fname.~*~
+if [ -n "$2" ]; then
+	shift
+	pushback "$@"
+else
+	pushbackt $file.bak	# fname.bak fname.bak~ fname.bak.~*~
+	pushbackt $file.orig	# fname.orig fname.orig~ fname.orig.~*~
+	pushbackt $file.save	# fname.save fname.save~ fname.save.~*~
+fi
+# print exist backup-files and do renumber
+ls -tr1 $back | uniq
+tmp=$(mktemp "$file.tmp.XXXXX")
+mv $file $tmp
+for bak in $(ls -tr1 $back $tmp | uniq); do
+	mv --backup=t $bak $file
+done
