@@ -95,6 +95,13 @@ vnoremap v $h
 inoremap qq <Esc><Cmd>qall<CR>
 nnoremap qq <Cmd>qall<CR>
 
+" 開いているファイルをvscodeで開く.
+nnoremap <leader>v :!code %<CR>
+
+" 特定のエンコードで開き直す.
+nnoremap <leader>8 :e ++enc=utf-8
+nnoremap <leader>j :e ++enc=sjis
+
 "=== visible tab,space,eol
 set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
