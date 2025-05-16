@@ -74,6 +74,7 @@ cat > install/mypkg << 'EOF'
 #sudo apt install xsel # need X11
 #sudo apt install fdclone vifm
 #sudo apt install gh
+#sudo apt install git-delta
 #sudo apt install git-svn
 #sudo apt install git-cvs
 #sudo apt install subversion

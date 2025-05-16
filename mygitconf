@@ -43,10 +43,11 @@ ifz-git-select-conf-global credential.helper "cache store git-credential-manager
 # git rebase
 git config --global rebase.autosquash true
 # pager
+# export GIT_PAGER=delta と設定すれば、以下の diff-highlight 設定より delta が優先使用される.
 pager="${PAGER:-less -FX}"
 ifz-git-conf-global core.pager "$pager"
 dir="/usr/share/doc/git/contrib/diff-highlight"
-if [ -d $dir ] ; then
+if [ -d $dir ] && [ ! -n "(which diff-highlight)" ]; then
   (cd $dir ; [ -e diff-highlight ] || sudo make ; sudo install diff-highlight /usr/local/bin)
 fi
 if [ -n "$(which diff-highlight)" ] ; then

@@ -30,6 +30,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#alias start='xdg-open'
 	#export EDITOR=vim
 	#export GIT_EDITOR=vim
+	#export GIT_PAGER=delta
 	#export PAGER=lv
 	#HISTTIMEFORMAT='%F %T '
 	#HISTCONTROL=ignoreboth
