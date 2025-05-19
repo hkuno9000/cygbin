@@ -96,7 +96,7 @@ inoremap qq <Esc><Cmd>qall<CR>
 nnoremap qq <Cmd>qall<CR>
 
 " 開いているファイルをvscodeで開く.
-nnoremap <leader>v :!code %<CR>
+nnoremap <leader>v :call system('code '..expand('%'))<CR>
 
 " 特定のエンコードで開き直す.
 nnoremap <leader>8 :e ++enc=utf-8
