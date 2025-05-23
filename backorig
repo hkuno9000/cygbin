@@ -36,5 +36,6 @@ fi
 if [ -d "$src" ]; then
 	cp -ipur --backup=t $src ~/orig/
 else
+	[ -f "$src" ] && diff -sq $src $dst
 	cp -ip --backup=t $src $dst
 fi
