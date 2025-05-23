@@ -17,6 +17,7 @@ alias .sudo='sudo ' # if the alias's last character is a blank, then the next wo
 alias sudovim='EDITOR=vim sudoedit'
 alias cp-backup='cp -ip --backup=t'
 alias mv-backup='mv -i  --backup=t'
+alias backsave='backcp -t ~/save'
 alias st='(git status      ; svn stat -u) 2>/dev/null'
 alias sts='(git status -sb ; svn stat -u) 2>/dev/null'
 [ -z "$MYGIT_LOG_ARGS" ] && export MYGIT_LOG_ARGS=-10

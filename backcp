@@ -5,6 +5,7 @@ $*
 Usage:
     backcp FILE         # cp --backup=t FILE FILE.bak
     backcp FILE DIR     # cp --backup=t FILE DIR/FILE
+    backcp -t DIR FILE  # cp --backup=t FILE DIR/FILE
     backcp FILE1 FILE2  # cp --backup=t FILE1 FILE2
     backcp <(CMD) FILE2 # cp --backup=1 <(CMD) FILE2
 
@@ -23,13 +24,19 @@ error_exit() {
 # parse command line
 case $1 in
 --help|-h|-\?|"") help_exit;;
+-t)
+	shift
+	[ -z "$1" ] && error_exit "please specify DIR for -t"
+	[ -d "$1" ] || mkdir "$1"
+	[ -d "$1" ] || error_exit "please specify DIR for -t"
+	dst=$1; src=$2;;
+*)
+	src=$1; dst=$2;;
 esac
-src=$1
-dst=$2
 if [ -p "$src" ] && ([ -d "$dst" ] || [ -z "$dst" ]); then
 	error_exit "$src is pipe, please specify FILE2"
 fi
-base=${1##*/} # BASE.EXT
+base=${src##*/} # BASE.EXT
 [ -d "$dst" ] && dst=$dst/$base
 
 # print exist backup-files and do backup
