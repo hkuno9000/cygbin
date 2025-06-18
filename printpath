@@ -1,4 +1,10 @@
 #!/usr/bin/perl -l
 $name = $ARGV[0] eq "" ? 'PATH' : $ARGV[0];
-$,="\n";
-print split(q/:/,$ENV{$name});
+$,="\n";        # set print list separator
+$_=$ENV{$name}; # get pathlist-env
+if (/;[A-Z]:\\/) {
+	print split(';',$_); # for DOS/Windows
+}
+else {
+	print split(':',$_); # for Unix
+}
