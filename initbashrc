@@ -54,7 +54,11 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#[ -z `type -t __git_ps1` ] || PS1=${PS1/]\\w/]\\w\`__git_ps1\`}                               ## add __git_ps1 after PWD
 	#[ -z `type -t __git_ps1` ] || PS1=${PS1/]\\w/]\\w\\[\\033[36m\\]\`__git_ps1\`\\[\\033[0m\\]}  ## add colored __git_ps1 after PWD
 	#[ -z `type -t lsb_release` ] || PS1=\\033[34m\\]`lsb_release -sd`*${PS1}                      ## add distribution name
-	#PS1=${PS1/\\$/\\n\\$}                                           ## add newline before $
+	#PS1=${PS1/\\$/\\n\\$} ## add newline before $
+	#PS1=${PS1/\\n/ \\A\\n} ## add 24time  before newline
+	#PS1=${PS1/\\n/*\\j\\n} ## add jobs    before newline
+	#PS1=${PS1/\\n/\`jobs\`\\n} ## add jobs before newline
+	#PS1=${PS1/\\n/!\\!\\n} ## add history before newline
 	#tabs -4
 	#PROMPT_COMMAND=jobs
 EOF
