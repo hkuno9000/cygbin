@@ -38,7 +38,7 @@ yesno() {
 cd ~
 mkdir save log backup install
 if mkdir orig; then
-  if [ -z `type -t sudo` ]; then
+  if [ -z "$(type -t sudo)" ]; then
     # cygwin and git-for-windows have not "sudo"
     cp -p .* orig/
     cp -pr /etc orig/
