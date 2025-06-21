@@ -32,8 +32,9 @@ cat >>$dst <<- 'EOF'
 	#alias mount-clone='sudo mount /dev/sda2 /mnt/clone && lsblk'
 	#alias umount-clone='sudo umount /mnt/clone && lsblk'
 	#alias tailss='tailscale status'
-	#alias tailup='tailscale up --ssh'
-	#alias taildn='tailscale down'
+	#alias tailup='sudo tailscale up --ssh=false'
+	#alias tailupssh='sudo tailscale up --ssh'
+	#alias taildn='sudo tailscale down'
 	#alias start='xdg-open'
 	#export EDITOR=vim
 	#export GIT_EDITOR=vim
