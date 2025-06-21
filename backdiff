@@ -4,7 +4,7 @@ usage() { cat <<EOF
 $*
 
 Usage:
-    backdiff [options] FILE [-diff-options] # diff BACKUP FILE -diff-options
+    [DIFF=diffcmd] backdiff [options] FILE [--diff-options] # diffcmd --diff-options BACKUP FILE
 
 BACKUP:
     FILE~ FILE.~*~
@@ -17,6 +17,9 @@ BACKUP:
 options:
     --help, -h, -?  show help
     -c "cmd"        diff <(cmd) FILE
+
+diffcmd:
+    default: 'diff -wup --color=auto'
 EOF
 }
 help_exit() {
@@ -58,6 +61,7 @@ esac
 base=${file##*/} # BASE.EXT
 noext=${file%.*} # DIR/BASE
 dir=${file%/*}   # DIR
+DIFF=${DIFF:-diff ${@:--wup --color=auto}} # diffopt:: -w:ignore-all-space, -u:unified-style, p:show-c-function
 
 # search backup files
 pushback $file{~,.~*~}		# fname~ fname.~*~
@@ -83,9 +87,8 @@ fi
 ls -ltFG $back | uniq
 select sel in $(ls -1t $back | uniq); do
 	if [ -n "$cmd" ]; then
-		diff -u -p --color=auto $sel <($cmd) $@
+		$DIFF $sel <($cmd)
 	else
-		diff -u -p --color=auto $sel $file $@
+		$DIFF $sel $file
 	fi
-	exit
 done
