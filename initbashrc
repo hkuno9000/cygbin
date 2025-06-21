@@ -1,6 +1,13 @@
 #!/bin/bash
 # vim: set shiftwidth=4 tabstop=4 noexpandtab nosmarttab:
-cat >>$HOME/.bashrc <<- 'EOF'
+dst=$HOME/.bashrc
+tmp=/tmp/bashrc
+if grep "^## Note: bash login" $dst; then
+	# すでに $dst へ書き出し済みならば、書き出し先を $tmp へ変更する.
+	perl -pe "exit if /^## Note: bash login/;" $dst > $tmp
+	dst=$tmp
+fi
+cat >>$dst <<- 'EOF'
 	## Note: bash login workflow
 	##  1. /etc/profile
 	##  1a. /etc/bash.bashrc [Debian]
@@ -62,3 +69,7 @@ cat >>$HOME/.bashrc <<- 'EOF'
 	#tabs -4
 	#PROMPT_COMMAND=jobs
 EOF
+if [ "$dst" = "$tmp" ]; then
+	DIFF=${DIFF:-diff ${@:--wu --color=auto}} # diffopt:: w:ignore-all-space, u:unified-style
+	$DIFF $tmp $HOME/.bashrc
+fi
