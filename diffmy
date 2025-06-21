@@ -1,11 +1,11 @@
 #!/bin/bash
 cd ~
-opt="-w ${@:--su}" # get diff-options
+DIFF=${DIFF:-diff ${@:--wus --color=auto}} # diffopt:: w:ignore-all-space, u:unified-style, s:report-identical-files
 committmp=$(git config --get commit.template)
 gitignore=$(git config --get core.excludesfile)
-diff $opt bin/myvimrc    .vimrc
-diff $opt bin/mytigrc    .tigrc
-diff $opt bin/myminttyrc .minttyrc
-diff $opt bin/mycommit_template $committmp
-diff $opt bin/myignore          $gitignore
-diff $opt bin/myeditorconfig    .editorconfig
+$DIFF bin/myvimrc    .vimrc
+$DIFF bin/mytigrc    .tigrc
+$DIFF bin/myminttyrc .minttyrc
+$DIFF bin/mycommit_template $committmp
+$DIFF bin/myignore          $gitignore
+$DIFF bin/myeditorconfig    .editorconfig
