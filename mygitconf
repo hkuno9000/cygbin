@@ -118,7 +118,7 @@ git config --global alias.pushyn '!git log --stat @{upstream}..HEAD && git statu
 git config --global alias.mergen 'merge --no-commit --no-ff --verbose'
 git config --global alias.pulln  'pull --no-commit --no-ff --verbose'
 git config --global alias.br 'branch'
-git config --global alias.bl 'branch -avv'
+git config --global alias.bl 'branch -vv'
 git config --global alias.bh 'rev-parse --abbrev-ref HEAD' # later git1.8: 'symbolic-ref --short HEAD'
 git config --global alias.bls 'branch -l --format="%(refname:short)"'
 git config --global alias.top 'rev-parse --show-toplevel'
