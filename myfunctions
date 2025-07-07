@@ -151,6 +151,13 @@ cdx()
   done
 }
 
+cdwk()
+{
+  echo '=== interactive chdir for git-worktree. CTRL-D then exit'
+  git worktree list || return
+  select sel in $(git worktree list | cut -d " " -f 1); do pushd $sel; done
+}
+
 setlang()
 {
   case $1 in
