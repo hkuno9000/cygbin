@@ -9,6 +9,8 @@ ifz-git-conf-global()
 ifz-git-select-conf-global()
 {
   if [ -z "$(git config --global --get $1)" ] ; then
+    [ "$1" = "diff.tool" ]  && git difftool --tool-help
+    [ "$1" = "merge.tool" ] && git mergetool --tool-help
     PS3="$1? "
     select sel in $2; do
       git config --global $1 $sel
@@ -73,6 +75,9 @@ git config --global tig.mouse yes
 git config --global log.date iso-local # YYYY-MM-DD hh:mm:ss +ZZZZ
 # git diff
 git config --global diff.indentHeuristic true
+ifz-git-select-conf-global diff.tool    "vimdiff vscode winmerge meld"
+ifz-git-select-conf-global diff.guitool         "vscode winmerge meld"
+ifz-git-select-conf-global merge.tool   "vimdiff vscode winmerge meld"
 # git alias
 git config --global alias.utf8 '!LANG=ja_JP.UTF-8 LESSCHARSET=utf-8 git'
 git config --global alias.sjis '!LANG=ja_JP.SJIS  LESSCHARSET=dos   git'
