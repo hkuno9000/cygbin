@@ -36,7 +36,7 @@ ifz-git-conf-global core.excludesfile ~/.gitignore_global
 git config --global push.default simple
 git config --global push.autoSetupRemote true
 # git pull
-git config --global pull.ff only
+ifz-git-select-conf-global pull.ff "only true false" # default is 'true'
 # git credential
 if [ -d "/mnt/c/Program Files/Git/mingw64/" ]; then # WSL + "Git for Windows" on host WindowsOS.
   ifz-git-conf-global credential.helper "/mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe"
