@@ -102,6 +102,10 @@ nnoremap <leader>v :call system('code '..expand('%'))<CR>
 " 特定のエンコードで開き直す.
 nnoremap <leader>8 :e ++enc=utf-8
 nnoremap <leader>j :e ++enc=sjis
+" BOMの有無を確認する.
+nnoremap <leader>b :set bomb?
+" TABインデント設定を確認する.
+nnoremap <leader>t :set ts? sts? sw? et? sta?
 
 "=== visible tab,space,eol
 set list
