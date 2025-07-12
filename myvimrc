@@ -1,19 +1,20 @@
 "=== encoding
 set enc=utf-8
-set fencs=ucs-bom,iso-2022-jp,euc-jp,sjis,cp932,utf-8
+set fencs=ucs-bom,utf-8,sjis,cp932,euc-jp,iso-2022-jp
 set fileformats=unix,dos,mac
 
 " FROM <http://www.kawaz.jp/pukiwiki/?vim>
 " if fenc is iso-2022-jp and buffer is ascii only then change fenc as enc
 " if this failed, do :e ++enc=utf-8
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-       let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
+""set fencs=ucs-bom,iso-2022-jp,euc-jp,sjis,cp932,utf-8
+""if has('autocmd')
+""  function! AU_ReCheck_FENC()
+""    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+""       let &fileencoding=&encoding
+""    endif
+""  endfunction
+""  autocmd BufReadPost * call AU_ReCheck_FENC()
+""endif
 
 "=== for sudo vim cursorkey
 set nocompatible
