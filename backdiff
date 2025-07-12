@@ -1,5 +1,6 @@
 #!/bin/bash
 # diff to fuzzy backup file
+DIFF=${DIFF:-diff -wup --color=auto} # diffopt:: -w:ignore-all-space, -u:unified-style, p:show-c-function
 usage() { cat <<EOF
 $*
 
@@ -19,7 +20,7 @@ options:
     -c "cmd"        diff <(cmd) FILE
 
 diffcmd:
-    default: 'diff -wup --color=auto'
+    default: 'diff -wup --color=auto', now '$DIFF'
 EOF
 }
 help_exit() {
@@ -61,7 +62,7 @@ esac
 base=${file##*/} # BASE.EXT
 noext=${file%.*} # DIR/BASE
 dir=${file%/*}   # DIR
-DIFF=${DIFF:-diff ${@:--wup --color=auto}} # diffopt:: -w:ignore-all-space, -u:unified-style, p:show-c-function
+DIFF=$DIFF $@    # add diff-options
 
 # search backup files
 pushback $file{~,.~*~}		# fname~ fname.~*~
