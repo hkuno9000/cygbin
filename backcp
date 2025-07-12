@@ -1,4 +1,6 @@
 #!/bin/bash
+DIFF=${DIFF:-diff -wsq --color=auto} # diffopt:: -w:ignore-all-space, -s:show-identical-files, -q:quiet
+
 usage() { cat <<EOF
 $*
 
@@ -8,9 +10,13 @@ Usage:
     backcp -t DIR FILE  # cp --backup=t FILE DIR/FILE
     backcp FILE1 FILE2  # cp --backup=t FILE1 FILE2
     backcp <(CMD) FILE2 # cp --backup=1 <(CMD) FILE2
+    DIFF=diffcmd backcp ...
 
 Options:
     --help, -h, -?  show help
+
+diffcmd:
+    default:'diff -wsq --color=auto' now '$DIFF'
 EOF
 }
 help_exit() {
@@ -39,13 +45,16 @@ fi
 base=${src##*/} # BASE.EXT
 [ -d "$dst" ] && dst=$dst/$base
 
+# backup copy
+function mybackup {
+	[ -f "$1" ] && [ -f "$2" ] && $DIFF $1 $2 && exit 0 # 内容同一ならbackupは不要なのでexitする.
+	cp -ip --backup=t $1 $2
+}
 # print exist backup-files and do backup
 if [ -n "$dst" ] ; then
 	[ -f "$dst" ] && ls -lFt $dst*
-	[ -f "$src" ] && diff -sq $src $dst && exit 0
-	cp -ip --backup=t $src $dst
+	mybackup $src $dst
 else
 	[ -f "$src" ] && ls -lFt $src*
-	[ -f "$src.bak" ] && diff -sq $src{,.bak} && exit 0
-	cp -ip --backup=t $src{,.bak}
+	mybackup $src{,.bak}
 fi
