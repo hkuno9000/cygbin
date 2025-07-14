@@ -5,7 +5,7 @@ committmp=$(git config --get commit.template)
 gitignore=$(git config --get core.excludesfile)
 $DIFF bin/myvimrc    .vimrc
 $DIFF bin/mytigrc    .tigrc
-$DIFF bin/myminttyrc .minttyrc
+[ "$TERM_PROGRAM" = "mintty" ] && $DIFF bin/myminttyrc .minttyrc # only for mintty under MINGW64/MSYS2(GFW)
 $DIFF bin/mycommit_template $committmp
 $DIFF bin/myignore          $gitignore
 $DIFF bin/myeditorconfig    .editorconfig

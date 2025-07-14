@@ -2,7 +2,7 @@
 cd ~
 ln -f bin/myvimrc     .vimrc
 ln -f bin/mytigrc     .tigrc
-ln -f bin/myminttyrc  .minttyrc
+[ "$TERM_PROGRAM" = "mintty" ] && ln -f bin/myminttyrc .minttyrc # only for mintty under MINGW64/MSYS2(GFW)
 ln -f bin/mycommit_template .commit_template
 [ -e .gitignore_global ] || ln -f bin/myignore       .gitignore_global
 [ -e .editorconfig ]     || ln -f bin/myeditorconfig .editorconfig
