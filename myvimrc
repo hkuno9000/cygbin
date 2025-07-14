@@ -66,13 +66,33 @@ set background=dark
 set cursorline
 augroup InsertHook
     autocmd!
-    " colorscheme によっては、適切な色ではない.
-    " vimrc_local側でcolorschemeに応じて調整が必要.
-    autocmd InsertEnter * hi StatusLine ctermbg=cyan  guibg=cyan
-    autocmd InsertLeave * hi StatusLine ctermbg=white guibg=white
-    autocmd InsertEnter * hi CursorLine cterm=bold gui=bold guibg=darkcyan
-    autocmd InsertLeave * hi CursorLine cterm=NONE gui=NONE guibg=gray40
+    autocmd InsertEnter * call Set_Insert_hi()
+    autocmd InsertLeave * call Restore_orig_hi()
 augroup END:
+function! Set_Insert_hi()
+    if &background == 'dark'
+        hi clear StatusLine | hi StatusLine cterm=bold,reverse gui=bold,reverse ctermfg=cyan guifg=cyan
+        hi clear CursorLine | hi CursorLine cterm=bold gui=bold ctermbg=darkcyan guibg=darkcyan
+        hi Normal guibg=#333355
+    else
+        hi clear StatusLine | hi StatusLine cterm=bold gui=bold ctermbg=black guibg=black ctermfg=cyan guifg=cyan
+        hi clear CursorLine | hi CursorLine cterm=bold gui=bold ctermbg=cyan guibg=cyan
+        hi Normal guibg=#EEEEFF
+    endif
+endfunction
+function! Restore_orig_hi()
+    " 保存した設定を元に戻すのが本来処理だが、カラースキームを再設定することで手間を省く.
+    execute 'colorscheme ' . get(g:, 'colors_name', 'default')
+endfunction
+"function! Save_orig_hi()
+" 設定値は下記で簡単に取れるが、highlightへの引数に変形するのが困難である.
+"   let g:orig_hi_statusline = execute('highlight StatusLine')
+"   let g:orig_hi_cursorline = execute('highlight CursorLine')
+"   let g:orig_hi_normal = execute('highlight Normal')
+" 以下のように、設定値を個別に得て、highlightコマンドを組み上げるのが正統な処理である.
+"   let l:guifg = synIDattr(hlID('StatusLine'), 'fg', 'gui')
+"endfunction
+"autocmd VimEnter,ColorScheme * call Save_orig_hi()
 
 "=== search
 " FROM <https://qiita.com/nrk_baby/items/154e3fa15c48a39e3375#%E3%82%B4%E3%83%BC%E3%83%AB>
