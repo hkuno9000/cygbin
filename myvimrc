@@ -53,14 +53,22 @@ set mouse=a
 set ttymouse=sgr
 
 "=== color
-" default colorscheme are here: /usr/share/vim/vim74/colors/
+" default colorscheme are here: /usr/share/vim/vim*/colors/
 " user installed      are here: ~/.vim/colors/
 set background=dark
-"set termguicolors
+if exists('$TERM') && ($TERM == 'xterm-direct')
+    set termguicolors
+elseif exists('$COLORTERM') && ($COLORTERM == 'truecolor' || $COLORTERM == '24bit')
+    set termguicolors
+elseif exists('$TERM_PROGRAM') && ($TERM_PROGRAM == 'mintty') " MINGW/MSYS2(GFW)
+    set termguicolors
+elseif exists('$WSL_DISTRO_NAME')
+    set termguicolors
+elseif exists('$SSH_CLIENT') " sshクライアントから$COLORTERMを受け取るのが正統方法だが設定が複雑なので、sshクライアントはtruecolor端末と見做す.
+    set termguicolors
+endif
 "colorscheme evening
 "colorscheme elflord
-"colorscheme molokai
-"colorscheme solarized
 
 "=== insert/normal mode
 set cursorline
