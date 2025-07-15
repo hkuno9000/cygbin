@@ -52,9 +52,9 @@ function mybackup {
 }
 # print exist backup-files and do backup
 if [ -n "$dst" ] ; then
-	[ -f "$dst" ] && ls -lFt $dst*
+	[ -f "$dst" ] && ls -lFt $dst $dst.~*
 	mybackup $src $dst
 else
-	[ -f "$src" ] && ls -lFt $src*
+	[ -f "$src" ] && ls -lFt $src $src.bak*
 	mybackup $src{,.bak}
 fi
