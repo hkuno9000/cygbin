@@ -128,12 +128,18 @@ nnoremap qq <Cmd>qall<CR>
 nnoremap <leader>v :call system('code '..expand('%'))<CR>
 
 " 特定のエンコードで開き直す.
-nnoremap <leader>8 :e ++enc=utf-8
-nnoremap <leader>j :e ++enc=sjis
+nnoremap <leader>e8 :e ++enc=utf-8
+nnoremap <leader>e6 :e ++enc=utf-16le
+nnoremap <leader>ej :e ++enc=sjis
 " BOMの有無を確認する.
-nnoremap <leader>b :set bomb?
-" TABインデント設定を確認する.
-nnoremap <leader>t :set ts? sts? sw? et? sta?
+nnoremap <leader>bom :set bomb?
+" TABインデント設定を確認する、設定する.
+nnoremap <leader>t?  :set et? sta? ts? sts? sw?    " check tab-indent sets
+nnoremap <leader>ts2 :set et sta sts=2 sw=2        " indent2 by space
+nnoremap <leader>ts4 :set et sta sts=4 sw=4        " indent4 by space
+nnoremap <leader>tx4 :set noet sta ts=8 sts=4 sw=4 " indent4 by space or hard-tab
+nnoremap <leader>t4  :set noet sta ts=4 sts=0 sw=4 " indent4 by hard-tab
+nnoremap <leader>t8  :set noet sta ts=8 sts=0 sw=8 " indent8 by hard-tab
 
 "=== visible tab,space,eol
 set list
