@@ -102,6 +102,16 @@ endfunction
 "endfunction
 "autocmd VimEnter,ColorScheme * call Save_orig_hi()
 
+"=== IME-cursor, zenkaku-space
+" FROM <https://qiita.com/s_of_p/items/a5649b4010684d8b24aa>
+" MINGW/MSYS2(GFW) のvim は -xim なので、CursorIM 設定が働かない.
+augroup UsingJapanese
+  autocmd!
+  autocmd ColorScheme          * hi def link CursorIM Search
+  autocmd VimEnter,ColorScheme * hi def link IdeographicSpace Visual
+  autocmd VimEnter,WinEnter    * match IdeographicSpace /　/
+augroup END
+
 "=== search
 " FROM <https://qiita.com/nrk_baby/items/154e3fa15c48a39e3375#%E3%82%B4%E3%83%BC%E3%83%AB>
 " 小文字の検索でも大文字も見つかるようにする
