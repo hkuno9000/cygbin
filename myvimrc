@@ -125,8 +125,10 @@ set hlsearch
 
 "=== keybind
 " FROM <https://qiita.com/nrk_baby/items/154e3fa15c48a39e3375#%E3%82%B4%E3%83%BC%E3%83%AB>
-" 入力モード中に素早くjjと入力した場合はESCとみなす
+" jを二回で挿入置換モードからノーマルモードへ.
 inoremap jj <Esc>
+" jを二回でターミナル入力モードからノーマルモードへ.
+tnoremap jj <C-\><C-n>
 " vを二回で行末まで選択
 vnoremap v $h
 
