@@ -160,6 +160,7 @@ git config --global alias.logsg   'log --oneline --decorate --graph'
 git config --global alias.logss   'log --oneline --no-decorate'
 git config --global alias.logsd   'log --format="%C(green)%ad(%ar) %C(red)%cd(%cr)%n%C(auto)%h%d %s%n"'
 git config --global alias.logv    'log --decorate --graph --branches --stat --format=fuller'
+git config --global alias.logsvn  "log --perl-regexp --grep='^\s*git-svn-id: \S+'"
 git config --global alias.reflogv 'reflog --decorate --format=fuller'
 git config --global alias.reflogd 'reflog --date=iso-local'
 git config --global alias.reflogr 'reflog --date=relative'
