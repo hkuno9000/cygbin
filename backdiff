@@ -88,6 +88,12 @@ fi
 ls -ltFG $back | uniq
 select sel in $(ls -1t $back | uniq); do
 	case $REPLY in
+		S|s|se|sudoedit)
+			sudoedit $file
+			;;
+		E|e|edit)
+			${EDITOR:-vim} $file
+			;;
 		Q|q|quit)
 			break # select-loop
 			;;
