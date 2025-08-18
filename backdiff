@@ -87,9 +87,16 @@ fi
 [ -n "$cmd" ] || ls -ltFG $file
 ls -ltFG $back | uniq
 select sel in $(ls -1t $back | uniq); do
-	if [ -n "$cmd" ]; then
-		$DIFF $sel <($cmd)
-	else
-		$DIFF $sel $file
-	fi
+	case $REPLY in
+		Q|q|quit)
+			break # select-loop
+			;;
+		*)
+			if [ -n "$cmd" ]; then
+				$DIFF $sel <($cmd)
+			else
+				$DIFF $sel $file
+			fi
+			;;
+	esac
 done
