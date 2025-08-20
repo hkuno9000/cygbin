@@ -66,7 +66,6 @@ if [ -n "$(type -t delta)" ] ; then
   git config --global pager.log  delta
   git config --global pager.diff delta
   git config --global pager.show delta
-
 fi
 # tig
 git config --global tig.tab-size 4
@@ -168,6 +167,8 @@ git config --global alias.ignore     '!vim -O $(git config --get core.excludesfi
 git config --global alias.attributes '!vim -O $(git rev-parse --git-path info/attributes) $(git rev-parse --show-toplevel)/.gitattributes'
 git config --global alias.ll 'ls-files'
 git config --global alias.zip '!git archive --format zip -o `git rev-parse --abbrev-ref @`.zip HEAD'
+git config --global alias.nodelta "!GIT_PAGER='$pager' git"
+git config --global alias.delta-s "!GIT_PAGER='delta --side-by-side' git"
 git config --global alias.code "!GIT_EDITOR='code --wait' git"
 git config --global alias.nano '!GIT_EDITOR=nano git'
 git config --global alias.vim  '!GIT_EDITOR=vim git'
