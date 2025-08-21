@@ -1,5 +1,5 @@
 # cygbin
-This is ~/bin on my cygwin. This is a backup for me.
+This is ~/bin on cygwin, git-for-windows, WSL, native Linux or macOS. This is a backup for me.
 But you can use them under MIT License.
 
 ## contents
@@ -8,9 +8,11 @@ But you can use them under MIT License.
  * my private shell scripts are *.sh and ignored by .gitignore, so not backup here.
 
 ## install
-```
+```shell
 cd ~
 # LANG=C xdg-user-dirs-gtk-update
+curl https://raw.githubusercontent.com/hkuno9000/cygbin/master/myinit -O
+  or
 wget https://raw.githubusercontent.com/hkuno9000/cygbin/master/myinit
 source myinit
 ```
