@@ -34,18 +34,21 @@ yesno() {
   esac
 }
 
+sudo() {
+  if [ -x /usr/bin/sudo ]; then
+    eval "command sudo $@"
+  else
+    # cygwin and git-for-windows have not native "sudo"
+    eval "$@"
+  fi
+}
+
 # init home dir
 cd ~
 mkdir save log backup install
 if mkdir orig; then
-  if [ -z "$(type -t sudo)" ]; then
-    # cygwin and git-for-windows have not "sudo"
-    cp -p .* orig/
-    cp -pr /etc orig/
-  else
-    sudo cp -p .* orig/
-    sudo cp -pr /etc orig/
-  fi
+  sudo cp -p .* orig/
+  sudo cp -pr /etc orig/
   dpkg --get-selections > orig/pkg-selections.log
   alias    > orig/alias.log
   printenv > orig/printenv.log
