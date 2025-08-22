@@ -60,6 +60,7 @@ yesno -c LANG=C xdg-user-dirs-gtk-update
 yesno -c sudo LANG=C dpkg-reconfigure keyboard-configuration
 diff {~/orig/,/}etc/default/keyboard
 # install minimum package
+if [ -x /usr/bin/apt-get ]; then
 yesno -c sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig zip
@@ -130,6 +131,7 @@ cat > install/mypkg << 'EOF'
 #sudo apt update ; sudo apt install anydesk
 EOF
 vim install/mypkg ; source install/mypkg
+fi
 
 # WSL patch
 if yesno "WSL [y/N]"; then
