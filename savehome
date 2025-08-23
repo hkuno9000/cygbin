@@ -8,4 +8,5 @@ cd ~
   apt list > log/apt-list.log
   groups   > log/groups.log
 zip -u backup/savehome.zip .* bin/*.sh log/* {.,backup,install}/*.{sh,txt,log} \
+	.ssh/config \
 	-x "*/" "*.bak" "*~" ".#*"
