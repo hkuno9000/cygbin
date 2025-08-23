@@ -3,9 +3,10 @@
 cd ~
 [ -d backup ] || mkdir backup
   dpkg --get-selections > log/pkg-selections.log
+  LC_ALL=C apt list --installed | grep -v -F automatic > log/apt-list.log
+  LC_ALL=C snap list                                   > log/snap-list.log
   alias    > log/alias.log
   printenv > log/printenv.log
-  apt list > log/apt-list.log
   groups   > log/groups.log
 zip -u backup/savehome.zip .* bin/*.sh log/* {.,backup,install}/*.{sh,txt,log} \
 	.ssh/config \
