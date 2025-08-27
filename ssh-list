@@ -1,3 +1,5 @@
 #!/bin/sh
 perl -lne 'BEGIN{print qq/=== $ARGV[0]/;} $hosts{$1} .= " $2" if /^(\w\S+) (\S+)/; END{ while (my($host,$types) = each %hosts) {print "$host:$types";} }' $HOME/.ssh/known_hosts
 perl -lne 'BEGIN{print qq/\n=== $ARGV[0]/;} print $& if /^Host \S+/;'  $HOME/.ssh/config
+echo -e "\n=== 公開キーを指定のホストへ登録するには:"
+echo "[ -f ~/.ssh/id_ed25519.pub ] || ssh-keygen -t ed25519 ; ssh-copy-id -i ~/.ssh/id_ed25519.pub [USER@]HOSTNAME"
