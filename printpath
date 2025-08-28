@@ -1,10 +1,30 @@
 #!/usr/bin/perl -l
-$name = $ARGV[0] eq "" ? 'PATH' : $ARGV[0];
-$,="\n";        # set print list separator
-$_=$ENV{$name}; # get pathlist-env
-if (/;[A-Z]:\\/) {
-	print split(';',$_); # for DOS/Windows
+if ($ARGV[0] eq "-u") {
+    shift; # remove "-u" from @ARGV
+    $do_uniq = 1;
 }
-else {
-	print split(':',$_); # for Unix
+my $name = $ARGV[0] eq "" ? 'PATH' : $ARGV[0];
+my $path = $ENV{$name}; # get pathlist-env
+my $sep = ':'; # for Unix
+if ($path =~ /;[A-Z]:\\/) { # パス文字列中に、";ドライブ名:\" を含むパターンがあればDOS/Windows環境である.
+    $sep = ';'; # for DOS/Windows
+}
+my @list = split($sep,$path);
+$, = "\n";      # set print list separator
+if ($do_uniq) {
+    @list = uniq_list(@list);
+    $, = $sep;
+}
+print @list;
+
+sub uniq_list {  # リストの重複を取り除いて返す.
+    my @uniqlist;
+    my %exists;
+    foreach my $i (@_) {
+        unless ($exists{$i}) {
+            push @uniqlist,$i;
+            $exists{$i} = 1;
+        }
+    }
+    return @uniqlist;
 }
