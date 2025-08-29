@@ -20,6 +20,7 @@ alias sudovim='EDITOR=vim sudoedit'
 alias cp-backup='cp -ip --backup=t'
 alias mv-backup='mv -i  --backup=t'
 alias backsave='backcp -t ~/save'
+alias backorig='backcp -t ~/orig'
 alias st='git status'
 alias sts='git status -sb'
 [ -z "$MYGIT_LOG_ARGS" ] && export MYGIT_LOG_ARGS=-10
