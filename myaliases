@@ -30,14 +30,14 @@ alias logss='_(){ export MYGIT_LOG_ARGS="${@:-$MYGIT_LOG_ARGS}" ; git logss $MYG
 alias logsd='_(){ export MYGIT_LOG_ARGS="${@:-$MYGIT_LOG_ARGS}" ; git logsd $MYGIT_LOG_ARGS; }; \_'
 alias today='git today'
 alias todays='git todays'
-if [ -z "$(alias ll 2>/dev/null)" ]; then alias ll='ls -alF'; fi
-if [ -z "$(alias la 2>/dev/null)" ]; then alias la='ls -A'; fi
-if [ -z "$(alias l  2>/dev/null)" ]; then alias l='ls -CF'; fi
-if [ -z "$(alias rm 2>/dev/null)" ]; then alias rm='rm -i'; fi
-if [ -z "$(alias cp 2>/dev/null)" ]; then alias cp='cp -i'; fi
-if [ -z "$(alias mv 2>/dev/null)" ]; then alias mv='mv -i'; fi
-if [ -z "$(alias df 2>/dev/null)" ]; then alias df='df -h'; fi
-if [ -z "$(alias du 2>/dev/null)" ]; then alias du='du -h'; fi
+[ "$(type -t ll)" = "alias" ] || alias ll='ls -alF'
+[ "$(type -t la)" = "alias" ] || alias la='ls -A'
+[ "$(type -t l)"  = "alias" ] || alias l='ls -CF'
+[ "$(type -t rm)" = "alias" ] || alias rm='rm -i'
+[ "$(type -t cp)" = "alias" ] || alias cp='cp -i'
+[ "$(type -t mv)" = "alias" ] || alias mv='mv -i'
+[ "$(type -t df)" = "alias" ] || alias df='df -h'
+[ "$(type -t du)" = "alias" ] || alias du='du -h'
 alias aw='type -a'
 alias clipin='xsel -bi'
 alias clipout='xsel -bo'
