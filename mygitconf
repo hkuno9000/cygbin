@@ -108,7 +108,8 @@ git config --global alias.cont  '!args=$(git status | perl -ne "print \$1 if /gi
 git config --global alias.abort '!args=$(git status | perl -ne "print \$1 if /git (\w+-?\w* --abort)/"); git ${args:-status}'    # if you have extracted "git xxx --abort"    from git-status-message then run it, else run "git status"
 git config --global alias.tagsave 'tag -f save'
 git config --global alias.pick 'cherry-pick -xe'
-git config --global alias.cv   'cherry -v'
+git config --global alias.cv   "!f(){ echo === \${1:-'@{upstream}'} から取り込み済みコミットは-, \${2:-HEAD} 側の固有コミットは+; git cherry -v \$@; };f"
+git config --global alias.cvr  "!f(){ git cv \${2:-HEAD} \${1:-'@{upstream}'}; };f" # ブランチ引数の順番を入れ替えて git cv を呼ぶ.
 git config --global alias.fetcht 'fetch --tags -f'
 git config --global alias.pullr  'pull --rebase'
 git config --global alias.pullri 'pull --rebase=interactive'
