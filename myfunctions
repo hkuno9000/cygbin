@@ -155,13 +155,14 @@ cdwk()
 {
   echo '=== interactive chdir for git-worktree.'
   git worktree list || return
-  select sel in $(git worktree list | cut -d " " -f 1); do
+  local dir
+  select dir in $(git worktree list | cut -d " " -f 1); do
     case $REPLY in
       Q|q|quit)
         break # select-loop
         ;;
       *)
-        pushd $sel && break
+        [ -d "$dir" ] && pushd "$dir" && break
         ;;
     esac
   done
