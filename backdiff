@@ -94,11 +94,26 @@ select sel in $(ls -1t $back | uniq); do
 		E|e|edit)
 			${EDITOR:-vim} $file
 			;;
+		backsave)
+			backcp -t ~/save $file
+			;;
 		Q|q|quit)
 			break # select-loop
 			;;
+		H|h|help|\?)
+			cat <<-EOF
+				1-N:             diff target
+				S,s,se,sudoedit: sudoedit $file
+				E,e,edit:        ${EDITOR:-vim} $file
+				backsave:        backcp -t ~/save $file
+				H,h,help,?:      this help
+				Q,q,quit:        quit
+			EOF
+			;;
 		*)
-			if [ -n "$cmd" ]; then
+			if [ -z "$sel" ]; then
+				echo "Enter 'h' for help"
+			elif [ -n "$cmd" ]; then
 				$DIFF $sel <($cmd)
 			else
 				$DIFF $sel $file
