@@ -105,6 +105,11 @@ lsbin() {
   for f in $(type -aP $@); do ls -lFG $f; done # PATH上の実行ファイル $@ を優先順に全て一覧する.
 }
 
+lswhich() {
+  local f=$(type -P $@)
+  [ -n "$f" ] && ls -lFG $f # 実行ファイル $@ を一覧する.
+}
+
 yesno() {
   local yn
   case $1 in
