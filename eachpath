@@ -3,12 +3,18 @@ if (!@ARGV || $ARGV[0] eq '-?') {
     print "usage: eachpath [-ENVNAME] command\n";
     exit 1;
 }
-$name = 'PATH';
+my $name = 'PATH';
 if ($ARGV[0] =~ /^-(\w+)/) {
     $name = $1; shift;
 }
+my $path = $ENV{$name}; # get pathlist-env
+my $sep = ':'; # for Unix
+if ($path =~ /;[A-Z]:\\/) { # パス文字列中に、";ドライブ名:\" を含むパターンがあればDOS/Windows環境である.
+    $sep = ';'; # for DOS/Windows
+}
+my @list = split($sep,$path);
 print "* foreach \$$name do {@ARGV}\n";
-foreach $d (split(q/:/,$ENV{$name})) {
+foreach my $d (@list) {
     print "** $d\n";
     chdir($d);
     system(@ARGV);
