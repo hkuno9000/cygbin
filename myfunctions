@@ -100,6 +100,11 @@ lltop() {
 ##  echo "=== command ls opt -1dt files" ; command ls $opt -1dt "${files[@]}"
 }
 
+lsbin() {
+  local f
+  for f in $(type -aP $@); do ls -lFG $f; done # PATH上の実行ファイル $@ を優先順に全て一覧する.
+}
+
 yesno() {
   local yn
   case $1 in
