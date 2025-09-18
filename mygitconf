@@ -178,6 +178,8 @@ git config --global alias.hdate '!git -c log.date=human'
 git config --global alias.nolog "!f(){ git \$@ -- ':!*.log'; };f"
 git config --global alias.nohtm "!f(){ git \$@ -- ':!*.htm'; };f"
 git config --global alias.foreach "!f(){ gcmd=\$1; shift; for file in \"\$@\"; do git \$gcmd -- \$file; done; };f"
+git config --global alias.cred '!echo === helper && git cl credential.helper ; echo === url && git cl url ; echo === store && cat $HOME/.git-credentials'
+git config --global alias.wincred '!cmdkey -list | nkf -w | grep -A2 -F target=git:'
 echo '#### check user setting ####'
 git ul
 echo '#### check credential setting ####'
