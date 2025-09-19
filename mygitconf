@@ -28,9 +28,11 @@ git config --global core.whitespace cr-at-eol
 # git commit template
 ifz-git-conf-global commit.template ~/.commit_template
 # git無視パターンファイルを作成して、登録する
-# 1. core.excludesfile の初期値は $XDG_CONFIG_HOME/git/ignore なので、その場所に作る方法と、
-# 2. 任意の場所にファイルを作成し、そのパスを core.excludesfile に設定する方法がある.
-# 各プロジェクト固有な無視パターンについては proj/.gitignore または、proj/.git/info/exclude に作成する.
+# 1. プロジェクト固有かつ、リポジトリに載せて共有したい無視パターンは、ワークツリー内フォルダの .gitignore に作成する.
+# 2. プロジェクト固有かつ、リポジトリに載せない個人的な無視パターンは、$GIT_DIR/.git/info/exclude に作成する.
+# 3. 全プロジェクトに共通な無視パターンは $XDG_CONFIG_HOME/git/ignore に作成する. または任意の場所にファイルを作成し、そのパスを core.excludesfile に設定する.
+# これらの無視パターンを、3から1へ向けて重ねて適当する. 1においてはワークツリーのルートから子フォルダへ向けて重ねて適用する.
+# 詳細説明: https://git-scm.com/docs/gitignore
 ifz-git-conf-global core.excludesfile ~/.gitignore_global
 # git push
 git config --global push.default simple
