@@ -1,0 +1,78 @@
+#!/usr/bin/perl
+# nestgrep - キーワードを囲む中括弧の入れ子を含めて抽出する.
+# usage  PATTERN FILES
+use v5.10;
+
+# コマンドラインのオプションを解析する.
+$opt_with_filename = 0;
+$opt_line_number = 0;
+use Getopt::Long qw(:config no_ignore_case gnu_compat bundling);
+GetOptions(
+	'line-number|n' => \$opt_line_number,
+	'with-filename|H' => \$opt_with_filename,
+	'no-filename|h' => sub { $opt_with_filename = -1 },
+	'help|?' => sub { &usage(); },
+	) or &usage;
+
+sub usage {
+	say STDERR @_ if @_;
+	say STDERR <<EOF;
+usage: nestgrep OPTIONS PATTERN FILES...
+OPTIONS:
+  -n, --line-number         print line number with output lines
+  -H, --with-filename       print file name with output lines
+  -h, --no-filename         suppress the file name prefix on output
+  -?, --help
+EOF
+	exit 1;
+}
+
+sub prompt {
+	my $p = "";
+	$p .= "$ARGV:" if ($opt_with_filename > 0);
+	$p .= "$.:"    if ($opt_line_number > 0);
+	$p .= " "      if ($p =~ /:$/);
+	return $p;
+}
+
+# 第一引数から PATTERN を取り出す.
+&usage("no PATTERN") if (@ARGV < 1);
+$pat = shift;
+$pat =~ s/!/\\!/g;			# m!! で使うので$pat中の!をエスケープして保護する.
+
+# FILESにワイルドカードが含まれていれば展開する(for Windows/DOS shell)
+@ARGV = glob($ARGV[0]) if (@ARGV == 1 && $ARGV[0] =~ /[\*\?]/);
+
+# FILESが2個以上かつ-h/Hオプション指定なしならば自動的に -H オプションオン.
+$opt_with_filename = 1 if (@ARGV > 1 and $opt_with_filename == 0);
+
+while (<>) {
+	if (m!$pat!) {
+		my $line = &prompt() . $_;
+		print @nest, $line;	# 入れ子と一致行を出力する.
+		@nest = ();			# 出力済みの入れ子は消す.
+	}
+	if (/{\s*(#.*|\/\/.*|\/\*.*)?$/) { # 開括弧以後にコメントと行末のみの行を、入れ子開始とみなす.
+		my $line = &prompt() . $_;
+		$line = $decl . $line if /^\s*{/; # 開括弧のみの行は、直前の宣言文らしきものを先頭に差し込む.
+		pop @nest if /^\s*}/; # 行頭に閉括弧があれば、事前に入れ子を一段減らす.
+		push(@nest, $line);	# 入れ子を一段深くする.
+	}
+	elsif (/^\s*\w+/) {
+		my $line = &prompt() . $_;
+		if ($decl =~ /[,\(\)]\s*$/) {
+			$decl .= $line;	# カンマや括弧で行分割された宣言文らしきものを記憶する.
+		}
+		else {
+			$decl = $line;	# 単行の宣言文らしきものを記憶する.
+		}
+	}
+	elsif (/^\s*}/) {	# 行頭に閉括弧の行を、入れ子終端とみなす.
+		my $line = &prompt() . $_;
+		print $line unless exists $nest[0]; # 出力済みの入れ子に対応する閉じ括弧は出力する.
+		pop @nest;			# 入れ子を一段減らす.
+	}
+} continue {
+	close(ARGV) if eof; # 行番号 $. を各ファイル毎にリセットする.
+}
+# END
