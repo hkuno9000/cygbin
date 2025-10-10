@@ -43,6 +43,9 @@ $pat =~ s/!/\\!/g;			# m!! で使うので$pat中の!をエスケープして保
 # FILESにワイルドカードが含まれていれば展開する(for Windows/DOS shell)
 @ARGV = glob($ARGV[0]) if (@ARGV == 1 && $ARGV[0] =~ /[\*\?]/);
 
+# FILES指定なしかつ git配下ならgit登録ファイル一覧をFILESに設定する.
+@ARGV = split("\n", qx{git ls-files 2>/dev/null}) if (@ARGV < 1);
+
 # FILESが2個以上かつ-h/Hオプション指定なしならば自動的に -H オプションオン.
 $opt_with_filename = 1 if (@ARGV > 1 and $opt_with_filename == 0);
 
