@@ -6,11 +6,15 @@ use v5.10;
 # コマンドラインのオプションを解析する.
 $opt_with_filename = 0;
 $opt_line_number = 0;
+$opt_ignorecase = 0;
+$opt_wordregexp = 0;
 use Getopt::Long qw(:config no_ignore_case gnu_compat bundling);
 GetOptions(
 	'line-number|n' => \$opt_line_number,
 	'with-filename|H' => \$opt_with_filename,
 	'no-filename|h' => sub { $opt_with_filename = -1 },
+	'ignore-case|i' => \$opt_ignorecase,
+	'word-regexp|w' => \$opt_wordregexp,
 	'help|?' => sub { &usage(); },
 	) or &usage;
 
@@ -22,6 +26,8 @@ OPTIONS:
   -n, --line-number         print line number with output lines
   -H, --with-filename       print file name with output lines
   -h, --no-filename         suppress the file name prefix on output
+  -i, --ignore-case         ignore case distinctions in patterns and data
+  -w, --word-regexp         match only whole words
   -?, --help
 EOF
 	exit 1;
@@ -38,7 +44,9 @@ sub prompt {
 # 第一引数から PATTERN を取り出す.
 &usage("no PATTERN") if (@ARGV < 1);
 $pat = shift;
-$pat =~ s/!/\\!/g;			# m!! で使うので$pat中の!をエスケープして保護する.
+$pat = "\\b$pat\\b" if $opt_wordregexp;
+$re = qr/$pat/;
+$re = qr/$pat/i if $opt_ignorecase;
 
 # FILESにワイルドカードが含まれていれば展開する(for Windows/DOS shell)
 @ARGV = glob($ARGV[0]) if (@ARGV == 1 && $ARGV[0] =~ /[\*\?]/);
@@ -50,7 +58,7 @@ $pat =~ s/!/\\!/g;			# m!! で使うので$pat中の!をエスケープして保
 $opt_with_filename = 1 if (@ARGV > 1 and $opt_with_filename == 0);
 
 while (<>) {
-	if (m!$pat!) {
+	if (/$re/) {
 		my $line = &prompt() . $_;
 		print @nest, $line;	# 入れ子と一致行を出力する.
 		@nest = ();			# 出力済みの入れ子は消す.
