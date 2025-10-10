@@ -84,6 +84,9 @@ while (<>) {
 		pop @nest;			# 入れ子を一段減らす.
 	}
 } continue {
-	close(ARGV) if eof; # 行番号 $. を各ファイル毎にリセットする.
+	if (eof) {	# 各ファイル毎に、行番号 $. と 入れ子をリセットする.
+		close(ARGV); # closeすることで 行番号 $. をリセットする.
+		@nest = ();  # 保持中の入れ子をクリアする.
+	}
 }
 # END
