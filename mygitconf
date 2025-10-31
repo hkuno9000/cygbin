@@ -40,10 +40,11 @@ git config --global push.autoSetupRemote true
 # git pull
 ifz-git-select-conf-global pull.ff "only true false" # default is 'true'
 # git credential
+# helper-selector を設定すると、git push実行等でリモートへのアクセス認証が必要となる度に、GUIダイアログにて認証ヘルパー(manager, wincred等)選択肢が出る.
 if [ -d "/mnt/c/Program Files/Git/mingw64/" ]; then # WSL + "Git for Windows" on host WindowsOS.
   ifz-git-conf-global credential.helper "/mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe"
 fi
-ifz-git-select-conf-global credential.helper "cache store git-credential-manager manager wincred"
+ifz-git-select-conf-global credential.helper "cache store helper-selector manager wincred"
 # git rebase
 git config --global rebase.autosquash true
 # pager
