@@ -185,7 +185,7 @@ git config --global alias.cred '!echo === helper && git cl credential.helper ; e
 git config --global alias.wincred '!cmdkey -list | nkf -w | grep -A2 -F target=git:'
 git config --global alias.show-remote-br "!echo === NOW remote fetches:; git cl 'remote.*.fetch'"
 git config --global alias.reset-remote-br "!echo === TO RESET DEFAULT:; echo git remote set-branches origin \'*\'"
-git config --global alias.only2-remote-br '!echo === TO ONLY2:; main=$(git symbolic-ref refs/remotes/origin/HEAD); main=${main##*/}; main=${main:-master}; branch=$(git bh); echo git remote set-branches origin $main; [ "$main" != "$branch" ] && echo git remote set-branches --add origin $branch;'
+git config --global alias.only2-remote-br '!echo === TO ONLY2:; main=$(git symbolic-ref refs/remotes/origin/HEAD); main=${main##*/}; main=${main:-master}; branch=$(git bh); echo git remote set-branches origin $main; [ "$main" != "$branch" ] && echo git remote set-branches --add origin $branch; for b in $(git branch -r | grep -v -e $main -e $branch); do echo git branch -rd $b; done'
 echo '#### check user setting ####'
 git ul
 echo '#### check credential setting ####'
