@@ -65,6 +65,7 @@ if [ -n "$(type -t delta)" ] ; then
   git config --global core.pager delta
   git config --global interactive.diffFilter 'delta --color-only'
   git config --global delta.navigate true
+  git config --global delta.map-styles 'bold purple => syntax purple, bold cyan => syntax cyan' # for move-block
   git config --global merge.conflictStyle zdiff3
   git config --global pager.log  delta
   git config --global pager.diff delta
@@ -77,6 +78,7 @@ git config --global tig.mouse yes
 git config --global log.date iso-local # YYYY-MM-DD hh:mm:ss +ZZZZ
 # git diff
 git config --global diff.indentHeuristic true
+git config --global diff.colorMoved default
 ifz-git-select-conf-global diff.tool    "vimdiff vscode winmerge meld"
 ifz-git-select-conf-global diff.guitool         "vscode winmerge meld"
 ifz-git-select-conf-global merge.tool   "vimdiff vscode winmerge meld"
