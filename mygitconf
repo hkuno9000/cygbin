@@ -180,6 +180,7 @@ git config --global alias.nano '!GIT_EDITOR=nano git'
 git config --global alias.vim  '!GIT_EDITOR=vim git'
 git config --global alias.rdate '!git -c log.date=relative'
 git config --global alias.hdate '!git -c log.date=human'
+git config --global alias.nosafecrlf '!git -c core.safecrlf=false'
 git config --global alias.nolog "!f(){ git \$@ -- ':!*.log'; };f"
 git config --global alias.nohtm "!f(){ git \$@ -- ':!*.htm'; };f"
 git config --global alias.foreach "!f(){ gcmd=\$1; shift; for file in \"\$@\"; do git \$gcmd -- \$file; done; };f"
