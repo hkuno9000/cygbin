@@ -18,6 +18,8 @@ ifz-git-select-conf-global()
     done
   fi
 }
+# move to home
+cd $HOME
 # git user
 ifz-git-conf-global user.name 'YOUR NAME'
 ifz-git-conf-global user.email 'YOUR@mail.address.com'
