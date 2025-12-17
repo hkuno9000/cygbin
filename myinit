@@ -113,6 +113,8 @@ $(grep -h -E "^sudo (apt|apt-get) install" install/mypkg.save ~/.bash_history | 
 #sudo apt-get autoremove
 EOF
 cat >> install/mypkg << 'EOF'
+## === tailscle
+#curl -fsSL https://tailscale.com/install.sh | sh
 ## === ubuntu-ja
 ## https://www.ubuntulinux.jp/News/ubuntu2404-ja-remix
 ##  Japanese Teamのパッケージレポジトリを追加する.
