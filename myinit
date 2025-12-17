@@ -101,7 +101,6 @@ $(grep -h -E "^sudo (apt|apt-get) install" install/mypkg.save ~/.bash_history | 
 #sudo apt install astronomical-almanac
 #sudo apt install terminator
 #sudo apt install plantuml
-#sudo apt install google-chrome-stable
 #sudo apt install network-manager
 #sudo apt install whois
 #sudo apt install neovim
@@ -124,15 +123,13 @@ cat >> install/mypkg << 'EOF'
 #sudo apt -U upgrade
 #sudo apt install ubuntu-defaults-ja
 ## === code
-#GPGKEY=/usr/share/keyrings/microsoft-packages-keyring.gpg
-#curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o $GPGKEY
-#echo "deb [arch=amd64 signed-by=$GPGKEY] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-#sudo apt update ; sudo apt install code
+#@see https://code.visualstudio.com/Download
+#wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O vscode_stable_linux_amd64.deb
+#sudo apt install ./vscode_stable_linux_amd64.deb
 ## === google-chrome-stable
-#GPGKEY=/usr/share/keyrings/google-dl-keyring.gpg
-#curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o $GPGKEY
-#echo "deb [arch=amd64 signed-by=$GPGKEY] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-#sudo apt update ; sudo apt install google-chrome-stable
+#@see https://www.google.com/chrome/?platform=linux
+#wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#sudo apt install ./google-chrome-stable_current_amd64.deb
 ## === anydesk
 ## http://deb.anydesk.com/howto.html
 #GPGKEY=/usr/share/keyrings/anydesk-keyring.gpg
