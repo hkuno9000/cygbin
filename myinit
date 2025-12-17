@@ -63,7 +63,7 @@ diff {~/orig/,/}etc/default/keyboard
 if [ -x /usr/bin/apt-get ]; then
 yesno -c sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
-sudo apt install vim git tig zip
+sudo apt install vim git tig zip curl wget
 # install option package
 cp -p install/mypkg install/mypkg.save
 cat > install/mypkg << EOF
@@ -81,12 +81,15 @@ $(grep -h -E "^sudo (apt|apt-get) install" install/mypkg.save ~/.bash_history | 
 #sudo apt install xsel # need X11
 #sudo apt install fdclone vifm
 #sudo apt install gh
+#sudo apt install meld
+#sudo apt install gitk
 #sudo apt install git-delta
 #sudo apt install git-svn
 #sudo apt install git-cvs
 #sudo apt install subversion
 #sudo apt install make
-#sudo apt install build-essential libtool automake autoconf pkg-config
+#sudo apt install build-essential
+#sudo apt install libtool automake autoconf pkg-config
 #sudo apt install cpanminus
 #sudo apt install npm && npm -g install electron
 #sudo apt install golang
@@ -106,6 +109,8 @@ $(grep -h -E "^sudo (apt|apt-get) install" install/mypkg.save ~/.bash_history | 
 #sudo apt install imagemagick
 #sudo apt install graphicsmagick
 #sudo apt install graphicsmagick-imagemagick-compat
+#sudo apt install libsixel-bin
+#sudo apt install w3m
 #sudo apt-get autoremove
 EOF
 cat >> install/mypkg << 'EOF'
