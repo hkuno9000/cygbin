@@ -55,6 +55,8 @@ if mkdir orig; then
   apt list > orig/apt-list.log
   groups   > orig/groups.log
 fi
+# fake Windows dir for URL file:///C:/Users/...
+yesno -c sudo mkdir /C: && sudo ln -s /home /C:/Users
 # mysetting
 yesno -c LANG=C xdg-user-dirs-gtk-update
 yesno -c sudo LANG=C dpkg-reconfigure keyboard-configuration
