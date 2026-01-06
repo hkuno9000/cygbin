@@ -59,8 +59,26 @@ fi
 yesno -c sudo mkdir /C: && sudo ln -s /home /C:/Users
 # mysetting
 yesno -c LANG=C xdg-user-dirs-gtk-update
-yesno -c sudo LANG=C dpkg-reconfigure keyboard-configuration
-diff {~/orig/,/}etc/default/keyboard
+keyconf=/etc/default/keyboard
+if [ -f $keyconf ] && yesno "keyboard configuration [y/N]"; then
+  cat <<-EOF | sudo tee -a $keyconf
+## $ view /usr/share/X11/xkb/rules/base.lst OR man xkeyboard-config OR man keyboard # to see all XKBOPTIONS
+## $ gsettings get org.gnome.desktop.input-sources xkb-options        # to check
+## $ dconf read   /org/gnome/desktop/input-sources/xkb-options        # to check
+## $ dconf reset  /org/gnome/desktop/input-sources/xkb-options        # to reset
+## $ sudoedit $keyconf ; sudo dpkg-reconfigure keyboard-configuration # to edit and update
+##  shift:both_capslock         Both Shifts together enable Caps Lock
+##  shift:both_capslock_cancel  Both Shifts together enable Caps Lock; one Shift key disables it
+##  ctrl:nocaps                 Caps Lock as Ctrl
+##  ctrl:swapcaps               Swap Ctrl and Caps Lock
+##  caps:ctrl_modifier          Make Caps Lock an additional Ctrl
+##  japan:hztg_escape           Make Zenkaku Hankaku an additional Esc
+XKBOPTIONS="ctrl:nocaps,shift:both_capslock_cancel,japan:hztg_escape"
+EOF
+  sudoedit $keyconf
+  sudo LANG=C dpkg-reconfigure keyboard-configuration
+  diff {~/orig,}$keyconf
+fi
 # dualboot config @see https://qiita.com/hkuno/items/0d9b677c9106e64ac338
 [ -x timedatectl ] && timedatectl && yesno -c timedatectl set-local-rtc 1
 [ -f /etc/default/grub ] && yesno -c sudoedit /etc/default/grub && yesno -c sudo update-grub;
