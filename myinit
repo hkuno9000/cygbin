@@ -60,7 +60,7 @@ yesno -c sudo mkdir /C: && sudo ln -s /home /C:/Users
 # mysetting
 yesno -c LANG=C xdg-user-dirs-gtk-update
 keyconf=/etc/default/keyboard
-if [ -f $keyconf ] && yesno "keyboard configuration [y/N]"; then
+if [ -f $keyconf ] && yesno "XKBOPTIONS(X11) configuration [y/N]"; then
   cat <<-EOF | sudo tee -a $keyconf
 ## $ view /usr/share/X11/xkb/rules/base.lst OR man xkeyboard-config OR man keyboard # to see all XKBOPTIONS
 ## $ gsettings get org.gnome.desktop.input-sources xkb-options        # to check
@@ -77,6 +77,18 @@ XKBOPTIONS="ctrl:nocaps,shift:both_capslock_cancel,japan:hztg_escape"
 EOF
   sudoedit $keyconf
   sudo LANG=C dpkg-reconfigure keyboard-configuration
+  diff {~/orig,}$keyconf
+fi
+keyconf=/etc/keyd/default.conf
+if [ -f $keyconf ] && yesno "keyd(Wayland) configuration [y/N]"; then
+  cat <<-EOF | sudo tee -a $keyconf
+##[main]
+##zenkaku_hankaku = esc, capslock
+##zenkaku_hankaku = capslock
+##capslock = leftcontrol
+EOF
+  sudoedit $keyconf
+  sudo systemctl restart keyd
   diff {~/orig,}$keyconf
 fi
 # dualboot config @see https://qiita.com/hkuno/items/0d9b677c9106e64ac338
