@@ -91,6 +91,17 @@ EOF
   sudo systemctl restart keyd
   diff {~/orig,}$keyconf
 fi
+# NTP config
+ntpconf=/etc/systemd/timesyncd.conf
+if [ -f $ntpconf ] && yesno "timesyncd(NTP) configuration [y/N]"; then
+  cat <<-EOF | sudo tee -a $ntpconf
+##NTP=ntp.nict.jp
+EOF
+  sudoedit $ntpconf
+# sudo systemctl daemon-reload
+# sudo systemctl restart systemd-timesyncd.service
+  diff {~/orig,}$ntpconf
+fi
 # dualboot config @see https://qiita.com/hkuno/items/0d9b677c9106e64ac338
 [ -x timedatectl ] && timedatectl && yesno -c timedatectl set-local-rtc 1
 [ -f /etc/default/grub ] && yesno -c sudoedit /etc/default/grub && yesno -c sudo update-grub;
