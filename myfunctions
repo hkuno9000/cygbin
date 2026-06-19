@@ -165,8 +165,10 @@ cdwk()
 {
   echo '=== interactive chdir for git-worktree.'
   git worktree list || return
-  local dir
-  select dir in $(git worktree list | cut -d " " -f 1); do
+  local dir dirlist
+  # get worktree's dirlist with safe for path-contains-spaces, like "/mnt/c/Program Files/app"
+  mapfile -t dirlist < <(git worktree list --porcelain | perl -ne 'print if s/^worktree //;')
+  select dir in "${dirlist[@]}"; do
     case $REPLY in
       Q|q|quit)
         break # select-loop
