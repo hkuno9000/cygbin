@@ -7,7 +7,9 @@ cat /etc/os-release
 echo === uname
 uname -a
 echo === model
-more /proc/device-tree/model
+m=/proc/device-tree/model ; [ -r "$m" ] && more "$m"
+m=/proc/cpuinfo           ; [ -r "$m" ] && grep -e "^model name" "$m" | sort -u
+echo more: sudo dmidecode
 echo == lscpu
 lscpu
 echo more: cat /proc/cpuinfo
