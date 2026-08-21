@@ -17,6 +17,7 @@ Usage:
 
 Options:
     --help, -h, -?  show help
+    -c "CMD"        backcp <(CMD) [DIR] FILE
 
 diffcmd:
     default:'diff -wsq --color=auto' now '$DIFF'
@@ -39,6 +40,15 @@ case $1 in
 	[ -d "$1" ] || mkdir "$1"
 	[ -d "$1" ] || error_exit "please specify DIR for -t"
 	dst=$1; src=$2;;
+-c)
+	shift
+	[ -z "$1" ] && error_exit "please specify CMD for -c"
+	cmd="$1"
+	file="${cmd// /_}.log" # replace space to "_" in $cmd
+	[ -d "$2" ] && dir="$2" && shift
+	[ -n "$2" ] && file="$2"
+	[ -n "$dir" ] && file="$dir/$file"
+	exec "$0" <($cmd) "$file";;
 *)
 	src=$1; dst=$2;;
 esac
