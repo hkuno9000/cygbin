@@ -39,7 +39,7 @@ case $1 in
 	[ -z "$1" ] && error_exit "please specify DIR for -t"
 	[ -d "$1" ] || mkdir "$1"
 	[ -d "$1" ] || error_exit "please specify DIR for -t"
-	dst=$1; src=$2;;
+	dst="$1"; src="$2";;
 -c)
 	shift
 	[ -z "$1" ] && error_exit "please specify CMD for -c"
@@ -50,7 +50,7 @@ case $1 in
 	[ -n "$dir" ] && file="$dir/$file"
 	exec "$0" <($cmd) "$file";;
 *)
-	src=$1; dst=$2;;
+	src="$1"; dst="$2";;
 esac
 if [ -p "$src" ]; then
 	# $src: <(CMD)
@@ -63,8 +63,8 @@ elif [ -f "$src" ] && [ -d "$dst" ]; then
 fi
 # backup copy
 function mybackup {
-	[ -f "$1" ] && [ -f "$2" ] && $DIFF $1 $2 && exit 0 # 内容同一ならbackupは不要なのでexitする.
-	cp -ip --backup=t $1 $2
+	[ -f "$1" ] && [ -f "$2" ] && $DIFF "$1" "$2" && exit 0 # 内容同一ならbackupは不要なのでexitする.
+	cp -ip --backup=t "$1" "$2"
 }
 # print exist backup-files and do backup
 if [ -d "$src" ]; then
