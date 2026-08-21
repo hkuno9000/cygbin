@@ -50,7 +50,7 @@ case $1 in
 -c)
 	shift; # skip -c
 	cmd="$1"
-	file="${cmd}.log"
+	file="${cmd// /_}.log" # replace space to "_" in $cmd
 	shift; # skip "cmd"
 	[ -n "$1" ] && [ "${1:0:1}" != "-" ] && file="$1" && shift
 	;;
