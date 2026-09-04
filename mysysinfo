@@ -13,10 +13,12 @@ echo more: sudo dmidecode
 echo == lscpu
 lscpu
 echo more: cat /proc/cpuinfo
+echo == lsmem
+lsmem
 echo == lsusb
 lsusb && lsusb -t
 echo == lsblk
-lsblk
+lsblk -e 7
 echo === ip
 ip route
 echo === wifi
