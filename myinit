@@ -83,7 +83,8 @@ keyconf=/etc/keyd/default.conf
 if [ -f $keyconf ] && yesno "keyd(Wayland) configuration [y/N]"; then
   cat <<-EOF | sudo tee -a $keyconf
 ##[main]
-##zenkaku_hankaku = esc, capslock
+##zenkaku_hankaku = overload(capslock,esc) # long-press:capslock, single-hit:esc
+##zenkaku_hankaku = esc
 ##zenkaku_hankaku = capslock
 ##capslock = leftcontrol
 EOF
