@@ -22,13 +22,13 @@ error_exit() {
 	usage $1 >&2
 	exit 1
 }
-function pushback {
+pushback() {
 	local f
 	for f in $@; do
 		[ -f "$f" ] && back="$back $f" # append existing files to $back
 	done
 }
-function pushbackt {
+pushbackt() {
 	local f
 	for f in $@; do
 		pushback $f{,~,.~*~} # fname fname~ fname.~*~
