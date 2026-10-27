@@ -39,6 +39,7 @@ case $1 in
 --help|-h|-\?|"") help_exit;;
 esac
 file=$1
+tgt=$file
 if [ ! -f "$file" ]; then
 	error_exit "$file is not a file"
 fi
@@ -53,10 +54,16 @@ else
 	pushbackt $file.orig	# fname.orig fname.orig~ fname.orig.~*~
 	pushbackt $file.save	# fname.save fname.save~ fname.save.~*~
 fi
-# print exist backup-files and do renumber
+# print exist backup-files
 ls -tr1 $back | uniq
-tmp=$(mktemp "$file.tmp.XXXXX")
-mv $file $tmp
-for bak in $(ls -tr1 $back $tmp | uniq); do
-	mv --backup=t $bak $file
+# rename "$file $back" to backup-numbered-temp-name
+tmp=$(mktemp -u "$file.tmp.XXXXX")
+for f in $(ls -tr1 $file $back | uniq); do
+	mv --backup=t $f $tmp
+	[ "$f" = "$file.bak" ] && tgt="$file.bak" # change target-name with ".bak"
+done
+# rename backup-numbered-temp-names to backup-numbered-target-name
+for f in $(ls -tr1 $tmp $tmp.~*~); do
+	[ "$f" = "$tmp" ] && tgt="$file"
+	mv --backup=t $f $tgt
 done
