@@ -31,16 +31,17 @@ error_exit() {
 	usage $1 >&2
 	exit 1
 }
-
+# make backups list
+IFS=$'\n' # don't separate filename by spaces in the filename
 pushback() {
 	local f
-	for f in $@; do
-		[ -f "$f" ] && back="$back $f" # append existing files to $back
+	for f in "$@"; do
+		[ -f "$f" ] && back+="${IFS}$f" # append existing files to $back
 	done
 }
 pushbackt() {
 	local f
-	for f in $@; do
+	for f in "$@"; do
 		pushback $f{,~,.~*~} # fname fname~ fname.~*~
 	done
 }
@@ -114,9 +115,9 @@ select sel in $(ls -1t $back | uniq); do
 			if [ -z "$sel" ]; then
 				echo "Enter 'h' for help"
 			elif [ -n "$cmd" ]; then
-				$DIFF $sel <($cmd)
+				unset IFS; $DIFF "$sel" <($cmd)
 			else
-				$DIFF $sel $file
+				unset IFS; $DIFF "$sel" "$file"
 			fi
 			;;
 	esac
