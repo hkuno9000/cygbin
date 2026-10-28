@@ -22,15 +22,17 @@ error_exit() {
 	usage $1 >&2
 	exit 1
 }
+# make backups list
+IFS=$'\n' # don't separate filename by spaces in the filename
 pushback() {
 	local f
-	for f in $@; do
-		[ -f "$f" ] && back="$back $f" # append existing files to $back
+	for f in "$@"; do
+		[ -f "$f" ] && back+="${IFS}$f" # append existing files to $back
 	done
 }
 pushbackt() {
 	local f
-	for f in $@; do
+	for f in "$@"; do
 		pushback $f{,~,.~*~} # fname fname~ fname.~*~
 	done
 }
@@ -41,7 +43,7 @@ esac
 file=$1
 tgt=$file
 if [ ! -f "$file" ]; then
-	error_exit "$file is not a file"
+	error_exit "'$file' is not a file"
 fi
 
 # search backup files
