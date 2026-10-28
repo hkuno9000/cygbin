@@ -70,9 +70,9 @@ function mybackup {
 if [ -d "$src" ]; then
 	cp -ipru --backup=t "$src" "$dst" # recursive-update-copy from $src/* to $dst/$src/*
 elif [ -n "$dst" ]; then
-	[ -f "$dst" ] && ls -lFt $dst $dst.~*
-	mybackup $src $dst
+	[ -f "$dst" ] && ls -lFt "$dst" "$dst".~*
+	mybackup "$src" "$dst"
 else
-	[ -f "$src" ] && ls -lFt $src $src.bak*
-	mybackup $src{,.bak}
+	[ -f "$src" ] && ls -lFt "$src" "$src".bak*
+	mybackup "$src"{,.bak}
 fi
