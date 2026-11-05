@@ -81,7 +81,7 @@ if [ -n "$base" ] ; then
 		pushbackt ~/{orig,save,backup}/${dir#/}/$base
 	fi
 fi
-[ -n "$back" ] || error_exit "backup not found";
+[ -n "$back" ] || error_exit "backup not found of: $file";
 
 # show files and select, then do diff
 #echo "@:[$@], cmd:[$cmd], file:[$file], base:[$base], noext:[$noext], dir:[$dir], back:[$back]"
