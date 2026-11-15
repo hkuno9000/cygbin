@@ -67,6 +67,9 @@ if [ -n "$(type -t delta)" ] ; then
   git config --global core.pager delta
   git config --global interactive.diffFilter 'delta --color-only'
   git config --global delta.navigate true
+# delta --show-syntax-themes
+# delta --show-config
+  git config --global delta.plus-style 'syntax "#003800"'
   git config --global delta.map-styles 'bold purple => syntax purple, bold cyan => syntax cyan' # for move-block
   git config --global merge.conflictStyle zdiff3
   git config --global pager.log  delta
