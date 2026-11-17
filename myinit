@@ -110,10 +110,10 @@ EOF
   diff {~/orig,}$ntpconf
 fi
 # dualboot config @see https://qiita.com/hkuno/items/0d9b677c9106e64ac338
-[ -x timedatectl ] && timedatectl && yesno -c timedatectl set-local-rtc 1
+command -v timedatectl && timedatectl && yesno -c timedatectl set-local-rtc 1
 [ -f /etc/default/grub ] && yesno -c sudoedit /etc/default/grub && yesno -c sudo update-grub;
 # install minimum package
-if [ -x /usr/bin/apt-get ]; then
+if command -v apt-get; then
 yesno -c sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig zip curl wget
