@@ -55,6 +55,12 @@ if mkdir orig; then
   apt list > orig/apt-list.log
   groups   > orig/groups.log
 fi
+# set default editor for sudoedit
+if command -v update-alternatives; then
+  sudo update-alternatives --config editor
+elif command -v vim; then
+  export SUDO_EDITOR=vim
+fi
 # fake Windows dir for URL file:///C:/Users/...
 yesno -c sudo mkdir /C: && sudo ln -s /home /C:/Users
 # mysetting
@@ -204,7 +210,7 @@ if yesno "WSL [y/N]"; then
 [interop]
 appendWindowsPath=false
 EOF
-EDITOR=vim sudoedit /etc/wsl.conf
+  sudoedit /etc/wsl.conf
 fi
 
 # init shell and git
