@@ -162,6 +162,8 @@ EOF
 cat >> install/mypkg << 'EOF'
 ## === tailscle
 #curl -fsSL https://tailscale.com/install.sh | sh
+## === copilot CLI
+#curl -fsSL https://gh.io/copilot-install | bash
 ## === ubuntu-ja
 ## https://www.ubuntulinux.jp/News/ubuntu2404-ja-remix
 ##  Japanese Teamのパッケージレポジトリを追加する.
