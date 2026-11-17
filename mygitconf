@@ -175,6 +175,8 @@ git config --global alias.logsvn  "log --perl-regexp --grep='^\s*git-svn-id: \S+
 git config --global alias.reflogv 'reflog --decorate --format=fuller'
 git config --global alias.reflogd 'reflog --date=iso-local'
 git config --global alias.reflogr 'reflog --date=relative'
+git config --global alias.reflog-grep "!f(){ git grep \"\$@\" \$(git reflog --format=\"%h\" | uniq); };f"
+git config --global alias.allrev-grep "!f(){ git grep \"\$@\" \$(git rev-list --all); };f"
 git config --global alias.ignore '!exclude=$(git config --get core.excludesfile); vim -O ${exclude:-${XDG_CONFIG_HOME:-$HOME/.config}/git/ignore} $(git rev-parse --git-path info/exclude) $(git rev-parse --show-toplevel)/.gitignore'
 git config --global alias.attributes '!vim -O $(git rev-parse --git-path info/attributes) $(git rev-parse --show-toplevel)/.gitattributes'
 git config --global alias.ll 'ls-files'
