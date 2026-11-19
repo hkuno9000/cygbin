@@ -78,6 +78,7 @@ cat >>$dst <<- 'EOF'
 	#ps1color=4 # blue
 	#PS1=${PS1/34m\\]/48;5;${ps1color}m\\]🍓} ## add RPiOS emoji head PS1
 	#PS1=${PS1/34m\\]/48;5;${ps1color}m\\]🏠} ## add Home emoji head PS1
+	#PS1=${PS1/34m\\]/48;5;${ps1color}m\\]🐧WSL } ## add WSL emoji head PS1
 	#tabs -4
 	#PROMPT_COMMAND=jobs
 EOF
