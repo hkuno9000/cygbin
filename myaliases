@@ -43,11 +43,11 @@ alias todays='git todays'
 alias aw='type -a'
 alias clipin='xsel -bi'
 alias clipout='xsel -bo'
-[ -z "$(type -t pbcopy)"  ] || alias clipin='pbcopy'   # for macOS
-[ -z "$(type -t pbpaste)" ] || alias clipout='pbpaste' # for macOS
-[ -z "$(type -t clip)"  ] || alias clipin='clip'       # for windows
-[ -z "$(type -t clipx)" ] || alias clipin='clipx'      # my tools
-[ -z "$(type -t clipx)" ] || alias clipout='clipx -p'  # my tools
+command -v pbcopy >/dev/null  && alias clipin='pbcopy'   # for macOS
+command -v pbpaste >/dev/null && alias clipout='pbpaste' # for macOS
+command -v clip >/dev/null  && alias clipin='clip'       # for windows
+command -v clipx >/dev/null && alias clipin='clipx'      # my tools
+command -v clipx >/dev/null && alias clipout='clipx -p'  # my tools
 alias sjistig='iconv -f sjis | tig' # convert sjis to utf-8, and view
 alias utf8bom='nkf --overwrite --oc=UTF-8-BOM' # convert to UTF-8-BOM
 alias noeol='perl -i.bak -pe "BEGIN{undef \$/;} s/(\r\n|\r|\n)\$//g;"' # read all-lines at once by undef $/, and remove CRLF at EOF.
