@@ -36,4 +36,5 @@ bind diff * ?git commit -v --squash %(commit)
 bind diff = ?git commit -v --reset-author -c %(commit)
 bind diff <up> move-up
 bind diff <down> move-down
-bind diff D :/^diff --git
+#bind diff D :/^diff --git
+bind diff D !git -c diff.external=difft show --ext-diff %(commit) -- %(file)
