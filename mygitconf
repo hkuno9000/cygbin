@@ -183,6 +183,10 @@ git config --global alias.ll 'ls-files'
 git config --global alias.zip '!git archive --format zip -o `git rev-parse --abbrev-ref @`.zip HEAD'
 git config --global alias.nodelta "!GIT_PAGER='$pager' git"
 git config --global alias.delta-s "!GIT_PAGER='delta --side-by-side' git"
+git config --global alias.difft   "!GIT_EXTERANAL_DIFF=difft git"
+git config --global alias.dtdiff '-c diff.external=difft diff'
+git config --global alias.dtshow '-c diff.external=difft show --ext-diff'
+git config --global alias.dtlog  '-c diff.external=difft log  --ext-diff -p'
 git config --global alias.code "!GIT_EDITOR='code --wait' git"
 git config --global alias.nano '!GIT_EDITOR=nano git'
 git config --global alias.vim  '!GIT_EDITOR=vim git'
