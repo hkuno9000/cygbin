@@ -114,7 +114,7 @@ command -v timedatectl && timedatectl && yesno -c timedatectl set-local-rtc 1
 [ -f /etc/default/grub ] && yesno -c sudoedit /etc/default/grub && yesno -c sudo update-grub;
 # install minimum package
 if command -v apt-get; then
-yesno -c sudo add-apt-repository ppa:git-core/ppa
+command -v add-apt-repository && yesno -c sudo add-apt-repository ppa:git-core/ppa
 sudo apt update ; sudo apt full-upgrade
 sudo apt install vim git tig zip curl wget
 # install option package
